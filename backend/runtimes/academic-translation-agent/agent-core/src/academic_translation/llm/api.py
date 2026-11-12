@@ -46,6 +46,10 @@ class OpenAICompatibleAcademicLLM:
         if settings.translation_api_disable_thinking:
             # SiliconFlow/Qwen-compatible endpoints use this OpenAI extension.
             payload["extra_body"] = {"enable_thinking": False}
+            # DeepSeek uses its own switch; without it the thinking text
+            # counts against max_tokens and long passages come back truncated.
+            if "deepseek.com" in self.base_url.lower():
+                payload["thinking"] = {"type": "disabled"}
         headers = {"Content-Type": "application/json"}
         if self.api_key.strip():
             headers["Authorization"] = f"Bearer {self.api_key.strip()}"
