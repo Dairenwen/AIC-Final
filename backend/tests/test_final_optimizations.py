@@ -193,3 +193,37 @@ def test_search_cache_expires_and_ignores_empty_results():
     cache.put("b", [2])
     assert cache.get("a") is None
     assert cache.get("b") == [2]
+
+
+def test_throttled_or_unreachable_sources_are_skipped_not_retried_per_query():
+    from urllib import error as url_error
+
+    throttled = url_error.HTTPError("https://export.arxiv.org", 429, "Too Many Requests", None, io.BytesIO(b""))
+    rejected = url_error.HTTPError("https://export.arxiv.org", 400, "Bad Request", None, io.BytesIO(b""))
+
+    assert _nodes.is_source_unavailable(throttled) is True
+    assert _nodes.is_source_unavailable(TimeoutError("slow")) is True
+    assert _nodes.is_source_unavailable(rejected) is False
+    assert _nodes.is_source_unavailable(ValueError("bad query")) is False
+
+
+def test_arxiv_fetch_gives_up_within_its_time_budget(monkeypatch):
+    from urllib import error as url_error
+
+    calls = []
+    sleeps = []
+
+    def always_throttled(api_request, timeout=None):
+        calls.append(timeout)
+        raise url_error.HTTPError(api_request.full_url, 429, "Too Many Requests", {"Retry-After": "600"}, io.BytesIO(b""))
+
+    monkeypatch.setattr(_arxiv.urllib.request, "urlopen", always_throttled)
+    monkeypatch.setattr(_arxiv.time, "sleep", sleeps.append)
+    settings = _arxiv.get_settings()
+    api_request = _arxiv.urllib.request.Request("https://export.arxiv.org/api/query?search_query=all:x")
+
+    with pytest.raises(url_error.HTTPError):
+        _arxiv.fetch_feed(api_request, settings)
+
+    assert len(calls) == settings.arxiv_max_retries + 1
+    assert sleeps and max(sleeps) <= _arxiv.ARXIV_MAX_RETRY_DELAY_SECONDS

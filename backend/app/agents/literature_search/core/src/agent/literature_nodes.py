@@ -171,8 +171,12 @@ class LiteratureNodes:
         if len(plan.queries) > 1:
             try:
                 return self._retrieve_combined(source, retriever, plan)
-            except Exception:  # noqa: BLE001
-                pass
+            except Exception as exc:  # noqa: BLE001
+                # The source itself is unreachable or throttling us: asking again
+                # once per query would only multiply the wait. Skip the source.
+                if is_source_unavailable(exc):
+                    message = "检索源暂时不可用或被限流，本次已跳过"
+                    return {retrieval_state_key(source): [], "errors": [RetrievalError(source=source, query=plan.queries[0], message=message)]}
         batches: list[RetrievalBatch] = []
         errors: list[RetrievalError] = []
         for index, query in enumerate(plan.queries):
@@ -390,6 +394,14 @@ class SearchResultCache:
 
 
 SEARCH_CACHE = SearchResultCache()
+
+
+def is_source_unavailable(error: Exception) -> bool:
+    """Network failures and throttling, as opposed to a query the source rejected."""
+    code = getattr(error, "code", None)
+    if code in {403, 429, 500, 502, 503, 504}:
+        return True
+    return isinstance(error, (TimeoutError, OSError)) and code is None
 
 
 ARXIV_STOPWORDS = {"a", "an", "and", "for", "in", "of", "on", "or", "the", "to", "with", "using", "based", "via"}

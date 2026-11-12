@@ -72,10 +72,24 @@ class ArxivSearchTool(BaseTool):
         return SearchResponse(query=query, source="arxiv", total=len(papers), papers=papers).model_dump(mode="json")
 
 
+ARXIV_TOTAL_BUDGET_SECONDS = 24.0
+ARXIV_MAX_RETRY_DELAY_SECONDS = 4.0
+
+
 def fetch_feed(request: urllib.request.Request, settings: Settings) -> ET.Element:
+    """Fetch one arXiv result page within a fixed time budget.
+
+    arXiv throttles busy addresses with HTTP 429 and long Retry-After values.
+    Waiting those out used to stall the whole literature task for minutes, so
+    the retries share one budget and the source is skipped once it is spent.
+    """
+    started = time.monotonic()
     for attempt in range(settings.arxiv_max_retries + 1):
+        remaining = ARXIV_TOTAL_BUDGET_SECONDS - (time.monotonic() - started)
+        if remaining <= 1.0:
+            break
         try:
-            with urllib.request.urlopen(request, timeout=settings.arxiv_timeout_seconds) as response:
+            with urllib.request.urlopen(request, timeout=min(settings.arxiv_timeout_seconds, remaining)) as response:
                 return ET.fromstring(response.read())
         except HTTPError as exc:
             retryable = exc.code in {429, 503}
@@ -83,10 +97,11 @@ def fetch_feed(request: urllib.request.Request, settings: Settings) -> ET.Elemen
                 raise
             retry_after = exc.headers.get("Retry-After") if exc.headers else None
             delay = float(retry_after) if retry_after and retry_after.isdigit() else settings.arxiv_request_interval_seconds
-            time.sleep(max(delay, settings.arxiv_request_interval_seconds))
-    raise RuntimeError("arXiv retry loop exited unexpectedly")
-
-
+            delay = min(max(delay, 1.0), ARXIV_MAX_RETRY_DELAY_SECONDS)
+            if time.monotonic() - started + delay >= ARXIV_TOTAL_BUDGET_SECONDS:
+                raise
+            time.sleep(delay)
+    raise TimeoutError("arXiv did not answer within the time budget")
 def build_query(
     query: str,
     authors: list[str],
