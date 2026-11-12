@@ -1,0 +1,11 @@
+# 文献 PPT 绘制运行时的 Linux 依赖。
+#
+# 与 补充/literature_ppt_tools/requirements.txt 一致，版本已钉死：
+# 该目录自带的 .venv 是 macOS arm64 的（pyvenv.cfg 还指向已不存在的
+# /Users/drw/Downloads/比赛/垂域模型/），在 Linux 容器里无法使用，
+# 因此在镜像构建阶段为 Linux 重建。
+#
+# docling 会引入 torch，构建时已指定官方 CPU 索引，避免拉取 CUDA 轮子。
+docling==2.112.0
+langchain==1.0.0
+python-pptx==1.0.2

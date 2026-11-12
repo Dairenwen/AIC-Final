@@ -1,0 +1,60 @@
+智研参赛证据索引（2026-10-26，中国时间）
+
+官方依据：https://e.huawei.com/cn/talent/#/ict/innovation-details?zoneCode=027425&zoneId=98269700&compId=85132021
+此目录是过程证据，不是已完成的报名提交包。没有修改PPT、Word或原代码包。
+
+一、已归档
+01-CodeArts只读审查：真实CodeArts智能问答界面；先用GLM-5.2，后用DeepSeek-V4.1-Flash（界面倍率0.18x）。仅证明实际方案审查，不证明CodeArts生成并采用代码或完成云上部署。
+CodeArts只读审查原始界面记录：保留模型原始意见和纠正过程。原意见有错误，不应未经复核引用。
+02-官网赛题一技术要求：CodeArts必选、已有智能体与Skills关联云服务及实际部署要求。
+03-官网决赛材料要求：答辩PPT、Demo地址、代码、数据、复现材料及开源社区截图要求。
+04-官网初赛材料要求及官网原始文本：模板1 Word、背景价值、创新、数据处理、关键代码及量化效果；初赛不要求Demo链接。
+部署脚本免费验证：31项已有专项测试通过；8项Docker隔离部署事务验证通过；2项浏览器安装用户/环境隔离验证通过；Shell语法、10个Python部署文件语法检查通过。容器中systemctl/nginx/健康命令为模拟，不是实际云上服务验证。
+
+二、审查纠正及本次修复
+原恢复脚本遇非空数据库会拒绝并回滚，不会覆盖目标库。
+Puppeteer用于专利Mermaid，不用于UniMERNet公式识别。
+公式识别此前已在本机CPU验证成功；本轮未重新运行，云主机资源和安全策略仍未验证。
+仅修改newcode/zhiyan_sub/deploy/huawei/deploy.sh和prepare_tools.py：部署前检查服务用户/依赖/权限/浏览器；按zhiyan用户准备浏览器缓存；失败保留现场并恢复旧服务配置及启用状态。
+回退范围为服务配置，不包括数据库、应用代码或依赖；回退命令仍可能因主机故障失败，须检查输出。
+没有部署27B，没有扩大业务功能，没有购买/充值/订阅，没有调用真实付费模型API。
+
+三、未完成，后续真实执行时取证
+1. 成功报名及审核：用户最后告知尚未完成；资源权益待审核后核对。
+2. 已有智能体/Skills关联华为云资源：保存所用Skill来源/版本、实际调用、权限确认、脱敏资源结果；现在没有相应执行证明。
+3. Skills实际部署：保存部署命令/日志、成功结果、真实域名与HTTPS、健康检查和功能截图；现在没有云服务器，不可提前生成成功证明。
+4. 云上功能验收：浏览器沙箱、系统服务用户权限、内存/磁盘、模型与历史文件、并发及重启验证；付费模型流程另经批准。
+5. 初赛模板1及决赛模板2：按用户要求本轮不编辑；模板内容仍需正式填写。
+6. 决赛开源社区截图：尚未开源，本轮不发布。源码/依赖/数据应与展示效果一致，不能拿旧站截图当新部署证明。
+官方页面未规定CodeArts截图固定张数；当前过程截图是辅助证据，不替代官方提交材料。
+
+四、本轮部署文件SHA256
+deploy.sh 95efecc1c941fc1ba7742bb76e36f70c6daf39bb3acdaab6a7a07e520b400376
+prepare_tools.py 7066a216642eb6984e9af90db6907ab4a3903ccf7075ba3b1c8e2eca2885a0d0
+
+五、2026-10-27 代码安全复核（本机离线）
+检查范围：API认证/角色与任务归属、文件下载路径、模型地址和响应、SVG与Markdown渲染、前端路由/登录状态/主题入口；不代表完整渗透测试或所有依赖漏洞审计。
+修复：非对象或损坏JSON统一返回400（知识库旧代理保留原契约）；模型地址格式校验防止解析异常；非对象模型响应返回受控错误；历史坏模型地址不再使就绪探测抛异常；SVG内联响应增加CSP sandbox和nosniff，保留预览URL。
+验证：后端88项相关测试通过，前端10文件50项测试通过。前端未修改，未构建新的dist。无真实模型、短信或云资源调用。
+新增tests/test_security_boundaries.py为必要回归测试源文件，不是临时检查缓存。
+用户明确选择保留普通用户自定义内网模型地址；SSRF/内网探测风险仍在，未宣称修复。后续上线需单独确认出站网络限制方案。
+前端结构：src/main.ts加载styles/main.css再加载editorial-theme.css；App.vue与components/AppShell.vue管理公共框架；router/index.ts含登录和管理员角色守卫；views承载各业务页；api/http.ts处理API前缀、CSRF及401；utils/renderMarkdown.ts统一净化动态Markdown。管理员知识库页面来自独立knowledge_base_runtime，不能只改Vue样式便宣称全站一致。
+后续改样式时保留v-model、提交/上传事件、SSE任务状态、下载地址、路由参数和安全渲染入口；现有前端测试中有静态模板断言，不等于浏览器端到端功能验证。
+原包SHA256复核：969个基线文件，变化或缺失0个。
+backend/app/api/__init__.py 04da2684de3f6f95aaa8e3157088c68a4551975ffad9c6f8cbe7d964ee33909f
+backend/app/api/model_configs.py 45d3b0a90c88b9360530a89ddbedf38895f85b584e0e2460f20e2d391cf5ef7b
+backend/app/api/tasks.py 757fdfb1dd471d745f8f388ae1e47d908fcbaf79939f9c9f3298122564c8c8b7
+backend/app/services/agent_readiness.py 6a96ec8873c99fcf967e1e4e16e51794ccbdb933eee7260dc4d3182d3891a734
+backend/tests/test_security_boundaries.py f382e6af9d748daadbaf83d53a81610e9b93d7cd1772f17c8d8d9cf188bf734a
+
+六、2026-10-29 部署可靠性检查
+修复Nginx备份被sites-enabled/*误加载风险：备份和失败现场改存/var/backups/zhiyan/<时间-进程号>，权限0700；不再在激活目录生成.backup/.previous/.failed。每份旧配置只保留一个备份。
+增加flock互斥，避免并发发布；增加deploy.sh --check预检入口（不修改服务配置，但读取目标数据库并使用锁）。显式生产env文件优先于终端旧变量；指定文件不存在时阻止预检。Nginx初始停止时改为启动，失败时恢复先前运行状态。
+本机96项相关测试通过；最终事务脚本8项本机验证通过。Linux amd64隔离容器验证记录随后补充；服务命令使用替身，文件操作和Shell真实执行，网络禁用，源码只读挂载。未购买资源、未调用模型。
+新增backend/tests/test_deployment_transaction.py是保留的部署回归测试，不是垃圾文件。
+结构处理：未移动业务目录，避免破坏原运行路径；未复制源码、数据或模型。依赖环境必须保留。发现13个.DS_Store共84020字节，按用户AGENTS禁止批量删除的规则保留，交由用户手动清理。没有新增Markdown。
+当前发布入口：资源/账户/依赖/数据/证书就绪后，sudo bash /srv/zhiyan/current/deploy/huawei/deploy.sh --apply。仍不是裸服务器从零自动开通；--build、原数据恢复、模型准备有既有独立脚本，云资源和真实配置须先确认。未宣称云部署已经成功或全功能稳定性已验证。
+deploy/huawei/deploy.sh f115150a965a8f540a9ac8bfcbb6d75ceeeec010e7a3b2299b87f766a3d8b7c3
+deploy/huawei/preflight.py 8787938ab7c33f543ee6ade86cc5f22b26f43c725518493adb6ec090aac545ea
+backend/tests/test_deployment_transaction.py 96c4d4e72b230bc291e903e622372ac2934ea5c2ad72d8c39d9a5951636bb85a
+最终Linux amd64隔离容器事务验证：8/8通过；容器已自动移除，没有下载或安装新依赖。

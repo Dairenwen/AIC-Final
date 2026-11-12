@@ -1,0 +1,50 @@
+# Python
+**/.venv/
+**/venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.pytest-*/
+**/.mypy_cache/
+**/.ruff_cache/
+*.py[cod]
+.coverage
+coverage/
+
+# Frontend
+**/node_modules/
+frontend/dist/
+frontend/*.tsbuildinfo
+
+# Local configuration and runtime output
+**/.env
+**/.env.local
+**/.env.production
+!**/.env.example
+*.log
+output/
+backend/generated/
+backend/uploads/
+backend/var/
+backend/submission_agent.db
+backend/knowledge_base_runtime/infrastructure/file-storage/data/pdfs/
+backend/knowledge_base_runtime/infrastructure/file-storage/data/uploads/
+
+# IDE and OS
+.idea/
+.vscode/
+.trae/
+.DS_Store
+Thumbs.db
+
+# 部署手册原件含服务器/面板凭据，仅保留在本地，不入库（脱敏版见 docs/）
+/deployment/
+# 运行期数据与模型权重
+backend/tmp/
+backend/knowledge_base_runtime/infrastructure/file-storage/data/
+backend/knowledge_base_runtime/infrastructure/external-dep/
+**/infrastructure/external-dep/
+backend/app/tools/formula_recognition/runtime/unimernet/models/
+backend/app/tools/formula_recognition/runtime/.venv/
+*.egg-info/
+*.tar.gz
+*.sql

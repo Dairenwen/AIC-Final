@@ -1,0 +1,8 @@
+# 业务表迁移（Alembic）
+
+本目录与 backend/migrations 的 revision 链保持一致，便于与现网 backend 共用同一 PostgreSQL 实例。
+
+- 初始化命令（在 langgraph-agent 根目录）：
+  `python scripts/init_db.py`
+- 或仅升级业务表：
+  `alembic -c alembic.ini upgrade head`

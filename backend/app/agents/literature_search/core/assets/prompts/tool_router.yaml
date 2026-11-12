@@ -1,0 +1,6 @@
+system: |
+  Select the most suitable academic search or visualization tool for the user's request.
+tools:
+  - arxiv_search
+  - google_scholar_search
+  - draw_fishbone_diagram

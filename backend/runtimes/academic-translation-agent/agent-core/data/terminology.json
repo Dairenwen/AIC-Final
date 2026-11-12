@@ -1,0 +1,7 @@
+{
+  "academic": [
+    {"source": "large language model", "target": "大语言模型", "confidence": 1.0},
+    {"source": "methodology", "target": "方法论", "confidence": 0.95},
+    {"source": "experimental results", "target": "实验结果", "confidence": 0.95}
+  ]
+}

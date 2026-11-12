@@ -1,0 +1,10 @@
+{
+  "prompt": "绘制不同模型在不同扰动强度下的准确率折线图，显示标准差并突出模型对比",
+  "data_files": ["assets/examples/robustness.csv"],
+  "output_dir": "output/example-run",
+  "figure_type": "line",
+  "export_formats": ["pdf", "svg", "png"],
+  "code_formats": ["python", "r", "latex", "mermaid"],
+  "languages": ["zh", "en"],
+  "offline": true
+}

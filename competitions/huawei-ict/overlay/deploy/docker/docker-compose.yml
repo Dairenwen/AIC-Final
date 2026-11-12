@@ -1,0 +1,180 @@
+# 智研 本地一键部署
+#
+# 不涉及华为云与任何付费服务：PostgreSQL、Redis、Nginx、Gunicorn 全部跑在本机容器里，
+# AI 能力由用户自行在界面上填写的模型 API Key 驱动。
+#
+# 用 ../../deploy/docker/start.sh 启动，不要手动 docker compose up：
+# 启动脚本会先生成密钥、校验数据源并创建数据目录。
+#
+# 与交接时的临时预览相比，这里的数据库使用具名持久卷，
+# 停止或重启容器不会丢数据。
+
+name: zhiyan
+
+services:
+  db:
+    # 备份由 PostgreSQL 18 的 pg_dump 产生，恢复必须用 18 或更高版本。
+    image: postgres:18@sha256:edb0c08dc33befd0262ab3b5cf1c4f3f8cfd8b09e88c05b45adee29d6761ddb6
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-zhiyan}
+      POSTGRES_USER: ${POSTGRES_USER:-zhiyan}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?请先运行 start.sh 生成 .env}
+      # 备份里的排序规则依赖 C locale，初始化时必须一致。
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    volumes:
+      # 具名卷：解决交接文档记录的“容器重启丢失测试库”问题。
+      - zhiyan-pgdata:/var/lib/postgresql
+    # 只发布到回环地址，不对局域网暴露数据库。
+    ports:
+      - "127.0.0.1:${POSTGRES_PORT:-55432}:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-zhiyan} -d ${POSTGRES_DB:-zhiyan}"]
+      interval: 5s
+      timeout: 5s
+      retries: 30
+      start_period: 30s
+
+  redis:
+    image: redis:7-alpine@sha256:8da19c7399dca900c6822a1cf30f9d2285585e2c4b457ff4095b0f4500054d3f
+    restart: unless-stopped
+    command: ["redis-server", "--save", "", "--appendonly", "no"]
+    ports:
+      - "127.0.0.1:${REDIS_PORT:-56379}:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    image: ${ZHIYAN_BACKEND_IMAGE:-zhiyan-backend:latest}
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile.backend
+      args:
+        # 置为 false 可跳过约 1.8G 的公式识别运行时构建，
+        # 此时公式图片转 LaTeX 会明确报告“未部署”。
+        INSTALL_FORMULA_RUNTIME: ${INSTALL_FORMULA_RUNTIME:-true}
+        INSTALL_PPT_RUNTIME: ${INSTALL_PPT_RUNTIME:-true}
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mermaid:
+        condition: service_healthy
+    env_file:
+      - ${ZHIYAN_ENV_FILE:-.env}
+    environment:
+      # 默认连接本文件里的 db / redis 容器。连接托管服务（如华为云 RDS、DCS）时
+      # 在 .env 里设置 POSTGRES_HOST / POSTGRES_SERVER_PORT / REDIS_URL 即可，
+      # 生产部署由 ../huawei/docker-production.yml 强制要求这几项。
+      DATABASE_URL: postgresql+psycopg://${POSTGRES_USER:-zhiyan}:${POSTGRES_PASSWORD}@${POSTGRES_HOST:-db}:${POSTGRES_SERVER_PORT:-5432}/${POSTGRES_DB:-zhiyan}
+      REDIS_URL: ${REDIS_URL:-redis://redis:6379/0}
+      ZHIYAN_DATA_ROOT: /data
+      UPLOAD_FOLDER: /data/uploads
+      GENERATED_FOLDER: /data/generated
+      KB_DATA_DIR: /data/knowledge-base
+      KB_REFERENCE_PDF_DIR: /data/knowledge-base/reference-pdfs
+      PAPER_READING_UV_CACHE_DIR: /data/cache/uv
+      HF_HOME: /data/cache/hf
+      MERMAID_RENDER_SOCKET: /run/zhiyan-mermaid/render.sock
+      CORS_ORIGINS: http://127.0.0.1:${WEB_PORT:-18080},http://localhost:${WEB_PORT:-18080}
+      AUTH_COOKIE_SECURE: ${AUTH_COOKIE_SECURE:-false}
+      KNOWLEDGE_BASE_EMBEDDED: "true"
+      # 微调的 27B 平台模型不随本版本部署，接口保留。
+      # 自行部署后把这里改为 true 并填入下方 .env 里的 QWEN_DPO_* 即可启用。
+      PLATFORM_MODEL_ENABLED: ${PLATFORM_MODEL_ENABLED:-false}
+      # 两个重型运行时的解释器在镜像内重建（源码树里的 venv 是 macOS 的，
+      # 在 Linux 容器中不可用），因此这里显式指向镜像内路径。
+      FORMULA_RECOGNITION_PYTHON: /opt/zhiyan/formula-venv/bin/python
+      FORMULA_RECOGNITION_DEVICE: cpu
+      LITERATURE_PPT_PYTHON: /opt/zhiyan/ppt-venv/bin/python
+      LITERATURE_PPT_RUNTIME_ROOT: /restore/literature_ppt_tools
+    volumes:
+      # 源码与大体积平台无关资产（公式权重 1.3G、patent vendor 1.4G）只读挂载，
+      # 不复制进镜像：否则镜像要多出几 G 且每次构建都要重新传输。
+      - type: bind
+        source: ../..
+        target: /srv/zhiyan
+        read_only: true
+      # 所有可写数据都落在卷上，源码树保持只读。
+      - zhiyan-data:/data
+      - mermaid-ipc:/run/zhiyan-mermaid
+      # 31G 论文语料只读挂载，不复制进卷。
+      - type: bind
+        source: ../../文献/arxiv
+        target: /data/knowledge-base/reference-pdfs
+        read_only: true
+      # 恢复用的数据库备份、历史附件与文献 PPT 运行时源码，只读。
+      - type: bind
+        source: ../../补充
+        target: /restore
+        read_only: true
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:5000/api/v1/health/live', timeout=5).status==200 else 1)"]
+      interval: 10s
+      timeout: 8s
+      retries: 40
+      start_period: 180s
+
+  mermaid-init:
+    image: ${ZHIYAN_BACKEND_IMAGE:-zhiyan-backend:latest}
+    entrypoint: ["/bin/sh", "-c", "chown 65534:65534 /ipc && chmod 0770 /ipc"]
+    network_mode: none
+    volumes:
+      - mermaid-ipc:/ipc
+    restart: "no"
+
+  mermaid:
+    image: ${ZHIYAN_BACKEND_IMAGE:-zhiyan-backend:latest}
+    entrypoint: ["/opt/zhiyan/venv/bin/python", "/opt/zhiyan/mermaid_service.py"]
+    init: true
+    user: "65534:65534"
+    depends_on:
+      mermaid-init:
+        condition: service_completed_successfully
+    network_mode: none
+    read_only: true
+    cap_drop: ["ALL"]
+    security_opt: ["no-new-privileges:true"]
+    pids_limit: 128
+    mem_limit: 2g
+    cpus: 2.0
+    tmpfs:
+      - /tmp:rw,nosuid,nodev,size=128m,mode=1777
+    environment:
+      HOME: /tmp
+      XDG_CONFIG_HOME: /tmp
+      XDG_CACHE_HOME: /tmp
+    volumes:
+      - mermaid-ipc:/run/zhiyan-mermaid
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import socket; s=socket.socket(socket.AF_UNIX); s.settimeout(3); s.connect('/run/zhiyan-mermaid/render.sock'); s.sendall(b'GET /health HTTP/1.0\\r\\n\\r\\n'); assert b'200' in s.recv(100)"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  web:
+    build:
+      context: ../..
+      dockerfile: deploy/docker/Dockerfile.web
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "${WEB_BIND_ADDRESS:-127.0.0.1}:${WEB_PORT:-18080}:80"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1/ >/dev/null || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 20
+
+volumes:
+  zhiyan-pgdata:
+  zhiyan-data:
+  mermaid-ipc:

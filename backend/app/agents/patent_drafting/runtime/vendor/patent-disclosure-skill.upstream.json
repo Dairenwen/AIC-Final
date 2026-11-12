@@ -1,0 +1,7 @@
+{
+  "name": "patent-disclosure-skill",
+  "repository": "https://github.com/handsomestWei/patent-disclosure-skill",
+  "commit": "e4bcb12d02490e8b44e5c9c7cd574644dd70da41",
+  "license": "MIT",
+  "vendored_path": "vendor/patent-disclosure-skill"
+}

@@ -1,0 +1,17 @@
+# 后端 API 依赖
+fastapi>=0.110.0
+uvicorn>=0.27.0
+python-dotenv>=1.0.0
+pydantic>=2.0.0
+python-multipart>=0.0.9
+
+# LLM
+langchain-openai>=0.1.0
+langchain-core>=0.2.0
+
+# 文件解析
+PyPDF2>=3.0.0
+python-docx>=1.1.0
+
+# Agent 网关（转发到独立 Agent 服务的 SSE 流）
+httpx>=0.27.0

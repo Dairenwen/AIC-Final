@@ -1,0 +1,14 @@
+Shell syntax: PASS
+31 existing focused tests passed (2026-10-26).
+first-install/none: PASS
+first-install/nginx: PASS
+first-install/restart: PASS
+first-install/health: PASS
+existing/none: PASS
+existing/nginx: PASS
+existing/restart: PASS
+existing/health: PASS
+8 deployment transaction cases passed; service commands simulated, no cloud or real systemd changes.
+WARNING: The requested image's platform (linux/amd64) does not match the detected host platform (linux/arm64/v8) and no specific platform was requested
+Browser install identity/environment: 2 cases PASS (mocked subprocess, no downloads).
+Final Python AST and bash syntax: PASS.

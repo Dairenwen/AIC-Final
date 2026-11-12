@@ -1,0 +1,29 @@
+# 审稿意见回复 Agent · 可导入包依赖（对齐 backend/requirements.txt 核心版本，不含 Flask）
+# Python >= 3.12；技术栈 LangChain/LangGraph + PostgreSQL
+
+# ---- LLM 编排（LangChain / LangGraph v1.x）----
+langchain==1.3.14
+langchain-core==1.4.9
+langchain-openai==1.3.5
+langgraph==1.2.9
+langgraph-checkpoint==4.1.1
+# 该包已同时提供 PostgresSaver（Checkpointer）与 PostgresStore（Store）
+langgraph-checkpoint-postgres==3.1.0
+
+# ---- OpenAI SDK（OpenAI-compatible Chat Completions）----
+openai==2.46.0
+
+# ---- 数据库：SQLAlchemy + Alembic + psycopg 3 ----
+sqlalchemy==2.0.51
+alembic==1.18.5
+psycopg[binary]==3.3.4
+
+# ---- 配置与数据校验 ----
+python-dotenv==1.2.2
+pydantic==2.13.4
+pydantic-settings>=2.0,<3
+
+# ---- 论文 PDF 解析（SLOW 模式）----
+# 对齐 backend/app/parsing/requirements.txt；无它们时 seed 会降级为最小结构。
+pymupdf>=1.24.0
+pymupdf4llm==1.28.0

@@ -1,0 +1,518 @@
+Browser tab: 2, Title: "华为人才在线", URL: "https://e.huawei.com/cn/talent/#/ict/innovation-details?zoneCode=027425&zoneId=98269700&compId=85132021".
+0 AXWebArea 华为人才在线, URL: e.huawei.com/cn/talent/#/ict/innovation-details?zoneCode=027425&zoneId=98269700&compId=85132021
+	1 container app
+		2 container
+			3 text 本站点使用Cookies，继续浏览表示您同意我们使用Cookies。
+			4 link Description: Cookies和隐私政策, Value: e.huawei.com/cn/talent/#/privacy
+			5 image
+		6 container
+			7 container
+				8 text 本站点使用Cookies，继续浏览表示您同意我们使用Cookies。
+				9 link Description: Cookies和隐私政策, Value: e.huawei.com/cn/talent/#/privacy
+				10 image
+			11 container
+				12 text 华为人才在线
+				13 image
+				14 text 0
+				15 button 中
+				16 button EN
+				17 button 登录/注册
+					18 text 登录/注册
+			19 content list
+				20 text 学习
+				21 text 认证
+				22 text 华为ICT学院
+				23 text 华为ICT大赛
+				24 text 培训伙伴
+				25 text 企业培训
+				26 text 成功案例
+				27 text 商城
+			28 container
+				29 text field (settable)
+				30 image
+			31 container Breadcrumb
+				32 container
+					33 link 首页
+						34 link 首页
+							35 text 首页
+					36 text >
+				37 container
+					38 link ICT学院
+						39 link ICT学院
+							40 text ICT学院
+					41 text >
+				42 container
+					43 link ICT大赛
+						44 link ICT大赛
+							45 text ICT大赛
+					46 text >
+			47 button 分享
+			48 image
+			85 text 大赛报名
+			86 text 学习空间
+			87 text 附件上传
+			88 container cloudHost
+				89 text 华为云AI开发者空间
+				90 text 免费体验华为云码道（CodeArts）代码智能体
+			91 text 赛事简介 赛程规划&进展 赛事通知 参赛须知 奖项通知 联系我们
+			92 container
+				93 link Description: 【赛题1-模板1】创新赛-作品信息收集表-学校-队名-队长姓名-手机号 （初赛阶段）, Value: e.huawei.com/cn/talent/backplatform/#/download?fileId=16460&edocId=M3T1A82N1301249785698066622
+				94 link Description: 【赛题1-模板2】创新赛-答辩PPT-学校-队名-队长姓名-手机号（中国总决赛阶段）, Value: e.huawei.com/cn/talent/backplatform/#/download?fileId=16463&edocId=M3T1A82N1301250356245430287
+				95 link Description: 【赛题2-模板1】创新赛-作品信息收集表-学校-队名-队长姓名-手机号 （初赛阶段）, Value: e.huawei.com/cn/talent/backplatform/#/download?fileId=16769&edocId=M3T1A82N1317412811624698043
+				96 link Description: 【赛题2-模板2】创新赛-答辩PPT-学校-队名-队长姓名-手机号（中国总决赛阶段）, Value: e.huawei.com/cn/talent/backplatform/#/download?fileId=16464&edocId=M3T1A82N1301250366710833355
+				97 link Description: 【赛题3-模板1】创新赛-开发设计文档-学校-队名-队长姓名-手机号 （初赛阶段）, Value: e.huawei.com/cn/talent/backplatform/#/download?fileId=16462&edocId=M3T1A82N1301249787291177249
+				98 link Description: 【赛题3-模板2】创新赛-答辩PPT-学校-队名-队长姓名-手机号（全国总决赛阶段）, Value: e.huawei.com/cn/talent/backplatform/#/download?fileId=16465&edocId=M3T1A82N1301250514189910157
+				99 image
+				100 container                华为ICT大赛是华为公司打造的面向全球高校的年度ICT赛事，以“联接、荣耀、未来”为主题，协同政府、高等教育机构、培训机构和行业企业，促进高校ICT人才的培养、成长和就业，助力ICT人才生态繁荣。自2021年起，大赛在中国被纳入由中国高等教育学会发布的“全国普通高校大学生竞赛项目榜单“，成为中国高等教育学会认可的含金量高、参赛价值大的高校竞赛项目之一。        华为ICT大赛分为实践赛、创新赛、算子赛、编程赛、挑战赛、精英赛以及教学赛。其中，创新赛重点考察参赛者对AI与ICT技术的综合应用与创新能力。参赛者需按照赛题要求，基于华为人工智能技术，融合通用人工智能、大数据、云计算、移动互联网、物联网等技术，从真实生活场景中发掘需求，设计并实现一个兼具应用场景创新性、商业落地潜力和完备技术架构的解决方案；或面向相应行业场景，完成智能体开发及算子、MCP、Skills等插件开发。
+					101 container
+						102 text        华为ICT大赛是华为公司打造的面向全球高校的年度ICT赛事，以“联接、荣耀、未来”为主题，协同政府、高等教育机构、培训机构和行业企业，促进高校ICT人才的培养、成长和就业，助力ICT人才生态繁荣。自2021年起，大赛在中国被纳入由中国高等教育学会发布的“全国普通高校大学生竞赛项目榜单“，成为中国高等教育学会认可的含金量高、参赛价值大的高校竞赛项目之一。
+					103 text        华为ICT大赛分为实践赛、创新赛、算子赛、编程赛、挑战赛、精英赛以及教学赛。其中，创新赛重点考察参赛者对AI与ICT技术的综合应用与创新能力。参赛者需按照赛题要求，基于华为人工智能技术，融合通用人工智能、大数据、云计算、移动互联网、物联网等技术，从真实生活场景中发掘需求，设计并实现一个兼具应用场景创新性、商业落地潜力和完备技术架构的解决方案；或面向相应行业场景，完成智能体开发及算子、MCP、Skills等插件开发。
+				104 image
+			105 container
+				106 image
+				107 container  第十一届华为ICT大赛中国创新赛分为 初赛>中国总决赛>全球总决赛 三级赛制，赛程信息如下：
+					108 container
+						109 text 第十一届华为ICT大赛中国创新赛分为 初赛>中国总决赛>全球总决赛 三级赛制，赛程信息如下：
+				110 table
+					111 row
+						112 cell
+							113 text 报名时间
+						114 cell
+							115 text 初赛
+						116 cell
+							117 text 中国总决赛
+						118 cell
+							119 text 全球总决赛
+					120 row
+						121 cell
+							122 text 2026年8月31日—11月30日
+						123 cell
+							124 text 2026年12月
+						125 cell
+							126 text 2027年3月
+						127 cell
+							128 text 2027年5月
+				129 image
+			130 container
+				131 image
+				132 container  1. 赛题说明 ① 关于赛题选择：报名时必须在如下3个赛题中选择一个并按照题目要求完成设计和相关材料提交。 ② 关于资源支持：成功报名且通过审核后，华为ICT大赛项目组将以参赛队伍为最小单元，为每支队伍接口人提供资源支持，涵盖华为云代金券、赋能课程、资料、工具等资源。除华为提供的资源外，参赛队伍还可以使用属于其高等教育机构的硬件和软件资源。 ③ 特别说明：赛题1 和赛题2的赛程为“初赛-中国总决赛-全球总决赛”；赛题3的赛程为“初赛-中国总决赛”。 
+					133 container
+						134 text 1. 赛题说明
+					135 text ① 关于赛题选择：报名时必须在如下3个赛题中选择一个并按照题目要求完成设计和相关材料提交。
+					136 text ② 关于资源支持：成功报名且通过审核后，华为ICT大赛项目组将以参赛队伍为最小单元，为每支队伍接口人提供资源支持，涵盖华为云代金券、赋能课程、资料、工具等资源。除华为提供的资源外，参赛队伍还可以使用属于其高等教育机构的硬件和软件资源。
+					137 container
+						138 text ③ 特别说明：赛题1 和赛题2的赛程为“初赛-中国总决赛-全球总决赛”；赛题3的赛程为“初赛-中国总决赛”。
+				139 table
+					140 row
+						141 cell
+							142 text 题目
+						143 cell
+							144 text 题目要求描述
+						145 cell
+							146 text 华为提供的软硬件资源
+					147 row
+						148 cell
+							149 container
+								150 text 赛题 1 ：
+								151 text 基于华为云产品打造 AI 创新应用
+						152 cell
+							153 text 应用领域
+							154 text •休闲娱乐、办公助手、行业应用、生活应用等场景不限
+							155 text 展示形式
+							156 text •云上部署，通过可视化 Demo 页面展示核心功能与交互流程
+							157 text •应体现华为云产品在需求理解、代码生成、项目构建、问题修复、部署上线等环节的使用价值，鼓励形成“想法到应用”的高效开发实践。
+							158 text 任务要求
+							159 text •选手下载并使用华为云码道CodeArts代码智能体；
+							160 text •基于已有智能体和Skills，进行关联RDS、REDIS等华为云服务的快速开通创建；
+							161 text •基于已有智能体和Skills，进行应用作品在华为云上的快速部署。
+							162 text 开源要求
+							163 text •入围中国总决赛和全球总决赛的作品需开源至 Gitee、GitHub 等社区
+							164 text •建议包括：项目源代码、依赖环境、部署指导、使用文档、开源许可证说明、Demo 截图或演示视频链接
+						165 cell
+							166 text 开发工具
+							167 text •华为云码道CodeArts代码智能体（必选）
+							168 text •AI 开发者空间
+							169 text 云服务资源
+							170 text •华为云代金券，可购买Maas等华为云资源，支持参赛团队调用大模型能力
+							171 text •限定云服务的云资源支持，助力作品完成云端部署与在线演示
+							172 text 注：预计10月份启动华为云代金券申请，具体资源发放方式、额度、使用范围和有效期以大赛组委会最终通知为准。
+							173 text 学习与部署资源
+							174 container
+								175 text •华为云码道CodeArts代码智能体下载及使用指导（免费申请）：
+								176 link Description: https://developer.huaweicloud.com/codeartsco.html?source=dmzntcompetition, Value: developer.huaweicloud.com/codeartsco.html?source=dmzntcompetition
+							177 container
+								178 text •华为云码道CodeArts代码智能体实践案例中心：
+								179 link Description: https://aidevbp.developer.huaweicloud.com/, Value: devstation.connect.huaweicloud.com/space/devportal/casecenter
+							180 container
+								181 text •Skills 一键部署：
+								182 link Description: https://gitcode.com/weixin_43883336/auto-deploy/blob/main/auto-deploy-case-study.md, Value: gitcode.com/weixin_43883336/auto-deploy/blob/main/auto-deploy-case-study.md
+							183 container
+								184 text •AI 开发者空间:
+								185 link Description: https://devstation.developer.huaweicloud.com/aidevspace?utm_source=competition&utm_medium=ict&utm_campaign=innovation, Value: devstation.developer.huaweicloud.com/aidevspace?utm_source=competition&utm_medium=ict&utm_campaign=innovation
+					186 row
+						187 cell
+							188 container
+								189 text 赛题 2 ：
+								190 text 基于华为云 AgentArts 智能体开发平台的 Agent 设计和应用
+						191 cell
+							192 text 应用领域
+							193 text 休闲娱乐、办公助手、行业应用、生活服务等场景不限。鼓励发掘真实业务痛点，打造具备落地潜力的智能体解决方案。典型方向包括但不限于：
+							194 text •行业赋能型：针对医疗、教育、金融、制造、农业等行业的智能化解决方案
+							195 text •效率提升型：办公自动化、智能客服、数据分析、文档处理等提效工具
+							196 text •创新探索型：多Agent协同、自主决策、MCP工具调用、持续学习等前沿技术应用
+							197 text •生活服务型：健康管理、出行规划、学习辅助、智能家居等生活场景应用
+							198 text 任务要求
+							199 text •基于华为云AgentArts平台完成智能体的构建、编排与部署
+							200 text •通过可视化Demo页面展示核心功能与交互流程
+							201 text •应体现AgentArts在智能体设计、工具编排、知识接入、多Agent协作、效果评估等环节的使用价值
+							202 text •鼓励形成"场景识别→Agent架构设计→技能编排→调试优化→部署上线的完整闭环"的高效开发实践
+							203 text 分享要求
+							204 container
+								205 text •入围中国总决赛和全球总决赛的作品需在华为云开发者社区（
+								206 link Description: Link, Value: bbs.huaweicloud.com/forum/forum-1438-1.html
+								207 text ）或其他社媒平台发布作品分享帖，建议包括：Agent设计方案说明（场景定义、编排思路、工作流架构）、知识库/语料的构建方法、自定义Skill或MCP服务说明（如有）、使用文档与操作指引、Demo截图或演示视频链接。
+						208 cell
+							209 text 开发工具
+							210 text •华为云智果（AgentArts）智能体平台
+							211 text 云服务资源
+							212 text •华为云MaaS服务Token Plan套餐代金券，支持参赛团队调用大模型能力
+							213 text •限定云服务的云资源代金券，助力作品完成云端部署与在线演示
+							214 text 注：预计10月份启动华为云代金券申请，具体资源发放方式、额度、使用范围和有效期以大赛组委会最终通知为准。
+							215 text 学习与部署资源
+							216 container
+								217 text •产品链接：
+								218 link Description: https://www.huaweicloud.com/product/agentarts.html?utm_source=zgcompetition, Value: huaweicloud.com/product/agentarts.html?utm_source=zgcompetition
+							219 container
+								220 text •用户指南：
+								221 link Description: https://support.huaweicloud.com/agentarts/index.html, Value: support.huaweicloud.com/agentarts/index.html
+					222 row
+						223 cell
+							224 container
+								225 text 赛题 3 ：
+								226 text 基于华为 ModelEngine Nexent 打造可进化决策智能体
+						227 cell
+							228 text 赛题背景
+							229 text 医疗、金融、先进制造、政务等行业沉淀海量多模态异构存量数据，大量数据资产缺少统一认知能力，难以支撑复杂跨文档推理、决策追溯；同时行业普遍存在标注稀缺的低资源场景，知识体系更新迭代快，传统固定知识库难以适配动态业务标准。请参赛队伍构建领域资产认知智能体，实现行业数据价值激活与智能化业务编排。
+							230 text 任务要求
+							231 text •面向医疗、金融、制造、政务任一或多个行业场景，搭建多模态异构数据资产认知智能体，实现对文本、表格、图文等多元行业数据的统一识别、理解与资产标识。
+							232 text •设计低资源场景下领域知识图谱本体半自动化构建方案，实现本体持续动态更新，并支持与对应行业规范、标准体系对齐。
+							233 text •深度集成Nexent的MCP协议与Skills编排能力，打造“检索-推理”双驱动协同智能体执行流。
+							234 text •挖掘行业沉睡存量数据资产，实现跨文档多跳知识推理、决策链路可溯源；同时提炼通用业务逻辑，沉淀可复用、可快速部署的 Skill 工作流模板。
+							235 text •智能体基于Nexent平台可运行。
+							236 text 分享要求
+							237 text 入围中国总决赛的作品需开源至开源社区（GitCode或GitHub）。
+						238 cell
+							239 text 开发资料：
+							240 text 可自行下载Nexent至本地进行开发
+							241 text Nexent代码仓：
+							242 container
+								243 text •
+								244 link Description: https://github.com/ModelEngine-Group/nexent, Value: github.com/ModelEngine-Group/nexent
+								245 text （github）
+							246 container
+								247 text •
+								248 link Description: https://gitcode.com/ModelEngine/nexent, Value: gitcode.com/ModelEngine/nexent
+								249 text （gitcode）
+							250 text Nexent官网教程：
+							251 container
+								252 text •
+								253 link Description: https://modelengine-group.github.io/nexent/en/user-guide/home-page.html, Value: modelengine-group.github.io/nexent/en/user-guide/home-page.html
+								254 text  （英文）
+							255 container
+								256 text •
+								257 link Description: https://modelengine-group.github.io/nexent/zh/user-guide/home-page.html, Value: modelengine-group.github.io/nexent/zh/user-guide/home-page.html
+								258 text  （中文）
+							259 text 注：中国总决赛为每支队伍提供一卡华为云算力资源支持，使用代金券购买，供MCP等自研工具开发调用。
+				260 container  2. 参赛材料要求及评审规则 【赛题1】基于华为云产品打造AI创新应用 
+					261 container
+						262 text 2. 参赛材料要求及评审规则
+					263 container
+						264 text 【 赛题 1】 基于华为云产品打造AI创新应用
+				265 table
+					266 row
+						267 cell
+							268 text 阶段
+						269 cell
+							270 text 需提交材料
+						271 cell
+							272 text 评审规则
+					273 row
+						274 cell
+							275 text 初赛
+						276 cell
+							277 text 提交【模板1】作品信息收集表Word，以及其他作品介绍PPT/设计文件/演示视频等相关文件（如有），并要求在材料中呈现出包括但不限于如下内容：
+							278 text •方案的背景和价值，如应用场景和实际解决的问题等
+							279 text •创新性的解读，如AI应用场景创新
+							280 text •数据集的选取与数据处理
+							281 text •关键代码片段的解读
+							282 container
+								283 text •方案最终达到的效果（提供可量化的指标）
+								284 text 特别说明：
+								285 text 1.初赛阶段作品材料中不要求提供Demo链接。
+						286 cell
+							287 text 一、创新性（60%）​​
+							288 text 如AI应用场景的创新（发掘新场景或传统场景新突破）；与行业现有方案做出差异化优势等。
+							289 text 二、应用价值（40%）​​
+							290 text 如精准定位真实需求并解决对应问题；解决方案具备商用落地潜力，具备可复制性及规模化应用前景；技术架构完备，且具有可行性等。
+					291 row
+						292 cell
+							293 text 中国总决赛
+						294 cell
+							295 container
+								296 text 说明： 最终分数100%由答辩当天评委组评议给出。
+							297 text 提交【模板2】作品答辩PPT，并提供可视化 Demo 页面地址、完整的应用实现代码、相关数据集，以及readme等说明复现步骤（含部署方式）的相关材料（如有），组委会将根据队伍提交材料进行复现，若发现验证效果与答辩材料呈现结果不符，则取消晋级&获奖资格。
+							298 text 提交作品已开源至开源社区（如Gitee、GitHub等社区）的截图。
+						299 cell
+							300 text 一、创新性（40%）​​
+							301 text 如AI应用场景的创新（发掘新场景或传统场景新突破）；与行业现有方案做出差异化优势等。
+							302 text 二、应用价值（35%）​​
+							303 text 如精准定位真实需求并解决对应问题；解决方案具备商用落地潜力，具备可复制性及规模化应用前景；技术架构完备，且具有可行性；能证明呈现结果的有效性和严谨性。
+							304 text ​三、完整性与可展示性（15%）​​
+							305 text 如材料内容完整（背景、技术路径、数据集说明、关键代码解读、效果验证等）、逻辑清晰；具有可交互的作品演示等。
+							306 text 四、答辩表现（10%）
+							307 text 演讲流利，能明确回答评委提问且观点清晰。
+					308 row
+						309 cell
+							310 text 全球总决赛
+						311 cell
+							312 container
+								313 text 说明： 最终分数100%由答辩当天评委组评议给出。
+							314 text 提交【模板2】作品答辩PPT，并提供可视化 Demo 页面地址、完整的应用实现代码、相关数据集，以及readme等说明复现步骤（含部署方式）的相关材料（如有），并表明该作品或解决方案的应用及落地进展，组委会将根据队伍提交材料进行复现，若发现验证效果与答辩材料呈现结果不符，则取消晋级&获奖资格。
+							315 text 提交作品已开源至开源社区（如Gitee、GitHub等社区）的截图。
+						316 cell
+							317 text 一、创新性（40%）​​
+							318 text 如AI应用场景的创新（发掘新场景或传统场景新突破）；与行业现有方案做出差异化优势等。
+							319 text 二、应用价值（30%）​​
+							320 text 如精准定位真实需求并解决对应问题；解决方案具备商用落地潜力，具备可复制性及规模化应用前景；技术架构完备，且具有可行性；能证明呈现结果的有效性和严谨性。
+							321 text ​三、完整性与可展示性（15%）​​
+							322 text 如材料内容完整（背景、技术路径、数据集说明、关键代码解读、效果验证等）、逻辑清晰；具有可交互的作品演示等。
+							323 text 四、作品应用&落地进展（10%）
+							324 text 如展示作品落地到商业项目或非盈利项目的进展，或展示作品开源到GitHub社区后获得的star数量等。
+							325 text 五、答辩表现（5%）
+							326 text 演讲流利，能明确回答评委提问且观点清晰。
+							327 text *中国区队伍使用中文或英文答辩均可，但使用英文答辩可总分加2分（总分不超过100分）。
+				328 container  【赛题2】基于华为云AgentArts智能体开发平台的Agent设计和应用
+					329 container
+						330 text 【 赛题 2】 基于华为云AgentArts智能体开发平台的Agent设计和应用
+				331 table
+					332 row
+						333 cell
+							334 text 阶段
+						335 cell
+							336 text 需提交材料
+						337 cell
+							338 text 评审规则
+					339 row
+						340 cell
+							341 text 初赛
+						342 cell
+							343 container
+								344 text 提交作品信息收集表（Word），以及其他作品介绍PPT/设计文件/演示视频等相关文件（如有），并要求在材料中呈现出包括但不限于如下内容：作品简介与创意点、团队介绍、Agent设计方案（场景定义、编排思路、工作流架构、模型与资产选择）、面向的行业问题/落地场景、作品Demo视频展示（基于AgentArts构建与运行的完整流程）。
+								345 text 特别说明：
+								346 text 1.初赛阶段作品材料中不要求提供Demo链接。
+						347 cell
+							348 text 一、创新性（60%）
+							349 text AI应用场景的创新（发掘新场景或传统场景新突破）；与行业现有方案形成差异化优势；智能体设计思路或交互方式的创新性。
+							350 text 二、应用价值（40%）：
+							351 text 精准定位真实需求并解决对应问题；解决方案具备商用落地潜力，具备可复制性及规模化应用前景；Agent架构设计合理，具有可行性。
+					352 row
+						353 cell
+							354 text 中国总决赛
+						355 cell
+							356 container
+								357 text 说明： 最终分数100%由答辩当天评委组评议给出。
+							358 text 提交材料： 提交作品答辩PPT，并提供可视化Demo页面地址（可在线访问和交互）、Agent设计方案文档（场景定义、编排思路、工作流架构、知识库构建方法、模型与资产选择说明）、自定义Skill或MCP服务说明（如有）、作品在华为云开发者社区或开源社区的分享帖截图。
+						359 cell
+							360 text 一、创新性（40%）
+							361 text AI应用场景的创新（发掘新场景或传统场景新突破）；与行业现有方案形成差异化优势；智能体编排设计、多Agent协作、MCP工具调用或知识库构建等方面的创新。
+							362 text 二、应用价值（35%）
+							363 text 精准定位真实需求并解决对应问题；解决方案具备商用落地潜力，具备可复制性及规模化应用前景；Agent架构设计合理，具有可行性；能证明呈现结果的有效性和严谨性。
+							364 text 三、完整性与可展示性（15%）
+							365 text 材料内容完整（背景、Agent设计方案、工作流架构说明、知识库构建方法、效果验证等）、逻辑清晰；具有可交互的作品演示；基于AgentArts的开发流程展示完整。
+							366 text 四、答辩表现（10%）
+							367 text 演讲流利，能明确回答评委提问且观点清晰。
+					368 row
+						369 cell
+							370 text 全球总决赛
+						371 cell
+							372 container
+								373 text 说明： 最终分数100%由答辩当天评委组评议给出。
+							374 text 提交材料： 提交作品答辩PPT，并提供可视化Demo页面地址（可在线访问和交互）、Agent设计方案文档（场景定义、编排思路、工作流架构、知识库构建方法、模型与资产选择说明）、自定义Skill或MCP服务说明（如有）、作品或解决方案的应用及落地进展说明、作品在社区分享帖的截图及社区反馈数据（阅读量、互动量等）。
+						375 cell
+							376 text 一、创新性（40%）
+							377 text AI应用场景的创新（发掘新场景或传统场景新突破）；与行业现有方案形成差异化优势；智能体编排设计、多Agent协作、MCP工具调用或知识库构建等方面的创新。
+							378 text 二、应用价值（30%）
+							379 text 精准定位真实需求并解决对应问题；解决方案具备商用落地潜力，具备可复制性及规模化应用前景；Agent架构设计合理，具有可行性；能证明呈现结果的有效性和严谨性。
+							380 text 三、完整性与可展示性（15%）
+							381 text 材料内容完整（背景、Agent设计方案、工作流架构说明、知识库构建方法、效果验证等）、逻辑清晰；具有可交互的作品演示；基于AgentArts的开发流程展示完整。
+							382 text 四、作品应用与落地进展（10%）
+							383 text 展示作品落地到商业项目或非盈利项目的实际进展；或展示作品在社区分享后获得的关注度与影响力（如阅读量、互动量、被引用复用次数等）。
+							384 text 五、答辩表现（5%）
+							385 text 演讲流利，能明确回答评委提问且观点清晰。
+				386 container  【赛题3】基于华为ModelEngine Nexent打造可进化决策智能体
+					387 container
+						388 text 【 赛题 3】 基于华为ModelEngine Nexent打造可进化决策智能体
+				389 table
+					390 row
+						391 cell
+							392 text 阶段
+						393 cell
+							394 text 需提交材料
+						395 cell
+							396 text 评审规则
+					397 row
+						398 cell
+							399 text 初赛
+						400 cell
+							401 text 1、提交开发设计文档 Word，需包含项目概述、整体方案设计、知识图谱构建方案、智能体构建方案、原始数据说明、数据处理说明等；
+							402 text 2、Nexent平台上智能体整体设计思路及详细说明，包含Agent配置的完整细节描述，例如模型信息、工具信息、知识库信息、调用关系图、调试迭代经验、示例问答截图等等，同时附上需要同步提交的json文件、知识库和MCP等文件的说明。
+						403 cell
+							404 text 技术评分（100%）
+							405 text •(25%)智能体编排与MCP/Skill深度集成：深度理解Nexent MCP协议核心机制，Skill分层编排逻辑清晰，可完整搭建检索-推理双驱动协同执行流架构，模块解耦性、扩展性强，适配多行业场景迭代需求；
+							406 text •(25%)资产激活的“业务价值”验证：精准聚焦医疗、金融、制造、政务真实行业痛点，明确企业沉睡数据资产激活路径，跨文档推理、决策溯源的业务应用场景清晰，价值落地逻辑闭环；
+							407 text •(25%)算法创新性：针对低资源领域场景提出差异化、原创性算法优化方案，半自动化本体构建效率优势明显；
+							408 text •(25%)系统交互体验与能力沉淀：系统整体架构完整，交互设计贴合用户使用需求，操作逻辑清晰，明确规划可复用Skill工作流模板沉淀方案，具备通用推广价值；
+					409 row
+						410 cell
+							411 text 中国总决赛
+						412 cell
+							413 text *如下材料用于评测
+							414 text 1、提交开发设计文档 Word，需包含项目概述、整体方案设计、知识图谱构建方案、智能体构建方案、原始数据说明、数据处理说明等；
+							415 text 2、Nexent平台上智能体整体设计思路及详细说明，包含Agent配置的完整细节描述，例如模型信息、工具信息、知识库信息、调用关系图、调试迭代经验、示例问答截图等等，同时附上需要同步提交的json文件、知识库和MCP等文件的说明。
+							416 text *如下材料用于答辩
+							417 text 1、提交答辩PPT：需包含项目设计介绍、关键代码解读、知识库扩展、自定义工具开发（可选）、数据处理等相关内容。
+						418 cell
+							419 text 技术评分（60%）
+							420 text •(15%)智能体编排与MCP/Skill深度集成：深度理解Nexent MCP协议核心机制，Skill分层编排逻辑清晰，可完整搭建检索-推理双驱动协同执行流架构，模块解耦性、扩展性强，适配多行业场景迭代需求；
+							421 text •(15%)资产激活的“业务价值”验证：精准聚焦医疗、金融、制造、政务真实行业痛点，明确企业沉睡数据资产激活路径，跨文档推理、决策溯源的业务应用场景清晰，价值落地逻辑闭环；
+							422 text •(15%)算法创新性：针对低资源领域场景提出差异化、原创性算法优化方案，半自动化本体构建效率优势明显；
+							423 text •(15%)系统交互体验与能力沉淀：系统整体架构完整，交互设计贴合用户使用需求，操作逻辑清晰，明确规划可复用Skill工作流模板沉淀方案，具备通用推广价值；
+							424 text 答辩评分（40%）
+							425 text •(20%)答辩材料完整清晰，包含所有技术点细节，讲解流利
+							426 text •(20%)评委问答环节相关问题回答正确，覆盖相关知识技术点
+							427 text 附加分（10分）
+							428 text •多行业模板轻量化迁移适配验证
+							429 text •真实脱敏行业数据集开展效果评测
+				430 container  请查看第十一届华为ICT大赛创新赛学习空间，查看考纲解读、资源获取链接、学习材料和更多历届大赛的优秀作品等。
+					431 container
+						432 text 请查看第十一届华为 ICT 大赛创新赛学习空间，查看考纲解读、资源获取链接、学习材料和更多历届大赛的优秀作品等。
+				433 image
+			434 container
+				435 image
+				436 container 1. 参赛须知 ① 参赛对象为高等教育院校在校学生，本科、研究生、博士均可。 ② 创新赛为团队赛，每支参赛队伍由3名学生和1名指导教师组成，学生及指导教师需来自同一所高校；鼓励分工协作、能力互补、高低年级搭配，充分发挥团队创新能力。 ③ 报名截止后，不得更换指导教师和参赛队员。 ④ 实践赛、编程赛、创新赛、挑战赛报名互斥，每名参赛选手只能报名一个赛道。 ⑤ 创新赛为报名选拔制，未采用赛题要求的华为技术的队伍不符合参赛资格。 ⑥ 在各个赛段要求的截止日期前未按要求在系统提交对应材料的队伍视为自动弃赛。 ⑦ 提交的代码文件等相关材料经复核无法复现答辩PPT展示效果的队伍取消晋级或获奖资格。 ⑧ 参赛作品不得包含违反国家法律法规的内容，不得包含涉及与性别、国籍、宗教等相关的歧视性内容，不得侵犯他人隐私。 ⑨ 禁止将其他赛事作品在不加任何改进的情况下参赛，如有违反一经发现，取消参赛资格。 ⑩ 同一参赛者不允许跨区域跨国家重复报名，如发现该情况，大赛组委会有权取消参赛成绩及后续参赛资格。 2. 知识产权 ① 参赛者提交的作品不得侵犯第三方的任何著作权、商标权或其他权利，凡涉及抄袭、剽窃等行为的，均由参赛者本人承担一切后果； ② 所有作品的知识产权归参赛者所有，参赛者同意无偿向大赛组委会提供并授予包括但不限于以下权利：对参赛作品的复制、发行（纸质及数字）、展览、教学培训、放映、通过网络进行信息传播等权利，且大赛组委会无需另行支付费用。
+					437 container
+						438 text 1. 参赛须知
+					439 text ① 参赛对象为高等教育院校在校学生，本科、研究生、博士均可。
+					440 text ② 创新赛为团队赛，每支参赛队伍由3名学生和1名指导教师组成，学生及指导教师需来自同一所高校；鼓励分工协作、能力互补、高低年级搭配，充分发挥团队创新能力。
+					441 text ③ 报名截止后，不得更换指导教师和参赛队员。
+					442 text ④ 实践赛、编程赛、创新赛、挑战赛报名互斥，每名参赛选手只能报名一个赛道。
+					443 text ⑤ 创新赛为报名选拔制，未采用赛题要求的华为技术的队伍不符合参赛资格。
+					444 text ⑥ 在各个赛段要求的截止日期前未按要求在系统提交对应材料的队伍视为自动弃赛。
+					445 text ⑦ 提交的代码文件等相关材料经复核无法复现答辩PPT展示效果的队伍取消晋级或获奖资格。
+					446 text ⑧ 参赛作品不得包含违反国家法律法规的内容，不得包含涉及与性别、国籍、宗教等相关的歧视性内容，不得侵犯他人隐私。
+					447 text ⑨ 禁止将其他赛事作品在不加任何改进的情况下参赛，如有违反一经发现，取消参赛资格。
+					448 container
+						449 text ⑩ 同一参赛者不允许跨区域跨国家重复报名，如发现该情况，大赛组委会有权取消参赛成绩及后续参赛资格。
+					450 container
+						451 text 2. 知识产权
+					452 text ① 参赛者提交的作品不得侵犯第三方的任何著作权、商标权或其他权利，凡涉及抄袭、剽窃等行为的，均由参赛者本人承担一切后果；
+					453 text ② 所有作品的知识产权归参赛者所有，参赛者同意无偿向大赛组委会提供并授予包括但不限于以下权利：对参赛作品的复制、发行（纸质及数字）、展览、教学培训、放映、通过网络进行信息传播等权利，且大赛组委会无需另行支付费用。
+				454 image
+			455 container
+				456 image
+				457 container  初赛：按赛题要求提交相关材料，组委会评审材料并公布晋级名单，3道赛题独立评审和晋级，共54支队伍晋级中国总决赛。 中国总决赛：按赛题要求提交相关材料，线上集中答辩（15分钟展示+5分钟问答），组委会根据材料复核及答辩情况评审，3道赛题独立评审和晋级，奖项设置详见下方表格。 全球总决赛：按赛题要求提交相关材料，现场集中答辩（15分钟展示+5分钟问答），组委会根据材料复核及答辩情况评审，经集体评议决出排名和奖项，2道赛题独立评审。 ● 每所学校在同一个赛题最多只允许一支队伍晋级全球总决赛，三个赛题晋级配额互相独立。 
+					458 container
+						459 text 初赛： 按赛题要求提交相关材料，组委会评审材料并公布晋级名单，3道赛题独立评审和晋级，共54支队伍晋级中国总决赛。
+					460 container
+						461 text 中国总决赛： 按赛题要求提交相关材料，线上集中答辩（ 15分钟 展示+5分钟问答），组委会根据材料复核及答辩情况评审，3道赛题独立评审和晋级，奖项设置详见下方表格。
+					462 container
+						463 text 全球总决赛： 按赛题要求提交相关材料，现场集中答辩（15分钟展示+5分钟问答），组委会根据材料复核及答辩情况评审，经集体评议决出排名和奖项，2道赛题独立评审。
+					464 container
+						465 text ●  每所学校在同一个赛题最多只允许一支队伍晋级全球总决赛，三个赛题晋级配额互相独立。
+				466 table
+					467 row
+						468 cell
+							469 text 创新赛中国总决赛
+						470 cell
+							471 text 一等奖
+						472 cell
+							473 text 二等奖
+						474 cell
+							475 text 三等奖
+					476 row
+						477 cell
+							478 text 中国总决赛获奖队伍总数
+						479 cell
+							480 text 12
+						481 cell
+							482 text 18
+						483 cell
+							484 text 24
+					485 row
+						486 cell
+							487 text 赛题1：基于华为云产品打造AI创新应用
+						488 cell
+							489 text 4
+						490 cell
+							491 text 6
+						492 cell
+							493 text 8
+					494 row
+						495 cell
+							496 text 赛题2：基于华为云AgentArts智能体开发平台的Agent设计和应用
+						497 cell
+							498 text 4
+						499 cell
+							500 text 6
+						501 cell
+							502 text 8
+					503 row
+						504 cell
+							505 text 赛题3：基于华为ModelEngine Nexent打造可进化决策智能体
+						506 cell
+							507 text 4
+						508 cell
+							509 text 6
+						510 cell
+							511 text 8
+				512 container * 华为ICT大赛组委会保留对本规则的最终解释权，本规则所列各等级奖项名额均为最高获奖名额。组委会将根据整体参赛成绩确定各等级奖项的评定标准及实际获奖名额，最终获奖结果以赛事官方公示为准。
+					513 text * 华为ICT大赛组委会保留对本规则的最终解释权，本规则所列各等级奖项名额均为最高获奖名额。组委会将根据整体参赛成绩确定各等级奖项的评定标准及实际获奖名额，最终获奖结果以赛事官方公示为准。
+				514 image
+			49 content list
+				50 text 关于我们
+				51 text 华为认证
+				52 text 华为ICT学院
+				53 text 华为培训合作伙伴
+				54 text 资讯中心
+			55 content list
+				56 text 资源
+				57 text 资源中心
+				58 text 合作伙伴（HALP）下载专区
+				59 text ICT学院下载专区
+				60 text 工具专区
+				61 text 成功案例
+			62 content list
+				63 text 快速链接
+				64 text 集团网站
+				65 text 企业业务网站
+				66 text 华为人才发展中心
+				67 text 华为招聘
+				68 text 华为认证论坛
+				69 text 华为云
+			70 content list
+				71 text 联系我们
+				72 text 智能客服
+				73 text 提交问题单
+			74 link weibo.com/hwcertification?from=feed&loc=at&nick=%E5%8D%8E%E4%B8%BA%E8%AE%A4%E8%AF%81
+			75 container
+				76 text 版权所有 © 华为技术有限公司 1998- 2026 。 保留一切权利。
+				77 link Description:  粤A2-20044005号, Value: beian.miit.gov.cn/
+			78 link 联系我们
+				79 text 联系我们
+			80 link 隐私保护
+				81 text 隐私保护
+			82 link 法律声明
+				83 text 法律声明
+		84 text 联系我们
+
+The focused UI element is 0 AXWebArea 华为人才在线, URL: e.huawei.com/cn/talent/#/ict/innovation-details?zoneCode=027425&zoneId=98269700&compId=85132021

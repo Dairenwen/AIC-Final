@@ -1,0 +1,19 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: zhiyan
+      POSTGRES_USER: zhiyan
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD before starting Docker Compose}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - zhiyan-postgres:/var/lib/postgresql/data
+      - ./database_exports/zhiyan_full_20260814.sql:/docker-entrypoint-initdb.d/001-zhiyan.sql:ro
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "127.0.0.1:6379:6379"
+
+volumes:
+  zhiyan-postgres:

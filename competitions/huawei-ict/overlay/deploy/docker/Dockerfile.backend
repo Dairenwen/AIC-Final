@@ -1,0 +1,134 @@
+# 智研后端镜像
+#
+# 镜像只负责"依赖环境"，源码与大体积资产（公式识别权重 1.3G、
+# patent_drafting vendor 1.4G、31G 论文语料）由 docker-compose 以只读方式挂载，
+# 不复制进镜像。
+#
+# 仓库里 backend/app/tools/formula_recognition/runtime/.venv 和
+# 补充/literature_ppt_tools/.venv 都是 macOS arm64 的虚拟环境
+# （pyvenv.cfg 指向 /opt/homebrew，原生扩展是 Mach-O），
+# 在 Linux 容器里无法使用，所以这里为 Linux 重新构建。
+#
+# 构建上下文是仓库根目录。
+
+FROM python:3.12-slim-bookworm@sha256:e697c81897302a4c4333bade000d98038fbb21eb064f8ee1fd42d02ebcd9d337 AS base
+
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# libpq5        psycopg 连接 PostgreSQL
+# libmagickwand UniMERNet 的 formula_processor_helper 通过 wand 调用 ImageMagick
+# libgl1/glib   opencv 运行时
+# fonts-noto-cjk 绘图智能体输出中文图表，缺字体会画成方块
+# poppler-utils  PDF 文本与页面处理
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        libpq5 \
+        libmagickwand-6.q16-6 \
+        libgl1 \
+        libglib2.0-0 \
+        libgomp1 \
+        fonts-noto-cjk \
+        poppler-utils \
+        postgresql-client-15 \
+        chromium \
+        chromium-sandbox \
+        curl \
+        ca-certificates
+
+# ---------------------------------------------------------------------------
+# 主后端依赖
+# ---------------------------------------------------------------------------
+FROM base AS backend-deps
+
+COPY backend/requirements.lock.txt /tmp/requirements.lock.txt
+RUN python -m venv /opt/zhiyan/venv \
+    && /opt/zhiyan/venv/bin/pip install pip==26.3 \
+    && /opt/zhiyan/venv/bin/pip install -r /tmp/requirements.lock.txt
+
+# Linux dependencies for the existing patent Mermaid renderer. npm ci uses
+# the committed lockfile; Chromium itself comes from the image OS packages.
+FROM node:22-bookworm-slim@sha256:4b150b48b4116e2a22f2c39cc27025fbf4f153e2078fd3b14d159fdb5c7279da AS patent-tools
+WORKDIR /opt/patent-tools
+COPY backend/app/agents/patent_drafting/runtime/vendor/patent-disclosure-skill/tools/package.json backend/app/agents/patent_drafting/runtime/vendor/patent-disclosure-skill/tools/package-lock.json ./
+RUN PUPPETEER_SKIP_DOWNLOAD=true npm ci --no-audit --no-fund
+
+# ---------------------------------------------------------------------------
+# 公式识别运行时（UniMERNet）
+#
+# 必须用 requirements.lock.txt：requirements-inference.txt 里的
+# `torch>=2.2.2` 之类没有上界，会解析出 pyarrow 26，而它要求 numpy>=2、
+# 清单又钉了 numpy<2，导入即 ImportError。lock 钉的 pyarrow==25.0.1 才正确。
+# torch 走官方 CPU 索引：linux 轮子仅约 160MB，不含 CUDA。
+# ---------------------------------------------------------------------------
+FROM base AS formula-runtime
+ARG INSTALL_FORMULA_RUNTIME=true
+
+COPY backend/app/tools/formula_recognition/runtime/requirements.lock.txt /tmp/formula.lock.txt
+RUN if [ "$INSTALL_FORMULA_RUNTIME" = "true" ]; then \
+        python -m venv /opt/zhiyan/formula-venv \
+        && /opt/zhiyan/formula-venv/bin/pip install pip==26.3 \
+        && /opt/zhiyan/formula-venv/bin/pip install \
+             --extra-index-url https://download.pytorch.org/whl/cpu \
+             -r /tmp/formula.lock.txt \
+        # recognize.py imports the vendored `unimernet` package, which the
+        # original macOS virtualenv resolved through a .pth file holding an
+        # absolute host path.  The same mechanism is used here, pointing at
+        # the read-only source mount, so the package resolves without putting
+        # it on PYTHONPATH for every other process.
+        && echo "/srv/zhiyan/backend/app/tools/formula_recognition/runtime/unimernet" \
+             > "$(/opt/zhiyan/formula-venv/bin/python -c 'import sysconfig; print(sysconfig.get_paths()["purelib"])')/unimernet.pth" ; \
+    else \
+        mkdir -p /opt/zhiyan/formula-venv ; \
+    fi
+
+# ---------------------------------------------------------------------------
+# 文献 PPT 运行时
+# ---------------------------------------------------------------------------
+FROM base AS ppt-runtime
+ARG INSTALL_PPT_RUNTIME=true
+
+COPY deploy/docker/requirements-literature-ppt.lock.txt /tmp/ppt.txt
+RUN if [ "$INSTALL_PPT_RUNTIME" = "true" ]; then \
+        python -m venv /opt/zhiyan/ppt-venv \
+        && /opt/zhiyan/ppt-venv/bin/pip install pip==26.3 \
+        && /opt/zhiyan/ppt-venv/bin/pip install \
+             --extra-index-url https://download.pytorch.org/whl/cpu \
+             -r /tmp/ppt.txt ; \
+    else \
+        mkdir -p /opt/zhiyan/ppt-venv ; \
+    fi
+
+# ---------------------------------------------------------------------------
+# 最终镜像
+# ---------------------------------------------------------------------------
+FROM base AS runtime
+
+COPY --from=backend-deps /opt/zhiyan/venv /opt/zhiyan/venv
+COPY --from=formula-runtime /opt/zhiyan/formula-venv /opt/zhiyan/formula-venv
+COPY --from=ppt-runtime /opt/zhiyan/ppt-venv /opt/zhiyan/ppt-venv
+COPY deploy/docker/rapidocr-models/ /opt/zhiyan/ppt-venv/lib/python3.12/site-packages/rapidocr/models/
+COPY --from=patent-tools /usr/local/bin/node /usr/local/bin/node
+COPY --from=patent-tools /opt/patent-tools /opt/patent-tools
+
+COPY deploy/docker/entrypoint.sh /opt/zhiyan/entrypoint.sh
+COPY deploy/docker/gunicorn.conf.py /opt/zhiyan/gunicorn.conf.py
+COPY deploy/docker/restore_local.py /opt/zhiyan/restore_local.py
+COPY deploy/docker/database_state.py /opt/zhiyan/database_state.py
+COPY deploy/docker/restore_files.py /opt/zhiyan/restore_files.py
+COPY deploy/docker/mermaid_service.py /opt/zhiyan/mermaid_service.py
+COPY deploy/docker/mermaid-puppeteer.json /opt/zhiyan/mermaid-puppeteer.json
+RUN chmod +x /opt/zhiyan/entrypoint.sh
+
+ENV PATH="/opt/patent-tools/node_modules/.bin:/opt/zhiyan/venv/bin:${PATH}" \
+    PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium \
+    ZHIYAN_SOURCE=/srv/zhiyan \
+    ZHIYAN_DATA_ROOT=/data \
+    ACADEMIC_FIGURE_FONT_PATH=/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc
+
+# 源码以只读方式挂载到这里，由 entrypoint 加入 PYTHONPATH。
+WORKDIR /srv/zhiyan/backend
+
+EXPOSE 5000
+ENTRYPOINT ["/opt/zhiyan/entrypoint.sh"]

@@ -1,0 +1,3712 @@
+{
+  "research_domain": "多模态大模型安全检测",
+  "mode": "full",
+  "research_trends": [
+    {
+      "id": "TREND-001",
+      "name": "safety",
+      "signal": "近年命中 73 次，历史命中 7 次，说明该方向仍在升温或保持活跃。",
+      "evidence_refs": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173"
+      ],
+      "years": {
+        "2025": 3,
+        "2026": 2
+      },
+      "related_keywords": [
+        "Large language model (LLM)",
+        "Language Modeling",
+        "to",
+        "safety",
+        "language",
+        "of",
+        "in",
+        "Automatic Speech Recognition"
+      ]
+    },
+    {
+      "id": "TREND-002",
+      "name": "robustness",
+      "signal": "近年命中 73 次，历史命中 7 次，说明该方向仍在升温或保持活跃。",
+      "evidence_refs": [
+        "2504.07887",
+        "2606.11409",
+        "2602.06268",
+        "2504.14526",
+        "2605.05662"
+      ],
+      "years": {
+        "2025": 2,
+        "2026": 3
+      },
+      "related_keywords": [
+        "Large language model (LLM)",
+        "Language Modeling",
+        "to",
+        "in",
+        "Automatic Speech Recognition",
+        "robustness",
+        "adversarial",
+        "driving"
+      ]
+    },
+    {
+      "id": "TREND-003",
+      "name": "multimodal",
+      "signal": "近年命中 73 次，历史命中 7 次，说明该方向仍在升温或保持活跃。",
+      "evidence_refs": [
+        "2504.10158",
+        "2604.10971",
+        "2603.02482",
+        "2508.00047",
+        "2510.14896"
+      ],
+      "years": {
+        "2025": 3,
+        "2026": 2
+      },
+      "related_keywords": [
+        "Large language model (LLM)",
+        "Language Modeling",
+        "multimodal",
+        "of",
+        "Image Understanding",
+        "language",
+        "detection",
+        "anomaly"
+      ]
+    },
+    {
+      "id": "TREND-004",
+      "name": "large language model",
+      "signal": "近年命中 73 次，历史命中 7 次，说明该方向仍在升温或保持活跃。",
+      "evidence_refs": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2504.10158",
+        "2604.10971"
+      ],
+      "years": {
+        "2025": 3,
+        "2026": 2
+      },
+      "related_keywords": [
+        "Large language model (LLM)",
+        "Language Modeling",
+        "in",
+        "to",
+        "language",
+        "Image Understanding",
+        "of",
+        "anomaly"
+      ]
+    },
+    {
+      "id": "TREND-005",
+      "name": "evaluation",
+      "signal": "近年命中 73 次，历史命中 7 次，说明该方向仍在升温或保持活跃。",
+      "evidence_refs": [
+        "2606.11409",
+        "2504.10158",
+        "2603.02482",
+        "2508.07173",
+        "2508.00047"
+      ],
+      "years": {
+        "2025": 3,
+        "2026": 2
+      },
+      "related_keywords": [
+        "Large language model (LLM)",
+        "Language Modeling",
+        "of",
+        "evaluation",
+        "language",
+        "to",
+        "Automatic Speech Recognition",
+        "safety"
+      ]
+    },
+    {
+      "id": "TREND-006",
+      "name": "detection",
+      "signal": "近年命中 73 次，历史命中 7 次，说明该方向仍在升温或保持活跃。",
+      "evidence_refs": [
+        "2506.12992",
+        "2504.10158",
+        "2604.10971",
+        "2508.00047",
+        "2602.24021"
+      ],
+      "years": {
+        "2025": 3,
+        "2026": 2
+      },
+      "related_keywords": [
+        "detection",
+        "Large language model (LLM)",
+        "Language Modeling",
+        "anomaly",
+        "in",
+        "Anomaly Detection",
+        "Image Understanding",
+        "language"
+      ]
+    },
+    {
+      "id": "TREND-007",
+      "name": "assessment",
+      "signal": "近年命中 73 次，历史命中 7 次，说明该方向仍在升温或保持活跃。",
+      "evidence_refs": [
+        "2504.07887",
+        "2606.11409",
+        "2504.10158",
+        "2601.22636",
+        "2311.17092"
+      ],
+      "years": {
+        "2023": 1,
+        "2025": 2,
+        "2026": 2
+      },
+      "related_keywords": [
+        "Large language model (LLM)",
+        "Language Modeling",
+        "of",
+        "to",
+        "in",
+        "language",
+        "adversarial",
+        "Multi-head attention"
+      ]
+    },
+    {
+      "id": "TREND-008",
+      "name": "adversarial",
+      "signal": "近年命中 73 次，历史命中 7 次，说明该方向仍在升温或保持活跃。",
+      "evidence_refs": [
+        "2504.07887",
+        "2606.11409",
+        "2602.06268",
+        "2601.22636",
+        "2602.23729"
+      ],
+      "years": {
+        "2025": 1,
+        "2026": 4
+      },
+      "related_keywords": [
+        "Large language model (LLM)",
+        "Language Modeling",
+        "adversarial",
+        "to",
+        "in",
+        "Automatic Speech Recognition",
+        "of",
+        "language"
+      ]
+    }
+  ],
+  "research_gaps": [
+    {
+      "id": "GAP-001-955DAD",
+      "title": "仍待解决：multimodal",
+      "description": "文献《Benchmarking Adversarial Robustness to Bias Elicitation in Large Language Models: Scalable Automated Assessment with LLM-as-a-Judge》暴露出 仍待解决 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "gap_type": "literature_signal",
+      "confidence": 0.68,
+      "evidence_refs": [
+        "2504.07887"
+      ],
+      "related_keywords": [
+        "multimodal",
+        "LLM",
+        "safety",
+        "adversarial",
+        "to",
+        "Large language model (LLM)",
+        "LLM-as-a-judge",
+        "Probing"
+      ]
+    },
+    {
+      "id": "GAP-002-3E2DD0",
+      "title": "安全性不足：safety",
+      "description": "文献《SmartHome-Bench: A Comprehensive Benchmark for Video Anomaly Detection\n  in Smart Homes Using Multi-Modal Large Language Models》暴露出 安全性不足 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "gap_type": "literature_signal",
+      "confidence": 0.68,
+      "evidence_refs": [
+        "2506.12992"
+      ],
+      "related_keywords": [
+        "safety",
+        "multimodal",
+        "LLM",
+        "anomaly",
+        "smart",
+        "Chain-of-Thought (CoT)",
+        "Gemini 1.5",
+        "Large language model (LLM)"
+      ]
+    },
+    {
+      "id": "GAP-003-9B3058",
+      "title": "能力受限：multimodal",
+      "description": "文献《Risk Under Pressure: Compute-Aware Evaluation of Adversarial Robustness in Language Models》暴露出 能力受限 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "gap_type": "literature_signal",
+      "confidence": 0.68,
+      "evidence_refs": [
+        "2606.11409"
+      ],
+      "related_keywords": [
+        "multimodal",
+        "LLM",
+        "safety",
+        "of",
+        "attack",
+        "to",
+        "Key-value cache",
+        "Large language model (LLM)"
+      ]
+    },
+    {
+      "id": "GAP-004-EF9B58",
+      "title": "仍待解决：multimodal",
+      "description": "文献《COUNTS: Benchmarking Object Detectors and Multimodal Large Language Models under Distribution Shifts》暴露出 仍待解决 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "gap_type": "literature_signal",
+      "confidence": 0.68,
+      "evidence_refs": [
+        "2504.10158"
+      ],
+      "related_keywords": [
+        "multimodal",
+        "LLM",
+        "safety",
+        "counts",
+        "object",
+        "CLIP",
+        "Deformable Attention",
+        "DETR"
+      ]
+    },
+    {
+      "id": "GAP-005-B722A2",
+      "title": "仍待解决：multimodal",
+      "description": "文献《MMR-AD: A Large-Scale Multimodal Dataset for Benchmarking General Anomaly Detection with Multimodal Large Language Models》暴露出 仍待解决 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "gap_type": "literature_signal",
+      "confidence": 0.68,
+      "evidence_refs": [
+        "2604.10971"
+      ],
+      "related_keywords": [
+        "multimodal",
+        "general",
+        "ad",
+        "LLM",
+        "safety",
+        "anomaly",
+        "detection",
+        "Chain-of-Thought (CoT)"
+      ]
+    },
+    {
+      "id": "GAP-006-2A6E76",
+      "title": "仍待解决：safety",
+      "description": "文献《MUSE: A Run-Centric Platform for Multimodal Unified Safety Evaluation of Large Language Models》暴露出 仍待解决 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "gap_type": "literature_signal",
+      "confidence": 0.68,
+      "evidence_refs": [
+        "2603.02482"
+      ],
+      "related_keywords": [
+        "safety",
+        "multimodal",
+        "LLM",
+        "Large language model (LLM)",
+        "LLM-as-a-judge",
+        "Multi-turn",
+        "Automatic Speech Recognition",
+        "Image Understanding"
+      ]
+    },
+    {
+      "id": "GAP-007-CC5904",
+      "title": "关键挑战：safety",
+      "description": "文献《Omni-SafetyBench: A Benchmark for Safety Evaluation of Audio-Visual\n  Large Language Models》暴露出 关键挑战 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "gap_type": "literature_signal",
+      "confidence": 0.68,
+      "evidence_refs": [
+        "2508.07173"
+      ],
+      "related_keywords": [
+        "safety",
+        "multimodal",
+        "LLM",
+        "DeepSeek-R1",
+        "Direct Preference Optimization (DPO)",
+        "Gemini 1.5",
+        "Large language model (LLM)",
+        "LLaMa"
+      ]
+    },
+    {
+      "id": "GAP-008-55A955",
+      "title": "鲁棒性不足：safety",
+      "description": "文献《MPIB: A Benchmark for Medical Prompt Injection Attacks and Clinical Safety in LLMs》暴露出 鲁棒性不足 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "gap_type": "literature_signal",
+      "confidence": 0.68,
+      "evidence_refs": [
+        "2602.06268"
+      ],
+      "related_keywords": [
+        "safety",
+        "clinical",
+        "injection",
+        "multimodal",
+        "LLM",
+        "mpib",
+        "prompt",
+        "Large language model (LLM)"
+      ]
+    }
+  ],
+  "innovations": [
+    {
+      "innovation_id": "INNO-005-EAA56A",
+      "rank": 1,
+      "title": "safety × robustness 的融合研究框架",
+      "summary": "以 safety + robustness 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "组合式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 safety + robustness 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 safety + robustness 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "problem": "多模态大模型安全检测 中的 safety 与 robustness 往往被分开研究，缺少统一建模和共同评测。",
+      "method_route": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "scores": {
+        "novelty": 0.943,
+        "feasibility": 0.915,
+        "impact": 0.785,
+        "risk": 0.19
+      },
+      "overall_score": 0.775,
+      "evidence": [
+        {
+          "id": "2504.07887",
+          "title": "Benchmarking Adversarial Robustness to Bias Elicitation in Large Language Models: Scalable Automated Assessment with LLM-as-a-Judge",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "LLM-as-a-judge",
+            "Probing",
+            "Language Modeling",
+            "Machine Translation",
+            "Summarization",
+            "cs.CL",
+            "cs.AI"
+          ],
+          "source_url": "https://arxiv.org/abs/2504.07887",
+          "pdf_url": "https://arxiv.org/pdf/2504.07887.pdf",
+          "snippet": "Large Language Models (LLMs) have revolutionized artificial intelligence, driving advancements in machine translation, summarization, and conversational agents. However, their increasing integration into critical societal domains has raised concerns about embe..."
+        },
+        {
+          "id": "2506.12992",
+          "title": "SmartHome-Bench: A Comprehensive Benchmark for Video Anomaly Detection\n  in Smart Homes Using Multi-Modal Large Language Models",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "Chain-of-Thought (CoT)",
+            "Gemini 1.5",
+            "Large language model (LLM)",
+            "Anomaly Detection",
+            "Image Understanding",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2506.12992",
+          "pdf_url": "https://arxiv.org/pdf/2506.12992.pdf",
+          "snippet": "Video anomaly detection (VAD) is essential for enhancing safety and security\nby identifying unusual events across different environments. Existing VAD\nbenchmarks, however, are primarily designed for general-purpose scenarios,\nneglecting the specific characteri..."
+        },
+        {
+          "id": "2606.11409",
+          "title": "Risk Under Pressure: Compute-Aware Evaluation of Adversarial Robustness in Language Models",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Key-value cache",
+            "Large language model (LLM)",
+            "Multi-head attention",
+            "Qwen3",
+            "RLHF",
+            "RLVR",
+            "Scaling laws",
+            "Transformer",
+            "Automatic Speech Recognition",
+            "Language Modeling",
+            "Reinforcement Learning"
+          ],
+          "source_url": "https://arxiv.org/abs/2606.11409",
+          "pdf_url": "https://arxiv.org/pdf/2606.11409.pdf",
+          "snippet": "Adversarial robustness evaluations of large language models (LLMs) typically report attack success rate (ASR) under fixed query budgets, implicitly treating all attacks as equally costly. In practice, the computational expense of different attack strategies ca..."
+        },
+        {
+          "id": "2603.02482",
+          "title": "MUSE: A Run-Centric Platform for Multimodal Unified Safety Evaluation of Large Language Models",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "LLM-as-a-judge",
+            "Multi-turn",
+            "Automatic Speech Recognition",
+            "Image Understanding",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2603.02482",
+          "pdf_url": "https://arxiv.org/pdf/2603.02482.pdf",
+          "snippet": "Safety evaluation and red-teaming of large language models remain predominantly text-centric, and existing frameworks lack the infrastructure to systematically test whether alignment generalizes to audio, image, and video inputs. We present MUSE (Multimodal Un..."
+        },
+        {
+          "id": "2508.07173",
+          "title": "Omni-SafetyBench: A Benchmark for Safety Evaluation of Audio-Visual\n  Large Language Models",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "DeepSeek-R1",
+            "Direct Preference Optimization (DPO)",
+            "Gemini 1.5",
+            "Large language model (LLM)",
+            "LLaMa",
+            "Performer",
+            "Automatic Speech Recognition",
+            "Language Modeling",
+            "Omni models"
+          ],
+          "source_url": "https://arxiv.org/abs/2508.07173",
+          "pdf_url": "https://arxiv.org/pdf/2508.07173.pdf",
+          "snippet": "The rise of Omni-modal Large Language Models (OLLMs), which integrate visual\nand auditory processing with text, necessitates robust safety evaluations to\nmitigate harmful outputs. However, no dedicated benchmarks currently exist for\nOLLMs, and prior benchmarks..."
+        },
+        {
+          "id": "2602.06268",
+          "title": "MPIB: A Benchmark for Medical Prompt Injection Attacks and Clinical Safety in LLMs",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "RAG",
+            "Automatic Speech Recognition",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2602.06268",
+          "pdf_url": "https://arxiv.org/pdf/2602.06268.pdf",
+          "snippet": "Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) systems are increasingly integrated into clinical workflows; however, prompt injection attacks can steer these systems toward clinically unsafe or misleading outputs. We introduce the Medica..."
+        },
+        {
+          "id": "2504.14526",
+          "title": "Are Vision LLMs Road-Ready? A Comprehensive Benchmark for Safety-Critical Driving Video Understanding",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "Autonomous Driving",
+            "Language Modeling",
+            "Question Answering",
+            "Video classification",
+            "cs.CV",
+            "cs.CL"
+          ],
+          "source_url": "https://arxiv.org/abs/2504.14526",
+          "pdf_url": "https://arxiv.org/pdf/2504.14526.pdf",
+          "snippet": "Vision Large Language Models (VLLMs) have demonstrated impressive capabilities in general visual tasks such as image captioning and visual question answering. However, their effectiveness in specialized, safety-critical domains like autonomous driving remains..."
+        },
+        {
+          "id": "2605.05662",
+          "title": "XL-SafetyBench: A Country-Grounded Cross-Cultural Benchmark for LLM Safety and Cultural Sensitivity",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "Automatic Speech Recognition",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2605.05662",
+          "pdf_url": "https://arxiv.org/pdf/2605.05662.pdf",
+          "snippet": "Current LLM safety benchmarks are predominantly English-centric and often rely on translation, failing to capture country-specific harms. Moreover, they rarely evaluate a model's ability to detect culturally embedded sensitivities as distinct from universal ha..."
+        }
+      ],
+      "evidence_refs": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173",
+        "2602.06268",
+        "2504.14526",
+        "2605.05662"
+      ],
+      "anti_hallucination_note": "该创新点已绑定本地文献证据；后续写作时应优先引用 evidence 中的 source_url/pdf_url。",
+      "downstream_wengao_inputs": {
+        "topic": "safety × robustness 的融合研究框架",
+        "contributions": [
+          "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。"
+        ],
+        "keywords": [
+          "多模态大模型安全检测",
+          "safety",
+          "robustness",
+          "Large language model (LLM)",
+          "Language Modeling",
+          "to",
+          "of",
+          "in",
+          "language",
+          "Image Understanding"
+        ],
+        "additional_context": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。\n\n研究问题：如何在 多模态大模型安全检测 中针对 safety + robustness 构建更可靠且可验证的研究方案？\n科学假设：如果将 safety + robustness 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。\n验证方案：采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。"
+      }
+    },
+    {
+      "innovation_id": "INNO-006-7E50F2",
+      "rank": 2,
+      "title": "从软件工程迁移到多模态大模型安全检测的创新范式",
+      "summary": "以 软件工程 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "迁移式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 软件工程 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 软件工程 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "problem": "把持续集成、回归测试和故障定位思想迁移到科研假设验证。 可与 safety, robustness, multimodal 组合。",
+      "method_route": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "scores": {
+        "novelty": 0.95,
+        "feasibility": 0.84,
+        "impact": 0.785,
+        "risk": 0.25
+      },
+      "overall_score": 0.753,
+      "evidence": [
+        {
+          "id": "2504.07887",
+          "title": "Benchmarking Adversarial Robustness to Bias Elicitation in Large Language Models: Scalable Automated Assessment with LLM-as-a-Judge",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "LLM-as-a-judge",
+            "Probing",
+            "Language Modeling",
+            "Machine Translation",
+            "Summarization",
+            "cs.CL",
+            "cs.AI"
+          ],
+          "source_url": "https://arxiv.org/abs/2504.07887",
+          "pdf_url": "https://arxiv.org/pdf/2504.07887.pdf",
+          "snippet": "Large Language Models (LLMs) have revolutionized artificial intelligence, driving advancements in machine translation, summarization, and conversational agents. However, their increasing integration into critical societal domains has raised concerns about embe..."
+        },
+        {
+          "id": "2506.12992",
+          "title": "SmartHome-Bench: A Comprehensive Benchmark for Video Anomaly Detection\n  in Smart Homes Using Multi-Modal Large Language Models",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "Chain-of-Thought (CoT)",
+            "Gemini 1.5",
+            "Large language model (LLM)",
+            "Anomaly Detection",
+            "Image Understanding",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2506.12992",
+          "pdf_url": "https://arxiv.org/pdf/2506.12992.pdf",
+          "snippet": "Video anomaly detection (VAD) is essential for enhancing safety and security\nby identifying unusual events across different environments. Existing VAD\nbenchmarks, however, are primarily designed for general-purpose scenarios,\nneglecting the specific characteri..."
+        },
+        {
+          "id": "2606.11409",
+          "title": "Risk Under Pressure: Compute-Aware Evaluation of Adversarial Robustness in Language Models",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Key-value cache",
+            "Large language model (LLM)",
+            "Multi-head attention",
+            "Qwen3",
+            "RLHF",
+            "RLVR",
+            "Scaling laws",
+            "Transformer",
+            "Automatic Speech Recognition",
+            "Language Modeling",
+            "Reinforcement Learning"
+          ],
+          "source_url": "https://arxiv.org/abs/2606.11409",
+          "pdf_url": "https://arxiv.org/pdf/2606.11409.pdf",
+          "snippet": "Adversarial robustness evaluations of large language models (LLMs) typically report attack success rate (ASR) under fixed query budgets, implicitly treating all attacks as equally costly. In practice, the computational expense of different attack strategies ca..."
+        },
+        {
+          "id": "2603.02482",
+          "title": "MUSE: A Run-Centric Platform for Multimodal Unified Safety Evaluation of Large Language Models",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "LLM-as-a-judge",
+            "Multi-turn",
+            "Automatic Speech Recognition",
+            "Image Understanding",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2603.02482",
+          "pdf_url": "https://arxiv.org/pdf/2603.02482.pdf",
+          "snippet": "Safety evaluation and red-teaming of large language models remain predominantly text-centric, and existing frameworks lack the infrastructure to systematically test whether alignment generalizes to audio, image, and video inputs. We present MUSE (Multimodal Un..."
+        },
+        {
+          "id": "2508.07173",
+          "title": "Omni-SafetyBench: A Benchmark for Safety Evaluation of Audio-Visual\n  Large Language Models",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "DeepSeek-R1",
+            "Direct Preference Optimization (DPO)",
+            "Gemini 1.5",
+            "Large language model (LLM)",
+            "LLaMa",
+            "Performer",
+            "Automatic Speech Recognition",
+            "Language Modeling",
+            "Omni models"
+          ],
+          "source_url": "https://arxiv.org/abs/2508.07173",
+          "pdf_url": "https://arxiv.org/pdf/2508.07173.pdf",
+          "snippet": "The rise of Omni-modal Large Language Models (OLLMs), which integrate visual\nand auditory processing with text, necessitates robust safety evaluations to\nmitigate harmful outputs. However, no dedicated benchmarks currently exist for\nOLLMs, and prior benchmarks..."
+        }
+      ],
+      "evidence_refs": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173"
+      ],
+      "anti_hallucination_note": "该创新点已绑定本地文献证据；后续写作时应优先引用 evidence 中的 source_url/pdf_url。",
+      "downstream_wengao_inputs": {
+        "topic": "从软件工程迁移到多模态大模型安全检测的创新范式",
+        "contributions": [
+          "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。"
+        ],
+        "keywords": [
+          "多模态大模型安全检测",
+          "软件工程",
+          "Large language model (LLM)",
+          "Language Modeling",
+          "to",
+          "of",
+          "in",
+          "language",
+          "Image Understanding",
+          "anomaly"
+        ],
+        "additional_context": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。\n\n研究问题：如何在 多模态大模型安全检测 中针对 软件工程 构建更可靠且可验证的研究方案？\n科学假设：如果将 软件工程 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。\n验证方案：采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。"
+      }
+    }
+  ],
+  "candidate_innovations": [
+    {
+      "id": "INNO-001-CE9C1E",
+      "title": "围绕“小样本场景下的鲁棒性评估”的可验证创新路线",
+      "description": "以 小样本场景下的鲁棒性评估 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "假设驱动",
+      "research_question": "如何在 多模态大模型安全检测 中针对 小样本场景下的鲁棒性评估 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 小样本场景下的鲁棒性评估 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [],
+      "source_gap_id": null,
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "小样本场景下的鲁棒性评估"
+      ],
+      "rationale": "现有 多模态大模型安全检测 研究中，小样本场景下的鲁棒性评估 仍缺少清晰的假设拆解、证据边界和验证闭环。"
+    },
+    {
+      "id": "INNO-002-4F8D6C",
+      "title": "仍待解决：multimodal的证据驱动方案",
+      "description": "以 multimodal, LLM, safety 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "空白填补",
+      "research_question": "如何在 多模态大模型安全检测 中针对 multimodal, LLM, safety 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 multimodal, LLM, safety 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2504.07887"
+      ],
+      "source_gap_id": "GAP-001-955DAD",
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "multimodal",
+        "llm",
+        "safety"
+      ],
+      "rationale": "文献《Benchmarking Adversarial Robustness to Bias Elicitation in Large Language Models: Scalable Automated Assessment with LLM-as-a-Judge》暴露出 仍待解决 信号，可作为 多模态大模型安全检测 的候选研究空白。"
+    },
+    {
+      "id": "INNO-003-3A9B71",
+      "title": "安全性不足：safety的证据驱动方案",
+      "description": "以 safety, multimodal, LLM 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "空白填补",
+      "research_question": "如何在 多模态大模型安全检测 中针对 safety, multimodal, LLM 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 safety, multimodal, LLM 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2506.12992"
+      ],
+      "source_gap_id": "GAP-002-3E2DD0",
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "safety",
+        "multimodal",
+        "llm"
+      ],
+      "rationale": "文献《SmartHome-Bench: A Comprehensive Benchmark for Video Anomaly Detection\n  in Smart Homes Using Multi-Modal Large Language Models》暴露出 安全性不足 信号，可作为 多模态大模型安全检测 的候选研究空白。"
+    },
+    {
+      "id": "INNO-004-FCAB25",
+      "title": "能力受限：multimodal的证据驱动方案",
+      "description": "以 multimodal, LLM, safety 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "空白填补",
+      "research_question": "如何在 多模态大模型安全检测 中针对 multimodal, LLM, safety 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 multimodal, LLM, safety 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2606.11409"
+      ],
+      "source_gap_id": "GAP-003-9B3058",
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "multimodal",
+        "llm",
+        "safety"
+      ],
+      "rationale": "文献《Risk Under Pressure: Compute-Aware Evaluation of Adversarial Robustness in Language Models》暴露出 能力受限 信号，可作为 多模态大模型安全检测 的候选研究空白。"
+    },
+    {
+      "id": "INNO-005-EAA56A",
+      "title": "safety × robustness 的融合研究框架",
+      "description": "以 safety + robustness 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "组合式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 safety + robustness 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 safety + robustness 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173",
+        "2602.06268",
+        "2504.14526",
+        "2605.05662"
+      ],
+      "source_gap_id": null,
+      "source_trend_ids": [
+        "TREND-001",
+        "TREND-002"
+      ],
+      "keywords": [
+        "多模态大模型安全检测",
+        "safety",
+        "robustness"
+      ],
+      "rationale": "多模态大模型安全检测 中的 safety 与 robustness 往往被分开研究，缺少统一建模和共同评测。"
+    },
+    {
+      "id": "INNO-006-7E50F2",
+      "title": "从软件工程迁移到多模态大模型安全检测的创新范式",
+      "description": "以 软件工程 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "迁移式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 软件工程 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 软件工程 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173"
+      ],
+      "source_gap_id": null,
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "软件工程"
+      ],
+      "rationale": "把持续集成、回归测试和故障定位思想迁移到科研假设验证。 可与 safety, robustness, multimodal 组合。"
+    },
+    {
+      "id": "INNO-007-EC1A2F",
+      "title": "从网络安全迁移到多模态大模型安全检测的创新范式",
+      "description": "以 网络安全 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "迁移式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 网络安全 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 网络安全 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173"
+      ],
+      "source_gap_id": null,
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "网络安全"
+      ],
+      "rationale": "用红队攻击面建模和风险闭环来发现鲁棒性空白。 可与 safety, robustness, multimodal 组合。"
+    },
+    {
+      "id": "INNO-008-6BAFCE",
+      "title": "从医学循证迁移到多模态大模型安全检测的创新范式",
+      "description": "以 医学循证 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "迁移式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 医学循证 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 医学循证 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173"
+      ],
+      "source_gap_id": null,
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "医学循证"
+      ],
+      "rationale": "借鉴证据等级、对照实验和可重复审计机制。 可与 safety, robustness, multimodal 组合。"
+    }
+  ],
+  "evaluated_innovations": [
+    {
+      "id": "INNO-005-EAA56A",
+      "title": "safety × robustness 的融合研究框架",
+      "description": "以 safety + robustness 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "组合式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 safety + robustness 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 safety + robustness 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173",
+        "2602.06268",
+        "2504.14526",
+        "2605.05662"
+      ],
+      "source_gap_id": null,
+      "source_trend_ids": [
+        "TREND-001",
+        "TREND-002"
+      ],
+      "keywords": [
+        "多模态大模型安全检测",
+        "safety",
+        "robustness"
+      ],
+      "rationale": "多模态大模型安全检测 中的 safety 与 robustness 往往被分开研究，缺少统一建模和共同评测。",
+      "scores": {
+        "novelty": 0.943,
+        "feasibility": 0.915,
+        "impact": 0.785,
+        "risk": 0.19
+      },
+      "overall_score": 0.775,
+      "evaluation_detail": {
+        "novelty": {
+          "max_overlap": 0.02,
+          "nearest_reference": "2602.06268",
+          "interpretation": "分数由候选点与已有文献的词汇重叠反向估计，并按创新方法类型加权。"
+        },
+        "feasibility": {
+          "evidence_count": 8,
+          "open_code_references": 2,
+          "interpretation": "证据越充分、可复现实验资源越多，可行性越高。"
+        },
+        "impact_and_risk": {
+          "trend_overlap": 8,
+          "gap_bonus": 0.0,
+          "risk_drivers": [
+            "跨域落地难度",
+            "验证成本"
+          ]
+        },
+        "weights": {
+          "novelty": 0.35,
+          "feasibility": 0.25,
+          "impact": 0.3,
+          "risk": 0.1
+        }
+      },
+      "rank": 1
+    },
+    {
+      "id": "INNO-006-7E50F2",
+      "title": "从软件工程迁移到多模态大模型安全检测的创新范式",
+      "description": "以 软件工程 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "迁移式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 软件工程 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 软件工程 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173"
+      ],
+      "source_gap_id": null,
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "软件工程"
+      ],
+      "rationale": "把持续集成、回归测试和故障定位思想迁移到科研假设验证。 可与 safety, robustness, multimodal 组合。",
+      "scores": {
+        "novelty": 0.95,
+        "feasibility": 0.84,
+        "impact": 0.785,
+        "risk": 0.25
+      },
+      "overall_score": 0.753,
+      "evaluation_detail": {
+        "novelty": {
+          "max_overlap": 0.0,
+          "nearest_reference": "2504.07887",
+          "interpretation": "分数由候选点与已有文献的词汇重叠反向估计，并按创新方法类型加权。"
+        },
+        "feasibility": {
+          "evidence_count": 5,
+          "open_code_references": 1,
+          "interpretation": "证据越充分、可复现实验资源越多，可行性越高。"
+        },
+        "impact_and_risk": {
+          "trend_overlap": 5,
+          "gap_bonus": 0.0,
+          "risk_drivers": [
+            "跨域落地难度",
+            "验证成本"
+          ]
+        },
+        "weights": {
+          "novelty": 0.35,
+          "feasibility": 0.25,
+          "impact": 0.3,
+          "risk": 0.1
+        }
+      },
+      "rank": 2
+    },
+    {
+      "id": "INNO-007-EC1A2F",
+      "title": "从网络安全迁移到多模态大模型安全检测的创新范式",
+      "description": "以 网络安全 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "迁移式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 网络安全 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 网络安全 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173"
+      ],
+      "source_gap_id": null,
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "网络安全"
+      ],
+      "rationale": "用红队攻击面建模和风险闭环来发现鲁棒性空白。 可与 safety, robustness, multimodal 组合。",
+      "scores": {
+        "novelty": 0.95,
+        "feasibility": 0.84,
+        "impact": 0.785,
+        "risk": 0.25
+      },
+      "overall_score": 0.753,
+      "evaluation_detail": {
+        "novelty": {
+          "max_overlap": 0.0,
+          "nearest_reference": "2504.07887",
+          "interpretation": "分数由候选点与已有文献的词汇重叠反向估计，并按创新方法类型加权。"
+        },
+        "feasibility": {
+          "evidence_count": 5,
+          "open_code_references": 1,
+          "interpretation": "证据越充分、可复现实验资源越多，可行性越高。"
+        },
+        "impact_and_risk": {
+          "trend_overlap": 5,
+          "gap_bonus": 0.0,
+          "risk_drivers": [
+            "跨域落地难度",
+            "验证成本"
+          ]
+        },
+        "weights": {
+          "novelty": 0.35,
+          "feasibility": 0.25,
+          "impact": 0.3,
+          "risk": 0.1
+        }
+      },
+      "rank": 3
+    },
+    {
+      "id": "INNO-008-6BAFCE",
+      "title": "从医学循证迁移到多模态大模型安全检测的创新范式",
+      "description": "以 医学循证 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "迁移式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 医学循证 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 医学循证 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173"
+      ],
+      "source_gap_id": null,
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "医学循证"
+      ],
+      "rationale": "借鉴证据等级、对照实验和可重复审计机制。 可与 safety, robustness, multimodal 组合。",
+      "scores": {
+        "novelty": 0.95,
+        "feasibility": 0.84,
+        "impact": 0.785,
+        "risk": 0.25
+      },
+      "overall_score": 0.753,
+      "evaluation_detail": {
+        "novelty": {
+          "max_overlap": 0.0,
+          "nearest_reference": "2504.07887",
+          "interpretation": "分数由候选点与已有文献的词汇重叠反向估计，并按创新方法类型加权。"
+        },
+        "feasibility": {
+          "evidence_count": 5,
+          "open_code_references": 1,
+          "interpretation": "证据越充分、可复现实验资源越多，可行性越高。"
+        },
+        "impact_and_risk": {
+          "trend_overlap": 5,
+          "gap_bonus": 0.0,
+          "risk_drivers": [
+            "跨域落地难度",
+            "验证成本"
+          ]
+        },
+        "weights": {
+          "novelty": 0.35,
+          "feasibility": 0.25,
+          "impact": 0.3,
+          "risk": 0.1
+        }
+      },
+      "rank": 4
+    },
+    {
+      "id": "INNO-003-3A9B71",
+      "title": "安全性不足：safety的证据驱动方案",
+      "description": "以 safety, multimodal, LLM 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "空白填补",
+      "research_question": "如何在 多模态大模型安全检测 中针对 safety, multimodal, LLM 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 safety, multimodal, LLM 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2506.12992"
+      ],
+      "source_gap_id": "GAP-002-3E2DD0",
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "safety",
+        "multimodal",
+        "llm"
+      ],
+      "rationale": "文献《SmartHome-Bench: A Comprehensive Benchmark for Video Anomaly Detection\n  in Smart Homes Using Multi-Modal Large Language Models》暴露出 安全性不足 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "scores": {
+        "novelty": 0.907,
+        "feasibility": 0.7,
+        "impact": 0.665,
+        "risk": 0.31
+      },
+      "overall_score": 0.661,
+      "evaluation_detail": {
+        "novelty": {
+          "max_overlap": 0.038,
+          "nearest_reference": "2603.02482",
+          "interpretation": "分数由候选点与已有文献的词汇重叠反向估计，并按创新方法类型加权。"
+        },
+        "feasibility": {
+          "evidence_count": 1,
+          "open_code_references": 1,
+          "interpretation": "证据越充分、可复现实验资源越多，可行性越高。"
+        },
+        "impact_and_risk": {
+          "trend_overlap": 1,
+          "gap_bonus": 0.06,
+          "risk_drivers": [
+            "证据不足"
+          ]
+        },
+        "weights": {
+          "novelty": 0.35,
+          "feasibility": 0.25,
+          "impact": 0.3,
+          "risk": 0.1
+        }
+      },
+      "rank": 5
+    },
+    {
+      "id": "INNO-002-4F8D6C",
+      "title": "仍待解决：multimodal的证据驱动方案",
+      "description": "以 multimodal, LLM, safety 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "空白填补",
+      "research_question": "如何在 多模态大模型安全检测 中针对 multimodal, LLM, safety 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 multimodal, LLM, safety 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2504.07887"
+      ],
+      "source_gap_id": "GAP-001-955DAD",
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "multimodal",
+        "llm",
+        "safety"
+      ],
+      "rationale": "文献《Benchmarking Adversarial Robustness to Bias Elicitation in Large Language Models: Scalable Automated Assessment with LLM-as-a-Judge》暴露出 仍待解决 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "scores": {
+        "novelty": 0.907,
+        "feasibility": 0.665,
+        "impact": 0.665,
+        "risk": 0.31
+      },
+      "overall_score": 0.652,
+      "evaluation_detail": {
+        "novelty": {
+          "max_overlap": 0.038,
+          "nearest_reference": "2603.02482",
+          "interpretation": "分数由候选点与已有文献的词汇重叠反向估计，并按创新方法类型加权。"
+        },
+        "feasibility": {
+          "evidence_count": 1,
+          "open_code_references": 0,
+          "interpretation": "证据越充分、可复现实验资源越多，可行性越高。"
+        },
+        "impact_and_risk": {
+          "trend_overlap": 1,
+          "gap_bonus": 0.06,
+          "risk_drivers": [
+            "证据不足"
+          ]
+        },
+        "weights": {
+          "novelty": 0.35,
+          "feasibility": 0.25,
+          "impact": 0.3,
+          "risk": 0.1
+        }
+      },
+      "rank": 6
+    },
+    {
+      "id": "INNO-004-FCAB25",
+      "title": "能力受限：multimodal的证据驱动方案",
+      "description": "以 multimodal, LLM, safety 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "空白填补",
+      "research_question": "如何在 多模态大模型安全检测 中针对 multimodal, LLM, safety 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 multimodal, LLM, safety 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [
+        "2606.11409"
+      ],
+      "source_gap_id": "GAP-003-9B3058",
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "multimodal",
+        "llm",
+        "safety"
+      ],
+      "rationale": "文献《Risk Under Pressure: Compute-Aware Evaluation of Adversarial Robustness in Language Models》暴露出 能力受限 信号，可作为 多模态大模型安全检测 的候选研究空白。",
+      "scores": {
+        "novelty": 0.907,
+        "feasibility": 0.665,
+        "impact": 0.665,
+        "risk": 0.31
+      },
+      "overall_score": 0.652,
+      "evaluation_detail": {
+        "novelty": {
+          "max_overlap": 0.038,
+          "nearest_reference": "2603.02482",
+          "interpretation": "分数由候选点与已有文献的词汇重叠反向估计，并按创新方法类型加权。"
+        },
+        "feasibility": {
+          "evidence_count": 1,
+          "open_code_references": 0,
+          "interpretation": "证据越充分、可复现实验资源越多，可行性越高。"
+        },
+        "impact_and_risk": {
+          "trend_overlap": 1,
+          "gap_bonus": 0.06,
+          "risk_drivers": [
+            "证据不足"
+          ]
+        },
+        "weights": {
+          "novelty": 0.35,
+          "feasibility": 0.25,
+          "impact": 0.3,
+          "risk": 0.1
+        }
+      },
+      "rank": 7
+    },
+    {
+      "id": "INNO-001-CE9C1E",
+      "title": "围绕“小样本场景下的鲁棒性评估”的可验证创新路线",
+      "description": "以 小样本场景下的鲁棒性评估 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "假设驱动",
+      "research_question": "如何在 多模态大模型安全检测 中针对 小样本场景下的鲁棒性评估 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 小样本场景下的鲁棒性评估 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "proposed_approach": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "source_evidence": [],
+      "source_gap_id": null,
+      "source_trend_ids": [],
+      "keywords": [
+        "多模态大模型安全检测",
+        "小样本场景下的鲁棒性评估"
+      ],
+      "rationale": "现有 多模态大模型安全检测 研究中，小样本场景下的鲁棒性评估 仍缺少清晰的假设拆解、证据边界和验证闭环。",
+      "scores": {
+        "novelty": 0.92,
+        "feasibility": 0.62,
+        "impact": 0.56,
+        "risk": 0.31
+      },
+      "overall_score": 0.614,
+      "evaluation_detail": {
+        "novelty": {
+          "max_overlap": 0.0,
+          "nearest_reference": "2504.07887",
+          "interpretation": "分数由候选点与已有文献的词汇重叠反向估计，并按创新方法类型加权。"
+        },
+        "feasibility": {
+          "evidence_count": 0,
+          "open_code_references": 0,
+          "interpretation": "证据越充分、可复现实验资源越多，可行性越高。"
+        },
+        "impact_and_risk": {
+          "trend_overlap": 0,
+          "gap_bonus": 0.0,
+          "risk_drivers": [
+            "证据不足"
+          ]
+        },
+        "weights": {
+          "novelty": 0.35,
+          "feasibility": 0.25,
+          "impact": 0.3,
+          "risk": 0.1
+        }
+      },
+      "rank": 8
+    }
+  ],
+  "refined_proposals": [
+    {
+      "innovation_id": "INNO-005-EAA56A",
+      "rank": 1,
+      "title": "safety × robustness 的融合研究框架",
+      "summary": "以 safety + robustness 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "组合式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 safety + robustness 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 safety + robustness 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "problem": "多模态大模型安全检测 中的 safety 与 robustness 往往被分开研究，缺少统一建模和共同评测。",
+      "method_route": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "scores": {
+        "novelty": 0.943,
+        "feasibility": 0.915,
+        "impact": 0.785,
+        "risk": 0.19
+      },
+      "overall_score": 0.775,
+      "evidence": [
+        {
+          "id": "2504.07887",
+          "title": "Benchmarking Adversarial Robustness to Bias Elicitation in Large Language Models: Scalable Automated Assessment with LLM-as-a-Judge",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "LLM-as-a-judge",
+            "Probing",
+            "Language Modeling",
+            "Machine Translation",
+            "Summarization",
+            "cs.CL",
+            "cs.AI"
+          ],
+          "source_url": "https://arxiv.org/abs/2504.07887",
+          "pdf_url": "https://arxiv.org/pdf/2504.07887.pdf",
+          "snippet": "Large Language Models (LLMs) have revolutionized artificial intelligence, driving advancements in machine translation, summarization, and conversational agents. However, their increasing integration into critical societal domains has raised concerns about embe..."
+        },
+        {
+          "id": "2506.12992",
+          "title": "SmartHome-Bench: A Comprehensive Benchmark for Video Anomaly Detection\n  in Smart Homes Using Multi-Modal Large Language Models",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "Chain-of-Thought (CoT)",
+            "Gemini 1.5",
+            "Large language model (LLM)",
+            "Anomaly Detection",
+            "Image Understanding",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2506.12992",
+          "pdf_url": "https://arxiv.org/pdf/2506.12992.pdf",
+          "snippet": "Video anomaly detection (VAD) is essential for enhancing safety and security\nby identifying unusual events across different environments. Existing VAD\nbenchmarks, however, are primarily designed for general-purpose scenarios,\nneglecting the specific characteri..."
+        },
+        {
+          "id": "2606.11409",
+          "title": "Risk Under Pressure: Compute-Aware Evaluation of Adversarial Robustness in Language Models",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Key-value cache",
+            "Large language model (LLM)",
+            "Multi-head attention",
+            "Qwen3",
+            "RLHF",
+            "RLVR",
+            "Scaling laws",
+            "Transformer",
+            "Automatic Speech Recognition",
+            "Language Modeling",
+            "Reinforcement Learning"
+          ],
+          "source_url": "https://arxiv.org/abs/2606.11409",
+          "pdf_url": "https://arxiv.org/pdf/2606.11409.pdf",
+          "snippet": "Adversarial robustness evaluations of large language models (LLMs) typically report attack success rate (ASR) under fixed query budgets, implicitly treating all attacks as equally costly. In practice, the computational expense of different attack strategies ca..."
+        },
+        {
+          "id": "2603.02482",
+          "title": "MUSE: A Run-Centric Platform for Multimodal Unified Safety Evaluation of Large Language Models",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "LLM-as-a-judge",
+            "Multi-turn",
+            "Automatic Speech Recognition",
+            "Image Understanding",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2603.02482",
+          "pdf_url": "https://arxiv.org/pdf/2603.02482.pdf",
+          "snippet": "Safety evaluation and red-teaming of large language models remain predominantly text-centric, and existing frameworks lack the infrastructure to systematically test whether alignment generalizes to audio, image, and video inputs. We present MUSE (Multimodal Un..."
+        },
+        {
+          "id": "2508.07173",
+          "title": "Omni-SafetyBench: A Benchmark for Safety Evaluation of Audio-Visual\n  Large Language Models",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "DeepSeek-R1",
+            "Direct Preference Optimization (DPO)",
+            "Gemini 1.5",
+            "Large language model (LLM)",
+            "LLaMa",
+            "Performer",
+            "Automatic Speech Recognition",
+            "Language Modeling",
+            "Omni models"
+          ],
+          "source_url": "https://arxiv.org/abs/2508.07173",
+          "pdf_url": "https://arxiv.org/pdf/2508.07173.pdf",
+          "snippet": "The rise of Omni-modal Large Language Models (OLLMs), which integrate visual\nand auditory processing with text, necessitates robust safety evaluations to\nmitigate harmful outputs. However, no dedicated benchmarks currently exist for\nOLLMs, and prior benchmarks..."
+        },
+        {
+          "id": "2602.06268",
+          "title": "MPIB: A Benchmark for Medical Prompt Injection Attacks and Clinical Safety in LLMs",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "RAG",
+            "Automatic Speech Recognition",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2602.06268",
+          "pdf_url": "https://arxiv.org/pdf/2602.06268.pdf",
+          "snippet": "Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) systems are increasingly integrated into clinical workflows; however, prompt injection attacks can steer these systems toward clinically unsafe or misleading outputs. We introduce the Medica..."
+        },
+        {
+          "id": "2504.14526",
+          "title": "Are Vision LLMs Road-Ready? A Comprehensive Benchmark for Safety-Critical Driving Video Understanding",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "Autonomous Driving",
+            "Language Modeling",
+            "Question Answering",
+            "Video classification",
+            "cs.CV",
+            "cs.CL"
+          ],
+          "source_url": "https://arxiv.org/abs/2504.14526",
+          "pdf_url": "https://arxiv.org/pdf/2504.14526.pdf",
+          "snippet": "Vision Large Language Models (VLLMs) have demonstrated impressive capabilities in general visual tasks such as image captioning and visual question answering. However, their effectiveness in specialized, safety-critical domains like autonomous driving remains..."
+        },
+        {
+          "id": "2605.05662",
+          "title": "XL-SafetyBench: A Country-Grounded Cross-Cultural Benchmark for LLM Safety and Cultural Sensitivity",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "Automatic Speech Recognition",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2605.05662",
+          "pdf_url": "https://arxiv.org/pdf/2605.05662.pdf",
+          "snippet": "Current LLM safety benchmarks are predominantly English-centric and often rely on translation, failing to capture country-specific harms. Moreover, they rarely evaluate a model's ability to detect culturally embedded sensitivities as distinct from universal ha..."
+        }
+      ],
+      "evidence_refs": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173",
+        "2602.06268",
+        "2504.14526",
+        "2605.05662"
+      ],
+      "anti_hallucination_note": "该创新点已绑定本地文献证据；后续写作时应优先引用 evidence 中的 source_url/pdf_url。",
+      "downstream_wengao_inputs": {
+        "topic": "safety × robustness 的融合研究框架",
+        "contributions": [
+          "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。"
+        ],
+        "keywords": [
+          "多模态大模型安全检测",
+          "safety",
+          "robustness",
+          "Large language model (LLM)",
+          "Language Modeling",
+          "to",
+          "of",
+          "in",
+          "language",
+          "Image Understanding"
+        ],
+        "additional_context": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。\n\n研究问题：如何在 多模态大模型安全检测 中针对 safety + robustness 构建更可靠且可验证的研究方案？\n科学假设：如果将 safety + robustness 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。\n验证方案：采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。"
+      }
+    },
+    {
+      "innovation_id": "INNO-006-7E50F2",
+      "rank": 2,
+      "title": "从软件工程迁移到多模态大模型安全检测的创新范式",
+      "summary": "以 软件工程 为切入点，在 多模态大模型安全检测 中形成可验证、可追溯的创新点。",
+      "method_type": "迁移式创新",
+      "research_question": "如何在 多模态大模型安全检测 中针对 软件工程 构建更可靠且可验证的研究方案？",
+      "hypothesis": "如果将 软件工程 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。",
+      "problem": "把持续集成、回归测试和故障定位思想迁移到科研假设验证。 可与 safety, robustness, multimodal 组合。",
+      "method_route": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。",
+      "expected_contribution": "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。",
+      "validation_plan": "采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。",
+      "scores": {
+        "novelty": 0.95,
+        "feasibility": 0.84,
+        "impact": 0.785,
+        "risk": 0.25
+      },
+      "overall_score": 0.753,
+      "evidence": [
+        {
+          "id": "2504.07887",
+          "title": "Benchmarking Adversarial Robustness to Bias Elicitation in Large Language Models: Scalable Automated Assessment with LLM-as-a-Judge",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "LLM-as-a-judge",
+            "Probing",
+            "Language Modeling",
+            "Machine Translation",
+            "Summarization",
+            "cs.CL",
+            "cs.AI"
+          ],
+          "source_url": "https://arxiv.org/abs/2504.07887",
+          "pdf_url": "https://arxiv.org/pdf/2504.07887.pdf",
+          "snippet": "Large Language Models (LLMs) have revolutionized artificial intelligence, driving advancements in machine translation, summarization, and conversational agents. However, their increasing integration into critical societal domains has raised concerns about embe..."
+        },
+        {
+          "id": "2506.12992",
+          "title": "SmartHome-Bench: A Comprehensive Benchmark for Video Anomaly Detection\n  in Smart Homes Using Multi-Modal Large Language Models",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "Chain-of-Thought (CoT)",
+            "Gemini 1.5",
+            "Large language model (LLM)",
+            "Anomaly Detection",
+            "Image Understanding",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2506.12992",
+          "pdf_url": "https://arxiv.org/pdf/2506.12992.pdf",
+          "snippet": "Video anomaly detection (VAD) is essential for enhancing safety and security\nby identifying unusual events across different environments. Existing VAD\nbenchmarks, however, are primarily designed for general-purpose scenarios,\nneglecting the specific characteri..."
+        },
+        {
+          "id": "2606.11409",
+          "title": "Risk Under Pressure: Compute-Aware Evaluation of Adversarial Robustness in Language Models",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Key-value cache",
+            "Large language model (LLM)",
+            "Multi-head attention",
+            "Qwen3",
+            "RLHF",
+            "RLVR",
+            "Scaling laws",
+            "Transformer",
+            "Automatic Speech Recognition",
+            "Language Modeling",
+            "Reinforcement Learning"
+          ],
+          "source_url": "https://arxiv.org/abs/2606.11409",
+          "pdf_url": "https://arxiv.org/pdf/2606.11409.pdf",
+          "snippet": "Adversarial robustness evaluations of large language models (LLMs) typically report attack success rate (ASR) under fixed query budgets, implicitly treating all attacks as equally costly. In practice, the computational expense of different attack strategies ca..."
+        },
+        {
+          "id": "2603.02482",
+          "title": "MUSE: A Run-Centric Platform for Multimodal Unified Safety Evaluation of Large Language Models",
+          "year": 2026,
+          "venue": "arXiv",
+          "keywords": [
+            "Large language model (LLM)",
+            "LLM-as-a-judge",
+            "Multi-turn",
+            "Automatic Speech Recognition",
+            "Image Understanding",
+            "Language Modeling"
+          ],
+          "source_url": "https://arxiv.org/abs/2603.02482",
+          "pdf_url": "https://arxiv.org/pdf/2603.02482.pdf",
+          "snippet": "Safety evaluation and red-teaming of large language models remain predominantly text-centric, and existing frameworks lack the infrastructure to systematically test whether alignment generalizes to audio, image, and video inputs. We present MUSE (Multimodal Un..."
+        },
+        {
+          "id": "2508.07173",
+          "title": "Omni-SafetyBench: A Benchmark for Safety Evaluation of Audio-Visual\n  Large Language Models",
+          "year": 2025,
+          "venue": "arXiv",
+          "keywords": [
+            "DeepSeek-R1",
+            "Direct Preference Optimization (DPO)",
+            "Gemini 1.5",
+            "Large language model (LLM)",
+            "LLaMa",
+            "Performer",
+            "Automatic Speech Recognition",
+            "Language Modeling",
+            "Omni models"
+          ],
+          "source_url": "https://arxiv.org/abs/2508.07173",
+          "pdf_url": "https://arxiv.org/pdf/2508.07173.pdf",
+          "snippet": "The rise of Omni-modal Large Language Models (OLLMs), which integrate visual\nand auditory processing with text, necessitates robust safety evaluations to\nmitigate harmful outputs. However, no dedicated benchmarks currently exist for\nOLLMs, and prior benchmarks..."
+        }
+      ],
+      "evidence_refs": [
+        "2504.07887",
+        "2506.12992",
+        "2606.11409",
+        "2603.02482",
+        "2508.07173"
+      ],
+      "anti_hallucination_note": "该创新点已绑定本地文献证据；后续写作时应优先引用 evidence 中的 source_url/pdf_url。",
+      "downstream_wengao_inputs": {
+        "topic": "从软件工程迁移到多模态大模型安全检测的创新范式",
+        "contributions": [
+          "形成面向 多模态大模型安全检测 的新问题定义、方法框架和可复现实验协议。"
+        ],
+        "keywords": [
+          "多模态大模型安全检测",
+          "软件工程",
+          "Large language model (LLM)",
+          "Language Modeling",
+          "to",
+          "of",
+          "in",
+          "language",
+          "Image Understanding",
+          "anomaly"
+        ],
+        "additional_context": "1) 建立领域文献与概念图谱；2) 识别高频趋势和低连接空白；3) 生成候选技术路线；4) 用新颖性、可行性、影响力和风险四维评分筛选。\n\n研究问题：如何在 多模态大模型安全检测 中针对 软件工程 构建更可靠且可验证的研究方案？\n科学假设：如果将 软件工程 与证据检索、结构化评估和反馈迭代结合，可以获得比单点方法更稳健的研究贡献。\n验证方案：采用公开语料/基准复现实验、消融分析、跨场景泛化测试和人工审阅相结合的方式验证。"
+      }
+    }
+  ],
+  "knowledge_graph_summary": "知识图谱抽取了 28 个核心概念，主要围绕：Language Modeling、Large language model (LLM)、to、Image Understanding、of、in、language、we、multimodal、on。",
+  "knowledge_graph": {
+    "concepts": [
+      "Language Modeling",
+      "Large language model (LLM)",
+      "to",
+      "Image Understanding",
+      "of",
+      "in",
+      "language",
+      "we",
+      "multimodal",
+      "on",
+      "evaluation",
+      "detection",
+      "LLaVa",
+      "Question Answering",
+      "mllms",
+      "understanding",
+      "reasoning",
+      "as",
+      "CLIP",
+      "safety",
+      "are",
+      "llms",
+      "visual",
+      "Chain-of-Thought (CoT)",
+      "introduce",
+      "Automatic Speech Recognition",
+      "GPT-4",
+      "by"
+    ],
+    "relations": [
+      {
+        "source": "Language Modeling",
+        "target": "Large language model (LLM)",
+        "weight": 36
+      },
+      {
+        "source": "Image Understanding",
+        "target": "Large language model (LLM)",
+        "weight": 26
+      },
+      {
+        "source": "Image Understanding",
+        "target": "Language Modeling",
+        "weight": 26
+      },
+      {
+        "source": "Large language model (LLM)",
+        "target": "LLaVa",
+        "weight": 18
+      },
+      {
+        "source": "language",
+        "target": "multimodal",
+        "weight": 13
+      },
+      {
+        "source": "CLIP",
+        "target": "Large language model (LLM)",
+        "weight": 11
+      },
+      {
+        "source": "Fine-tuning",
+        "target": "Large language model (LLM)",
+        "weight": 10
+      },
+      {
+        "source": "GPT-4",
+        "target": "Large language model (LLM)",
+        "weight": 9
+      },
+      {
+        "source": "benchmarking",
+        "target": "Language Modeling",
+        "weight": 8
+      },
+      {
+        "source": "Chain-of-Thought (CoT)",
+        "target": "Large language model (LLM)",
+        "weight": 8
+      },
+      {
+        "source": "Language Modeling",
+        "target": "Question Answering",
+        "weight": 8
+      },
+      {
+        "source": "Gemini 1.5",
+        "target": "Large language model (LLM)",
+        "weight": 7
+      },
+      {
+        "source": "Anomaly Detection",
+        "target": "Large language model (LLM)",
+        "weight": 7
+      },
+      {
+        "source": "Large language model (LLM)",
+        "target": "Qwen3",
+        "weight": 7
+      },
+      {
+        "source": "Large language model (LLM)",
+        "target": "LLaMa",
+        "weight": 7
+      },
+      {
+        "source": "Hallucination",
+        "target": "Large language model (LLM)",
+        "weight": 7
+      },
+      {
+        "source": "Large language model (LLM)",
+        "target": "LoRa",
+        "weight": 7
+      },
+      {
+        "source": "Image Understanding",
+        "target": "LLaVa",
+        "weight": 7
+      },
+      {
+        "source": "Anomaly Detection",
+        "target": "Language Modeling",
+        "weight": 6
+      },
+      {
+        "source": "anomaly",
+        "target": "detection",
+        "weight": 6
+      },
+      {
+        "source": "Gemini 2.5",
+        "target": "Large language model (LLM)",
+        "weight": 6
+      },
+      {
+        "source": "Anomaly Detection",
+        "target": "Image Understanding",
+        "weight": 5
+      },
+      {
+        "source": "Chain-of-Thought (CoT)",
+        "target": "Fine-tuning",
+        "weight": 5
+      },
+      {
+        "source": "GRPO",
+        "target": "Large language model (LLM)",
+        "weight": 5
+      },
+      {
+        "source": "Large language model (LLM)",
+        "target": "Multi-turn",
+        "weight": 5
+      },
+      {
+        "source": "Automatic Speech Recognition",
+        "target": "Large language model (LLM)",
+        "weight": 5
+      },
+      {
+        "source": "Automatic Speech Recognition",
+        "target": "Language Modeling",
+        "weight": 5
+      },
+      {
+        "source": "evaluation",
+        "target": "multimodal",
+        "weight": 5
+      },
+      {
+        "source": "Language Modeling",
+        "target": "multimodal",
+        "weight": 5
+      },
+      {
+        "source": "Large language model (LLM)",
+        "target": "Question Answering",
+        "weight": 5
+      },
+      {
+        "source": "Large language model (LLM)",
+        "target": "Whisper",
+        "weight": 5
+      },
+      {
+        "source": "Image Understanding",
+        "target": "Question Answering",
+        "weight": 5
+      },
+      {
+        "source": "Large language model (LLM)",
+        "target": "LLM-as-a-judge",
+        "weight": 4
+      },
+      {
+        "source": "Language Modeling",
+        "target": "Summarization",
+        "weight": 4
+      },
+      {
+        "source": "Large language model (LLM)",
+        "target": "RLHF",
+        "weight": 4
+      },
+      {
+        "source": "evaluation",
+        "target": "language",
+        "weight": 4
+      },
+      {
+        "source": "benchmarking",
+        "target": "multimodal",
+        "weight": 4
+      },
+      {
+        "source": "DeepSeek-R1",
+        "target": "Large language model (LLM)",
+        "weight": 4
+      },
+      {
+        "source": "LLaMa",
+        "target": "LLaVa",
+        "weight": 4
+      },
+      {
+        "source": "Image Understanding",
+        "target": "multimodal",
+        "weight": 4
+      }
+    ],
+    "summary": "知识图谱抽取了 28 个核心概念，主要围绕：Language Modeling、Large language model (LLM)、to、Image Understanding、of、in、language、we、multimodal、on。"
+  },
+  "citation_network_summary": "引用网络包含 80 个本地节点和 0 条显式关联。",
+  "evidence_map": {
+    "INNO-005-EAA56A": [
+      "2504.07887",
+      "2506.12992",
+      "2606.11409",
+      "2603.02482",
+      "2508.07173",
+      "2602.06268",
+      "2504.14526",
+      "2605.05662"
+    ],
+    "INNO-006-7E50F2": [
+      "2504.07887",
+      "2506.12992",
+      "2606.11409",
+      "2603.02482",
+      "2508.07173"
+    ]
+  },
+  "feedback": [],
+  "workflow_trace": [
+    {
+      "time": "2026-07-20T10:54:39Z",
+      "step": "LiteratureIntelligenceAgent",
+      "message": "完成本地文献检索、主题聚类、知识图谱和引用网络构建。",
+      "documents": 80,
+      "matched_documents": 10167
+    },
+    {
+      "time": "2026-07-20T10:54:39Z",
+      "step": "TrendAnalysisAgent",
+      "message": "完成研究趋势统计。",
+      "trends": 8
+    },
+    {
+      "time": "2026-07-20T10:54:39Z",
+      "step": "GapIdentificationAgent",
+      "message": "完成研究空白识别。",
+      "gaps": 8
+    },
+    {
+      "time": "2026-07-20T10:54:39Z",
+      "step": "IdeaGenerationAgent",
+      "message": "完成候选创新点发散生成。",
+      "candidates": 8,
+      "method_types": [
+        "假设驱动",
+        "空白填补",
+        "组合式创新",
+        "迁移式创新"
+      ]
+    },
+    {
+      "time": "2026-07-20T10:54:39Z",
+      "step": "InnovationEvaluationAgent",
+      "message": "完成四维评分与排序。",
+      "evaluated": 8,
+      "top_score": 0.775,
+      "method_diversity": 2
+    },
+    {
+      "time": "2026-07-20T10:54:39Z",
+      "step": "RefinementAgent",
+      "message": "完成 Top-K 创新点精炼和 wengao 对接字段生成。",
+      "proposals": 2
+    }
+  ],
+  "literature_corpus": [
+    {
+      "id": "2504.07887",
+      "title": "Benchmarking Adversarial Robustness to Bias Elicitation in Large Language Models: Scalable Automated Assessment with LLM-as-a-Judge",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "LLM-as-a-judge",
+        "Probing",
+        "Language Modeling",
+        "Machine Translation",
+        "Summarization",
+        "cs.CL",
+        "cs.AI"
+      ],
+      "source_url": "https://arxiv.org/abs/2504.07887",
+      "pdf_url": "https://arxiv.org/pdf/2504.07887.pdf",
+      "snippet": "Large Language Models (LLMs) have revolutionized artificial intelligence, driving advancements in machine translation, summarization, and conversational agents. However, their incr..."
+    },
+    {
+      "id": "2506.12992",
+      "title": "SmartHome-Bench: A Comprehensive Benchmark for Video Anomaly Detection\n  in Smart Homes Using Multi-Modal Large Language Models",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Chain-of-Thought (CoT)",
+        "Gemini 1.5",
+        "Large language model (LLM)",
+        "Anomaly Detection",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2506.12992",
+      "pdf_url": "https://arxiv.org/pdf/2506.12992.pdf",
+      "snippet": "Video anomaly detection (VAD) is essential for enhancing safety and security\nby identifying unusual events across different environments. Existing VAD\nbenchmarks, however, are prim..."
+    },
+    {
+      "id": "2606.11409",
+      "title": "Risk Under Pressure: Compute-Aware Evaluation of Adversarial Robustness in Language Models",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Key-value cache",
+        "Large language model (LLM)",
+        "Multi-head attention",
+        "Qwen3",
+        "RLHF",
+        "RLVR",
+        "Scaling laws",
+        "Transformer",
+        "Automatic Speech Recognition",
+        "Language Modeling",
+        "Reinforcement Learning"
+      ],
+      "source_url": "https://arxiv.org/abs/2606.11409",
+      "pdf_url": "https://arxiv.org/pdf/2606.11409.pdf",
+      "snippet": "Adversarial robustness evaluations of large language models (LLMs) typically report attack success rate (ASR) under fixed query budgets, implicitly treating all attacks as equally..."
+    },
+    {
+      "id": "2504.10158",
+      "title": "COUNTS: Benchmarking Object Detectors and Multimodal Large Language Models under Distribution Shifts",
+      "year": 2025,
+      "venue": "CVPR",
+      "keywords": [
+        "CLIP",
+        "Deformable Attention",
+        "DETR",
+        "DINO",
+        "Faster R-CNN",
+        "Fast RCNN",
+        "GPT-4o",
+        "Key-value cache",
+        "Large language model (LLM)",
+        "Mask R-CNN",
+        "Multi-head attention",
+        "Pre-training",
+        "R-CNN",
+        "Residual Block",
+        "ResNet",
+        "RoIAlign",
+        "RoIPool",
+        "RPN",
+        "Skip connection",
+        "Transformer",
+        "YOLO",
+        "Image Understanding",
+        "Language Modeling",
+        "Object Detection"
+      ],
+      "source_url": "https://arxiv.org/abs/2504.10158",
+      "pdf_url": "https://arxiv.org/pdf/2504.10158.pdf",
+      "snippet": "Current object detectors often suffer significant performance degradation in real-world applications when encountering distributional shifts, posing serious risks in high-stakes do..."
+    },
+    {
+      "id": "2604.10971",
+      "title": "MMR-AD: A Large-Scale Multimodal Dataset for Benchmarking General Anomaly Detection with Multimodal Large Language Models",
+      "year": 2026,
+      "venue": "CVPR",
+      "keywords": [
+        "Chain-of-Thought (CoT)",
+        "Direct Preference Optimization (DPO)",
+        "Fine-tuning",
+        "Gemini 2.5",
+        "GRPO",
+        "Large language model (LLM)",
+        "LLaVa",
+        "LoRa",
+        "PEFT",
+        "Post-training",
+        "Pre-training",
+        "Anomaly Detection",
+        "Image Understanding",
+        "Language Modeling",
+        "Reasoning",
+        "Reinforcement Learning"
+      ],
+      "source_url": "https://arxiv.org/abs/2604.10971",
+      "pdf_url": "https://arxiv.org/pdf/2604.10971.pdf",
+      "snippet": "In the progress of industrial anomaly detection, general anomaly detection (GAD) is an emerging trend and also the ultimate goal. Unlike the conventional single- and multi-class AD..."
+    },
+    {
+      "id": "2603.02482",
+      "title": "MUSE: A Run-Centric Platform for Multimodal Unified Safety Evaluation of Large Language Models",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "LLM-as-a-judge",
+        "Multi-turn",
+        "Automatic Speech Recognition",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2603.02482",
+      "pdf_url": "https://arxiv.org/pdf/2603.02482.pdf",
+      "snippet": "Safety evaluation and red-teaming of large language models remain predominantly text-centric, and existing frameworks lack the infrastructure to systematically test whether alignme..."
+    },
+    {
+      "id": "2508.07173",
+      "title": "Omni-SafetyBench: A Benchmark for Safety Evaluation of Audio-Visual\n  Large Language Models",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "DeepSeek-R1",
+        "Direct Preference Optimization (DPO)",
+        "Gemini 1.5",
+        "Large language model (LLM)",
+        "LLaMa",
+        "Performer",
+        "Automatic Speech Recognition",
+        "Language Modeling",
+        "Omni models"
+      ],
+      "source_url": "https://arxiv.org/abs/2508.07173",
+      "pdf_url": "https://arxiv.org/pdf/2508.07173.pdf",
+      "snippet": "The rise of Omni-modal Large Language Models (OLLMs), which integrate visual\nand auditory processing with text, necessitates robust safety evaluations to\nmitigate harmful outputs...."
+    },
+    {
+      "id": "2508.00047",
+      "title": "TriP-LLM: A Tri-Branch Patch-wise Large Language Model Framework for\n  Time-Series Anomaly Detection",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Few-shot prompting",
+        "GPT-3",
+        "Large language model (LLM)",
+        "LLaVa",
+        "Mamba",
+        "Anomaly Detection",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2508.00047",
+      "pdf_url": "https://arxiv.org/pdf/2508.00047.pdf",
+      "snippet": "Time-series anomaly detection plays a central role across a wide range of\napplication domains. With the increasing proliferation of the Internet of\nThings (IoT) and smart manufactu..."
+    },
+    {
+      "id": "2602.06268",
+      "title": "MPIB: A Benchmark for Medical Prompt Injection Attacks and Clinical Safety in LLMs",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "RAG",
+        "Automatic Speech Recognition",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2602.06268",
+      "pdf_url": "https://arxiv.org/pdf/2602.06268.pdf",
+      "snippet": "Large Language Models (LLMs) and Retrieval-Augmented Generation (RAG) systems are increasingly integrated into clinical workflows; however, prompt injection attacks can steer these..."
+    },
+    {
+      "id": "2602.24021",
+      "title": "Steering and Rectifying Latent Representation Manifolds in Frozen Multi-modal LLMs for Video Anomaly Detection",
+      "year": 2026,
+      "venue": "ICLR",
+      "keywords": [
+        "Autoencoder (AE)",
+        "CLIP",
+        "Key-value cache",
+        "Large language model (LLM)",
+        "LLaMa",
+        "LLaVa",
+        "Multi-head attention",
+        "Pre-training",
+        "Transformer",
+        "Anomaly Detection",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2602.24021",
+      "pdf_url": "https://arxiv.org/pdf/2602.24021.pdf",
+      "snippet": "Video anomaly detection (VAD) aims to identify abnormal events in videos. Traditional VAD methods generally suffer from the high costs of labeled data and full training, thus some..."
+    },
+    {
+      "id": "2510.14896",
+      "title": "Leveraging Multimodal LLM Descriptions of Activity for Explainable Semi-Supervised Video Anomaly Detection",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "Anomaly Detection",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2510.14896",
+      "pdf_url": "https://arxiv.org/pdf/2510.14896.pdf",
+      "snippet": "Existing semi-supervised video anomaly detection (VAD) methods often struggle with detecting complex anomalies involving object interactions and generally lack explainability. To o..."
+    },
+    {
+      "id": "2601.22636",
+      "title": "Statistical Estimation of Adversarial Risk in Large Language Models under Best-of-N Sampling",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "Automatic Speech Recognition",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2601.22636",
+      "pdf_url": "https://arxiv.org/pdf/2601.22636.pdf",
+      "snippet": "Large Language Models (LLMs) are typically evaluated for safety under single-shot or low-budget adversarial prompting, which underestimates real-world risk. In practice, attackers..."
+    },
+    {
+      "id": "2504.14526",
+      "title": "Are Vision LLMs Road-Ready? A Comprehensive Benchmark for Safety-Critical Driving Video Understanding",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "Autonomous Driving",
+        "Language Modeling",
+        "Question Answering",
+        "Video classification",
+        "cs.CV",
+        "cs.CL"
+      ],
+      "source_url": "https://arxiv.org/abs/2504.14526",
+      "pdf_url": "https://arxiv.org/pdf/2504.14526.pdf",
+      "snippet": "Vision Large Language Models (VLLMs) have demonstrated impressive capabilities in general visual tasks such as image captioning and visual question answering. However, their effect..."
+    },
+    {
+      "id": "2311.17092",
+      "title": "SEED-Bench-2: Benchmarking Multimodal Large Language Models",
+      "year": 2023,
+      "venue": "arXiv",
+      "keywords": [
+        "Adam",
+        "BPE",
+        "Cosine Annealing",
+        "Dropout",
+        "GPT",
+        "GPT-4",
+        "Large language model (LLM)",
+        "Layer Normalization",
+        "LLaVa",
+        "Multi-head attention",
+        "Softmax",
+        "Image generation",
+        "Image Understanding",
+        "Language Modeling",
+        "Omni models"
+      ],
+      "source_url": "https://arxiv.org/abs/2311.17092",
+      "pdf_url": "https://arxiv.org/pdf/2311.17092.pdf",
+      "snippet": "Multimodal large language models (MLLMs), building upon the foundation of powerful large language models (LLMs), have recently demonstrated exceptional capabilities in generating n..."
+    },
+    {
+      "id": "2508.07295",
+      "title": "CCFQA: A Benchmark for Cross-Lingual and Cross-Modal Speech and Text\n  Factuality Evaluation",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "GPT-4o",
+        "Hallucination",
+        "Large language model (LLM)",
+        "Whisper",
+        "Image Understanding",
+        "Language Modeling",
+        "Question Answering",
+        "Table question answering"
+      ],
+      "source_url": "https://arxiv.org/abs/2508.07295",
+      "pdf_url": "https://arxiv.org/pdf/2508.07295.pdf",
+      "snippet": "As Large Language Models (LLMs) are increasingly popularized in the\nmultilingual world, ensuring hallucination-free factuality becomes markedly\ncrucial. However, existing benchmark..."
+    },
+    {
+      "id": "2510.21182",
+      "title": "Dynamic Multimodal Evaluation via Knowledge-Enhanced Benchmark Evolution",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "Large language model (LLM)",
+        "Exploration and Sparse Rewards",
+        "Image Understanding",
+        "Language Modeling",
+        "Question Answering",
+        "Reinforcement Learning"
+      ],
+      "source_url": "https://arxiv.org/abs/2510.21182",
+      "pdf_url": "https://arxiv.org/pdf/2510.21182.pdf",
+      "snippet": "The rapid development of multimodal large language models (MLLMs) has created an urgent demand for more reliable and robust evaluation protocols, however, existing static benchmark..."
+    },
+    {
+      "id": "2502.09980",
+      "title": "V2V-LLM: Vehicle-to-Vehicle Cooperative Autonomous Driving with Multi-Modal Large Language Models",
+      "year": 2025,
+      "venue": "ICRA",
+      "keywords": [
+        "Large language model (LLM)",
+        "LLaMa",
+        "LLaVa",
+        "LoRa",
+        "PEFT",
+        "Autonomous Driving",
+        "Language Modeling",
+        "Question Answering",
+        "cs.CV",
+        "cs.RO"
+      ],
+      "source_url": "https://arxiv.org/abs/2502.09980v3",
+      "pdf_url": "https://arxiv.org/pdf/2502.09980v3.pdf",
+      "snippet": "Current autonomous driving vehicles rely mainly on their individual sensors to understand surrounding scenes and plan for future trajectories, which can be unreliable when the sens..."
+    },
+    {
+      "id": "2602.13028",
+      "title": "Human-Aligned MLLM Judges for Fine-Grained Image Editing Evaluation: A Benchmark, Framework, and Analysis",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "DINO",
+        "Large language model (LLM)",
+        "LLM-as-a-judge",
+        "Image editing",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2602.13028",
+      "pdf_url": "https://arxiv.org/pdf/2602.13028.pdf",
+      "snippet": "Evaluating image editing models remains challenging due to the coarse granularity and limited interpretability of traditional metrics, which often fail to capture aspects important..."
+    },
+    {
+      "id": "2602.23729",
+      "title": "From Static Benchmarks to Dynamic Protocol: Agent-Centric Text Anomaly Detection for Evaluating LLM Reasoning",
+      "year": 2026,
+      "venue": "ICLR",
+      "keywords": [
+        "Gemini 1.5",
+        "Large language model (LLM)",
+        "Agents",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2602.23729",
+      "pdf_url": "https://arxiv.org/pdf/2602.23729.pdf",
+      "snippet": "The evaluation of large language models (LLMs) has predominantly relied on static datasets, which offer limited scalability and fail to capture the evolving reasoning capabilities..."
+    },
+    {
+      "id": "2605.01687",
+      "title": "MultiBreak: A Scalable and Diverse Multi-turn Jailbreak Benchmark for Evaluating LLM Safety",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "DeepSeek-R1",
+        "Gemini 2.5",
+        "GPT-4",
+        "Large language model (LLM)",
+        "LoRa",
+        "Multi-turn",
+        "PEFT",
+        "Automatic Speech Recognition",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.01687",
+      "pdf_url": "https://arxiv.org/pdf/2605.01687.pdf",
+      "snippet": "We present MultiBreak, a scalable and diverse multi-turn jailbreak benchmark to evaluate large language model (LLM) safety. Multi-turn jailbreaks mimic natural conversational setti..."
+    },
+    {
+      "id": "2603.13779",
+      "title": "AD-Copilot: A Vision-Language Assistant for Industrial Anomaly Detection via Visual In-context Comparison",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Agent Skills",
+        "DeepSeek-R1",
+        "DETR",
+        "Gemini 1.5",
+        "GRPO",
+        "Large language model (LLM)",
+        "Anomaly Detection",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2603.13779",
+      "pdf_url": "https://arxiv.org/pdf/2603.13779.pdf",
+      "snippet": "Multimodal Large Language Models (MLLMs) have achieved impressive success in natural visual understanding, yet they consistently underperform in industrial anomaly detection (IAD)...."
+    },
+    {
+      "id": "2605.05662",
+      "title": "XL-SafetyBench: A Country-Grounded Cross-Cultural Benchmark for LLM Safety and Cultural Sensitivity",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "Automatic Speech Recognition",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.05662",
+      "pdf_url": "https://arxiv.org/pdf/2605.05662.pdf",
+      "snippet": "Current LLM safety benchmarks are predominantly English-centric and often rely on translation, failing to capture country-specific harms. Moreover, they rarely evaluate a model's a..."
+    },
+    {
+      "id": "2504.18738",
+      "title": "A Review of 3D Object Detection with Vision-Language Models",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "CLIP",
+        "Faster R-CNN",
+        "Large language model (LLM)",
+        "Pre-training",
+        "Prompt engineering",
+        "RPN",
+        "YOLO",
+        "3D object detection",
+        "3D understanding",
+        "Image Understanding",
+        "Language Modeling",
+        "cs.CV"
+      ],
+      "source_url": "https://arxiv.org/abs/2504.18738",
+      "pdf_url": "https://arxiv.org/pdf/2504.18738.pdf",
+      "snippet": "This review provides a systematic analysis of comprehensive survey of 3D object detection with vision-language models(VLMs) , a rapidly advancing area at the intersection of 3D vis..."
+    },
+    {
+      "id": "2602.19248",
+      "title": "No Need For Real Anomaly: MLLM Empowered Zero-Shot Video Anomaly Detection",
+      "year": 2026,
+      "venue": "CVPR",
+      "keywords": [
+        "Large language model (LLM)",
+        "Anomaly Detection",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2602.19248",
+      "pdf_url": "https://arxiv.org/pdf/2602.19248.pdf",
+      "snippet": "The collection and detection of video anomaly data has long been a challenging problem due to its rare occurrence and spatio-temporal scarcity. Existing video anomaly detection (VA..."
+    },
+    {
+      "id": "2512.00818",
+      "title": "Med-CMR: A Fine-Grained Benchmark Integrating Visual Evidence and Clinical Logic for Medical Complex Multimodal Reasoning",
+      "year": 2026,
+      "venue": "CVPR",
+      "keywords": [
+        "Gemini 2.5",
+        "GPT-4",
+        "GPT-5",
+        "Large language model (LLM)",
+        "LLaVa",
+        "Qwen3",
+        "Image Understanding",
+        "Object Detection",
+        "Question Answering"
+      ],
+      "source_url": "https://arxiv.org/abs/2512.00818",
+      "pdf_url": "https://arxiv.org/pdf/2512.00818.pdf",
+      "snippet": "MLLMs are beginning to appear in clinical workflows, but their ability to perform complex medical reasoning remains unclear. We present Med-CMR, a fine-grained Medical Complex Mult..."
+    },
+    {
+      "id": "2503.12772",
+      "title": "NuPlanQA: A Large-Scale Dataset and Benchmark for Multi-View Driving Scene Understanding in Multi-Modal Large Language Models",
+      "year": 2025,
+      "venue": "ICCV",
+      "keywords": [
+        "Agent Skills",
+        "Chain-of-Thought (CoT)",
+        "Large language model (LLM)",
+        "Autonomous Driving",
+        "Image Understanding",
+        "Language Modeling",
+        "cs.CV",
+        "cs.AI",
+        "cs.RO"
+      ],
+      "source_url": "https://arxiv.org/abs/2503.12772",
+      "pdf_url": "https://arxiv.org/pdf/2503.12772.pdf",
+      "snippet": "Recent advances in multi-modal large language models (MLLMs) have demonstrated strong performance across various domains; however, their ability to comprehend driving scenes remain..."
+    },
+    {
+      "id": "2604.08884",
+      "title": "HM-Bench: A Comprehensive Benchmark for Multimodal Large Language Models in Hyperspectral Remote Sensing",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Gemini 2.5",
+        "Large language model (LLM)",
+        "PCA",
+        "Image Understanding",
+        "Language Modeling",
+        "Remote Sensing"
+      ],
+      "source_url": "https://arxiv.org/abs/2604.08884",
+      "pdf_url": "https://arxiv.org/pdf/2604.08884.pdf",
+      "snippet": "While multimodal large language models (MLLMs) have made significant strides in natural image understanding, their ability to perceive and reason over hyperspectral image (HSI) rem..."
+    },
+    {
+      "id": "2601.21666",
+      "title": "SONIC-O1: A Real-World Benchmark for Evaluating Multimodal Large Language Models on Audio-Video Understanding",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "CLIP",
+        "Large language model (LLM)",
+        "Image Understanding",
+        "Language Modeling",
+        "Summarization",
+        "Video classification"
+      ],
+      "source_url": "https://arxiv.org/abs/2601.21666",
+      "pdf_url": "https://arxiv.org/pdf/2601.21666.pdf",
+      "snippet": "Multimodal Large Language Models (MLLMs) are a major focus of recent AI research. However, most prior work focuses on static image understanding, while their ability to process seq..."
+    },
+    {
+      "id": "2405.10542",
+      "title": "Benchmarking Large Language Models on CFLUE -- A Chinese Financial Language Understanding Evaluation Dataset",
+      "year": 2024,
+      "venue": "arXiv",
+      "keywords": [
+        "Adam",
+        "BPE",
+        "Dropout",
+        "GPT-4",
+        "Label smoothing",
+        "Large language model (LLM)",
+        "Layer Normalization",
+        "Multi-head attention",
+        "Performer",
+        "Softmax",
+        "Transformer",
+        "Language Modeling",
+        "Machine Translation",
+        "Question Answering",
+        "Relation Extraction",
+        "Text classification"
+      ],
+      "source_url": "https://arxiv.org/abs/2405.10542",
+      "pdf_url": "https://arxiv.org/pdf/2405.10542.pdf",
+      "snippet": "In light of recent breakthroughs in large language models (LLMs) that have revolutionized natural language processing (NLP), there is an urgent need for new benchmarks to keep pace..."
+    },
+    {
+      "id": "2405.10542",
+      "title": "Benchmarking Large Language Models on CFLUE -- A Chinese Financial Language Understanding Evaluation Dataset",
+      "year": 2024,
+      "venue": "arXiv",
+      "keywords": [
+        "Adam",
+        "BPE",
+        "Dropout",
+        "GPT-4",
+        "Label smoothing",
+        "Large language model (LLM)",
+        "Layer Normalization",
+        "Multi-head attention",
+        "Performer",
+        "Softmax",
+        "Transformer",
+        "Language Modeling",
+        "Machine Translation",
+        "Question Answering",
+        "Relation Extraction",
+        "Text classification"
+      ],
+      "source_url": "https://arxiv.org/abs/2405.10542",
+      "pdf_url": "https://arxiv.org/pdf/2405.10542.pdf",
+      "snippet": "In light of recent breakthroughs in large language models (LLMs) that have revolutionized natural language processing (NLP), there is an urgent need for new benchmarks to keep pace..."
+    },
+    {
+      "id": "2406.06965",
+      "title": "Evolving from Single-modal to Multi-modal Facial Deepfake Detection: Progress and Challenges",
+      "year": 2024,
+      "venue": "arXiv",
+      "keywords": [
+        "Diffusion",
+        "GAN",
+        "Large language model (LLM)",
+        "LLaVa",
+        "Deepfake and Forensics",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2406.06965",
+      "pdf_url": "https://arxiv.org/pdf/2406.06965.pdf",
+      "snippet": "As synthetic media, including video, audio, and text, become increasingly indistinguishable from real content, the risks of misinformation, identity fraud, and social manipulation..."
+    },
+    {
+      "id": "2512.17319",
+      "title": "A Benchmark for Ultra-High-Resolution Remote Sensing MLLMs",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Gemini 2.5",
+        "Large language model (LLM)",
+        "LLaMa",
+        "LLaVa",
+        "Multi-turn",
+        "Qwen3",
+        "Image Understanding",
+        "Language Modeling",
+        "Remote Sensing"
+      ],
+      "source_url": "https://arxiv.org/abs/2512.17319",
+      "pdf_url": "https://arxiv.org/pdf/2512.17319.pdf",
+      "snippet": "Multimodal large language models (MLLMs) demonstrate strong perception and reasoning performance on existing remote sensing (RS) benchmarks. However, most prior benchmarks rely on..."
+    },
+    {
+      "id": "2505.16211",
+      "title": "AudioTrust: Benchmarking the Multifaceted Trustworthiness of Audio Large Language Models",
+      "year": 2025,
+      "venue": "ICLR",
+      "keywords": [
+        "Hallucination",
+        "Large language model (LLM)",
+        "Audio understanding",
+        "Language Modeling",
+        "cs.SD",
+        "cs.AI",
+        "cs.CL",
+        "eess.AS"
+      ],
+      "source_url": "https://arxiv.org/abs/2505.16211",
+      "pdf_url": "https://arxiv.org/pdf/2505.16211.pdf",
+      "snippet": "The rapid advancement and expanding applications of Audio Large Language Models (ALLMs) demand a rigorous understanding of their trustworthiness. However, systematic research on ev..."
+    },
+    {
+      "id": "2411.06869",
+      "title": "CapeLLM: Support-Free Category-Agnostic Pose Estimation with Multimodal Large Language Models",
+      "year": 2025,
+      "venue": "ICCV",
+      "keywords": [
+        "Chain-of-Thought (CoT)",
+        "Large language model (LLM)",
+        "LLaVa",
+        "LoRa",
+        "PEFT",
+        "Segment Anything (SAM)",
+        "Image Understanding",
+        "Language Modeling",
+        "Pose Estimation"
+      ],
+      "source_url": "https://arxiv.org/abs/2411.06869",
+      "pdf_url": "https://arxiv.org/pdf/2411.06869.pdf",
+      "snippet": "Category-agnostic pose estimation (CAPE) has traditionally relied on support images with annotated keypoints, a process that is often cumbersome and may fail to fully capture the n..."
+    },
+    {
+      "id": "2604.06950",
+      "title": "Making MLLMs Blind: Adversarial Smuggling Attacks in MLLM Content Moderation",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Chain-of-Thought (CoT)",
+        "CLIP",
+        "Fine-tuning",
+        "GPT-5",
+        "Large language model (LLM)",
+        "Qwen3",
+        "RLHF",
+        "Test-time scaling",
+        "Vision Transformer",
+        "Automatic Speech Recognition",
+        "Exploration and Sparse Rewards",
+        "Image Understanding",
+        "Language Modeling",
+        "OCR",
+        "Reasoning",
+        "Reinforcement Learning",
+        "Scene Text Recognition"
+      ],
+      "source_url": "https://arxiv.org/abs/2604.06950",
+      "pdf_url": "https://arxiv.org/pdf/2604.06950.pdf",
+      "snippet": "Multimodal Large Language Models (MLLMs) are increasingly being deployed as automated content moderators. Within this landscape, we uncover a critical threat: Adversarial Smuggling..."
+    },
+    {
+      "id": "2604.06950",
+      "title": "Making MLLMs Blind: Adversarial Smuggling Attacks in MLLM Content Moderation",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Chain-of-Thought (CoT)",
+        "CLIP",
+        "Fine-tuning",
+        "GPT-5",
+        "Large language model (LLM)",
+        "Qwen3",
+        "RLHF",
+        "Test-time scaling",
+        "Vision Transformer",
+        "Automatic Speech Recognition",
+        "Exploration and Sparse Rewards",
+        "Image Understanding",
+        "Language Modeling",
+        "OCR",
+        "Reasoning",
+        "Reinforcement Learning",
+        "Scene Text Recognition"
+      ],
+      "source_url": "https://arxiv.org/abs/2604.06950",
+      "pdf_url": "https://arxiv.org/pdf/2604.06950.pdf",
+      "snippet": "Multimodal Large Language Models (MLLMs) are increasingly being deployed as automated content moderators. Within this landscape, we uncover a critical threat: Adversarial Smuggling..."
+    },
+    {
+      "id": "2305.13062",
+      "title": "Table Meets LLM: Can Large Language Models Understand Structured Table Data? A Benchmark and Empirical Study",
+      "year": 2023,
+      "venue": "arXiv",
+      "keywords": [
+        "Adam",
+        "BPE",
+        "Cosine Annealing",
+        "Dropout",
+        "GPT-3",
+        "GPT-4",
+        "Label smoothing",
+        "Large language model (LLM)",
+        "Layer Normalization",
+        "Multi-head attention",
+        "Softmax",
+        "Transformer",
+        "Language Modeling",
+        "Table question answering"
+      ],
+      "source_url": "https://arxiv.org/abs/2305.13062v5",
+      "pdf_url": "https://arxiv.org/pdf/2305.13062v5.pdf",
+      "snippet": "Large language models (LLMs) are becoming attractive as few-shot reasoners to solve Natural Language (NL)-related tasks. However, the understanding of their capability to process s..."
+    },
+    {
+      "id": "2509.16975",
+      "title": "Interpretable Audio Editing Evaluation via Chain-of-Thought Difference-Commonality Reasoning with Multimodal LLMs",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Chain-of-Thought (CoT)",
+        "Fine-tuning",
+        "Large language model (LLM)",
+        "Audio understanding",
+        "Image Understanding",
+        "Language Modeling",
+        "Reasoning"
+      ],
+      "source_url": "https://arxiv.org/abs/2509.16975",
+      "pdf_url": "https://arxiv.org/pdf/2509.16975.pdf",
+      "snippet": "Automatic mean opinion score (MOS) prediction provides a more perceptual alternative to objective metrics, offering deeper insights into the evaluated models. With the rapid progre..."
+    },
+    {
+      "id": "2511.05269",
+      "title": "TAMAS: Benchmarking Adversarial Risks in Multi-Agent LLM Systems",
+      "year": 2026,
+      "venue": "ACL",
+      "keywords": [
+        "DeepSeek-R1",
+        "Agents",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2511.05269",
+      "pdf_url": "https://arxiv.org/pdf/2511.05269.pdf",
+      "snippet": "Large Language Models (LLMs) have demonstrated strong capabilities as autonomous agents through tool use, planning, and decision-making abilities, leading to their widespread adopt..."
+    },
+    {
+      "id": "2505.19892",
+      "title": "Unifying Multimodal Large Language Model Capabilities and Modalities via Model Merging",
+      "year": 2025,
+      "venue": "ICLR",
+      "keywords": [
+        "Fine-tuning",
+        "Large language model (LLM)",
+        "LoRa",
+        "Model merging",
+        "Image Understanding",
+        "Language Modeling",
+        "OCR",
+        "Video Understanding",
+        "cs.AI"
+      ],
+      "source_url": "https://arxiv.org/abs/2505.19892",
+      "pdf_url": "https://arxiv.org/pdf/2505.19892.pdf",
+      "snippet": "While foundation models update slowly due to resource-intensive training requirements, domain-specific models evolve between updates. Model merging aims to combine multiple expert..."
+    },
+    {
+      "id": "2605.10130",
+      "title": "Thermal-Det: Language-Guided Cross-Modal Distillation for Open-Vocabulary Thermal Object Detection",
+      "year": 2026,
+      "venue": "CVPR",
+      "keywords": [
+        "Large language model (LLM)",
+        "LLaVa",
+        "Language Modeling",
+        "Object Detection"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.10130",
+      "pdf_url": "https://arxiv.org/pdf/2605.10130.pdf",
+      "snippet": "Existing open-vocabulary detectors focus on RGB images and fail to generalize to thermal imagery, where low texture and emissivity variations challenge RGB-based semantics. We pres..."
+    },
+    {
+      "id": "2506.07491",
+      "title": "SpatialLM: Training Large Language Models for Structured Indoor Modeling",
+      "year": 2025,
+      "venue": "NeurIPS",
+      "keywords": [
+        "DETR",
+        "DINO",
+        "DUSt3R",
+        "Large language model (LLM)",
+        "LLaVa",
+        "3D object detection",
+        "3D understanding",
+        "Image Understanding",
+        "Language Modeling",
+        "cs.CV"
+      ],
+      "source_url": "https://arxiv.org/abs/2506.07491",
+      "pdf_url": "https://arxiv.org/pdf/2506.07491.pdf",
+      "snippet": "SpatialLM is a large language model designed to process 3D point cloud data and generate structured 3D scene understanding outputs. These outputs include architectural elements lik..."
+    },
+    {
+      "id": "2512.00349",
+      "title": "Debate with Images: Detecting Deceptive Behaviors in Multimodal Large Language Models",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "GPT-4o",
+        "Hallucination",
+        "Large language model (LLM)",
+        "LLM-as-a-judge",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2512.00349",
+      "pdf_url": "https://arxiv.org/pdf/2512.00349.pdf",
+      "snippet": "As frontier AI systems become increasingly capable, concerns about deceptive behaviors have intensified. Unlike hallucinations, which stem from capability limitations, deception in..."
+    },
+    {
+      "id": "2605.29462",
+      "title": "Benchmarking Large Vision-Language Models on CFMME: A Comprehensive Chinese Financial Multimodal Evaluation Dataset",
+      "year": 2026,
+      "venue": "ACL",
+      "keywords": [
+        "Image Understanding",
+        "Language Modeling",
+        "Question Answering"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.29462",
+      "pdf_url": "https://arxiv.org/pdf/2605.29462.pdf",
+      "snippet": "The emergence of Large Vision-Language Models (LVLMs) has substantially expanded model capabilities beyond text-only understanding, enabling unified inference across both visual an..."
+    },
+    {
+      "id": "2605.29462",
+      "title": "Benchmarking Large Vision-Language Models on CFMME: A Comprehensive Chinese Financial Multimodal Evaluation Dataset",
+      "year": 2026,
+      "venue": "ACL",
+      "keywords": [
+        "Image Understanding",
+        "Language Modeling",
+        "Question Answering"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.29462",
+      "pdf_url": "https://arxiv.org/pdf/2605.29462.pdf",
+      "snippet": "The emergence of Large Vision-Language Models (LVLMs) has substantially expanded model capabilities beyond text-only understanding, enabling unified inference across both visual an..."
+    },
+    {
+      "id": "2402.11677",
+      "title": "MultiCorrupt: A Multi-Modal Robustness Dataset and Benchmark of LiDAR-Camera Fusion for 3D Object Detection",
+      "year": 2024,
+      "venue": "arXiv",
+      "keywords": [
+        "DETR",
+        "3D object detection",
+        "3D understanding"
+      ],
+      "source_url": "https://arxiv.org/abs/2402.11677v3",
+      "pdf_url": "https://arxiv.org/pdf/2402.11677v3.pdf",
+      "snippet": "Multi-modal 3D object detection models for automated driving have demonstrated exceptional performance on computer vision benchmarks like nuScenes. However, their reliance on dense..."
+    },
+    {
+      "id": "2505.11405",
+      "title": "EmotionHallucer: Evaluating Emotion Hallucinations in Multimodal Large Language Models",
+      "year": 2026,
+      "venue": "ICLR",
+      "keywords": [
+        "Hallucination",
+        "Large language model (LLM)",
+        "Image Understanding",
+        "Language Modeling",
+        "Question Answering"
+      ],
+      "source_url": "https://arxiv.org/abs/2505.11405",
+      "pdf_url": "https://arxiv.org/pdf/2505.11405.pdf",
+      "snippet": "Emotion understanding is a critical yet challenging task. \nRecent advances in Multimodal Large Language Models (MLLMs) have significantly enhanced their capabilities in this area...."
+    },
+    {
+      "id": "2412.06292",
+      "title": "ZeroKey: Point-Level Reasoning and Zero-Shot 3D Keypoint Detection from Large Language Models",
+      "year": 2025,
+      "venue": "ICCV",
+      "keywords": [
+        "CLIP",
+        "Few-shot prompting",
+        "GPT-3",
+        "Large language model (LLM)",
+        "LLaVa",
+        "Image Understanding",
+        "Language Modeling",
+        "Pose Estimation"
+      ],
+      "source_url": "https://arxiv.org/abs/2412.06292",
+      "pdf_url": "https://arxiv.org/pdf/2412.06292.pdf",
+      "snippet": "We propose a novel zero-shot approach for keypoint detection on 3D shapes. Point-level reasoning on visual data is challenging as it requires precise localization capability, posin..."
+    },
+    {
+      "id": "2509.03951",
+      "title": "ANTS: Adaptive Negative Textual Space Shaping for OOD Detection via Test-Time MLLM Understanding and Reasoning",
+      "year": 2026,
+      "venue": "CVPR",
+      "keywords": [
+        "CutMix",
+        "Large language model (LLM)",
+        "LLaVa",
+        "Anomaly Detection",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2509.03951",
+      "pdf_url": "https://arxiv.org/pdf/2509.03951.pdf",
+      "snippet": "The introduction of negative labels (NLs) has proven effective in enhancing Out-of-Distribution (OOD) detection. However, existing methods often lack an understanding of OOD images..."
+    },
+    {
+      "id": "2503.06142",
+      "title": "VLForgery Face Triad: Detection, Localization and Attribution via Multimodal Large Language Models",
+      "year": 2025,
+      "venue": "NeurIPS",
+      "keywords": [
+        "CLIP",
+        "Depthwise Convolution",
+        "Diffusion",
+        "Large language model (LLM)",
+        "LLaVa",
+        "LoRa",
+        "PEFT",
+        "Residual Block",
+        "ResNet",
+        "Skip connection",
+        "Stable Diffusion",
+        "Deepfake and Forensics",
+        "Image generation",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2503.06142",
+      "pdf_url": "https://arxiv.org/pdf/2503.06142.pdf",
+      "snippet": "Faces synthesized by diffusion models (DMs) with high-quality and controllable attributes pose a significant challenge for Deepfake detection. Most state-of-the-art detectors only..."
+    },
+    {
+      "id": "2605.25707",
+      "title": "AgentHijack: Benchmarking Computer Use Agent Robustness to Common Environment Corruptions",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "GPT-4",
+        "Large language model (LLM)",
+        "Computer Use Agents",
+        "Image Understanding",
+        "Language Modeling",
+        "Summarization"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.25707",
+      "pdf_url": "https://arxiv.org/pdf/2605.25707.pdf",
+      "snippet": "Autonomous computer use agents that powered by multimodal large language models (MLLMs) are emerging as capable assistants for completing complex digital workflows. However, real-w..."
+    },
+    {
+      "id": "2605.25707",
+      "title": "AgentHijack: Benchmarking Computer Use Agent Robustness to Common Environment Corruptions",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "GPT-4",
+        "Large language model (LLM)",
+        "Computer Use Agents",
+        "Image Understanding",
+        "Language Modeling",
+        "Summarization"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.25707",
+      "pdf_url": "https://arxiv.org/pdf/2605.25707.pdf",
+      "snippet": "Autonomous computer use agents that powered by multimodal large language models (MLLMs) are emerging as capable assistants for completing complex digital workflows. However, real-w..."
+    },
+    {
+      "id": "2510.11098",
+      "title": "VCB Bench: An Evaluation Benchmark for Audio-Grounded Large Language Model Conversational Agents",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "CLIP",
+        "Large language model (LLM)",
+        "Whisper",
+        "Audio understanding",
+        "Instruction Following",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2510.11098",
+      "pdf_url": "https://arxiv.org/pdf/2510.11098.pdf",
+      "snippet": "Recent advances in large audio language models (LALMs) have greatly enhanced multimodal conversational systems. However, existing benchmarks remain limited -- they are mainly Engli..."
+    },
+    {
+      "id": "2412.17574",
+      "title": "HumanVBench: Exploring Human-Centric Video Understanding Capabilities of MLLMs with Synthetic Benchmark Data",
+      "year": 2024,
+      "venue": "CVPR",
+      "keywords": [
+        "Large language model (LLM)",
+        "Image Understanding",
+        "Language Modeling",
+        "Question Answering",
+        "Video classification",
+        "Video Understanding",
+        "cs.CV",
+        "cs.AI"
+      ],
+      "source_url": "https://arxiv.org/abs/2412.17574",
+      "pdf_url": "https://arxiv.org/pdf/2412.17574.pdf",
+      "snippet": "In the domain of Multimodal Large Language Models (MLLMs), achieving human-centric video understanding remains a formidable challenge. Existing benchmarks primarily emphasize objec..."
+    },
+    {
+      "id": "2605.29656",
+      "title": "TRACE: Toulmin-based Reasoning Assessment through Constructive Elements for LLM CoT Evaluation",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "Chain-of-Thought (CoT)",
+        "DeepSeek-R1",
+        "Large language model (LLM)",
+        "Reasoning model",
+        "Language Modeling",
+        "Question Answering",
+        "Reasoning",
+        "Reinforcement Learning"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.29656",
+      "pdf_url": "https://arxiv.org/pdf/2605.29656.pdf",
+      "snippet": "Evaluating open-ended outputs from large language models (LLMs) remains challenging due to the absence of ground truth. Existing metrics rely on final-answer accuracy or surface-le..."
+    },
+    {
+      "id": "2605.29656",
+      "title": "TRACE: Toulmin-based Reasoning Assessment through Constructive Elements for LLM CoT Evaluation",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "Chain-of-Thought (CoT)",
+        "DeepSeek-R1",
+        "Large language model (LLM)",
+        "Reasoning model",
+        "Language Modeling",
+        "Question Answering",
+        "Reasoning",
+        "Reinforcement Learning"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.29656",
+      "pdf_url": "https://arxiv.org/pdf/2605.29656.pdf",
+      "snippet": "Evaluating open-ended outputs from large language models (LLMs) remains challenging due to the absence of ground truth. Existing metrics rely on final-answer accuracy or surface-le..."
+    },
+    {
+      "id": "2505.12273",
+      "title": "LLM-Based Evaluation of Low-Resource Machine Translation: A Reference-less Dialect Guided Approach with a Refined Sylheti-English Benchmark",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "Language Modeling",
+        "Machine Translation"
+      ],
+      "source_url": "https://arxiv.org/abs/2505.12273",
+      "pdf_url": "https://arxiv.org/pdf/2505.12273.pdf",
+      "snippet": "Evaluating machine translation (MT) for low-resource languages poses a persistent challenge, primarily due to the limited availability of high quality reference translations. This..."
+    },
+    {
+      "id": "2606.01317",
+      "title": "SABER: Benchmarking Operational Safety of LLM Coding Agents in Stateful Project Workspaces",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "Coding Agents",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2606.01317",
+      "pdf_url": "https://arxiv.org/pdf/2606.01317.pdf",
+      "snippet": "Large language models are increasingly deployed as coding agents, shifting safety from individual responses to action sequences. Existing benchmarks, however, primarily assess whet..."
+    },
+    {
+      "id": "2603.07427",
+      "title": "AutoControl Arena: Synthesizing Executable Test Environments for Frontier AI Risk Evaluation",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "Hallucination",
+        "Large language model (LLM)",
+        "Agents",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2603.07427",
+      "pdf_url": "https://arxiv.org/pdf/2603.07427.pdf",
+      "snippet": "As Large Language Models (LLMs) evolve into autonomous agents, existing safety evaluations face a fundamental trade-off: manual benchmarks are costly, while LLM-based simulators ar..."
+    },
+    {
+      "id": "2605.20682",
+      "title": "IndusAgent: Reinforcing Open-Vocabulary Industrial Anomaly Detection with Agentic Tools",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Chain-of-Thought (CoT)",
+        "Fine-tuning",
+        "Large language model (LLM)",
+        "Anomaly Detection",
+        "Image Understanding",
+        "Language Modeling",
+        "Reasoning",
+        "Reinforcement Learning"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.20682",
+      "pdf_url": "https://arxiv.org/pdf/2605.20682.pdf",
+      "snippet": "Multimodal large language models (MLLMs) have shown remarkable capability in bridging visual perception and textual reasoning, enabling zero-shot understanding across diverse indus..."
+    },
+    {
+      "id": "2506.01783",
+      "title": "Harnessing Chain-of-Thought Reasoning in Multimodal Large Language Models for Face Anti-Spoofing",
+      "year": 2026,
+      "venue": "CVPR",
+      "keywords": [
+        "Chain-of-Thought (CoT)",
+        "Large language model (LLM)",
+        "LoRa",
+        "PEFT",
+        "Deepfake and Forensics",
+        "Image Understanding",
+        "Language Modeling",
+        "Question Answering",
+        "Reasoning",
+        "Reinforcement Learning"
+      ],
+      "source_url": "https://arxiv.org/abs/2506.01783",
+      "pdf_url": "https://arxiv.org/pdf/2506.01783.pdf",
+      "snippet": "Face Anti-Spoofing (FAS) typically depends on a single visual modality when defending against presentation attacks such as print attacks, screen replays, and 3D masks, resulting in..."
+    },
+    {
+      "id": "2601.02215",
+      "title": "LLM-Empowered Functional Safety and Security by Design in Automotive Systems",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "Autonomous Driving",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2601.02215",
+      "pdf_url": "https://arxiv.org/pdf/2601.02215.pdf",
+      "snippet": "This paper presents LLM-empowered workflow to support Software Defined Vehicle (SDV) software development, covering the aspects of security-aware system topology design, as well as..."
+    },
+    {
+      "id": "2508.10016",
+      "title": "Training-Free Multimodal Large Language Model Orchestration",
+      "year": 2025,
+      "venue": "ICML",
+      "keywords": [
+        "Gemini 1.5",
+        "Large language model (LLM)",
+        "LLaVa",
+        "Image Understanding",
+        "Language Modeling",
+        "Text-to-speech"
+      ],
+      "source_url": "https://arxiv.org/abs/2508.10016",
+      "pdf_url": "https://arxiv.org/pdf/2508.10016.pdf",
+      "snippet": "Different Multimodal Large Language Models (MLLMs) cannot be integrated into\na unified multimodal input-output system directly. In previous work, training\nhas been considered as an..."
+    },
+    {
+      "id": "2503.14853",
+      "title": "Unlocking the Capabilities of Large Vision-Language Models for Generalizable and Explainable Deepfake Detection",
+      "year": 2025,
+      "venue": "ICML",
+      "keywords": [
+        "Embedding",
+        "Large language model (LLM)",
+        "LLaVa",
+        "Multi-turn",
+        "Deepfake and Forensics",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2503.14853",
+      "pdf_url": "https://arxiv.org/pdf/2503.14853.pdf",
+      "snippet": "Current Large Vision-Language Models (LVLMs) have demonstrated remarkable capabilities in understanding multimodal data, but their potential remains underexplored for deepfake dete..."
+    },
+    {
+      "id": "2602.13379",
+      "title": "Unsafer in Many Turns: Benchmarking and Defending Multi-Turn Safety Risks in Tool-Using Agents",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "Large language model (LLM)",
+        "Multi-turn",
+        "RLHF",
+        "Automatic Speech Recognition",
+        "Exploration and Sparse Rewards",
+        "Language Modeling",
+        "Reinforcement Learning"
+      ],
+      "source_url": "https://arxiv.org/abs/2602.13379",
+      "pdf_url": "https://arxiv.org/pdf/2602.13379.pdf",
+      "snippet": "LLM-based agents are becoming increasingly capable, yet their safety lags behind. This creates a gap between what agents can do and should do. This gap widens as agents engage in m..."
+    },
+    {
+      "id": "2605.15687",
+      "title": "ASRU: Activation Steering Meets Reinforcement Unlearning for Multimodal Large Language Models",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "Large language model (LLM)",
+        "Pre-training",
+        "Qwen3",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.15687",
+      "pdf_url": "https://arxiv.org/pdf/2605.15687.pdf",
+      "snippet": "Multimodal large language models (MLLMs) may memorize sensitive cross-modal information during pretraining, making machine unlearning (MU) crucial. Existing methods typically evalu..."
+    },
+    {
+      "id": "2603.21944",
+      "title": "Group3D: MLLM-Driven Semantic Grouping for Open-Vocabulary 3D Object Detection",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "CLIP",
+        "DETR",
+        "Large language model (LLM)",
+        "VGGT",
+        "3D object detection",
+        "3D understanding",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2603.21944",
+      "pdf_url": "https://arxiv.org/pdf/2603.21944.pdf",
+      "snippet": "Open-vocabulary 3D object detection aims to localize and recognize objects beyond a fixed training taxonomy. In multi-view RGB settings, recent approaches often decouple geometry-b..."
+    },
+    {
+      "id": "2510.13654",
+      "title": "Rethinking Evaluation in the Era of Time Series Foundation Models: (Un)known Information Leakage Challenges",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Few-shot prompting",
+        "Fine-tuning",
+        "GPT-3",
+        "Large language model (LLM)",
+        "Scaling laws",
+        "Language Modeling",
+        "Time-series forecasting"
+      ],
+      "source_url": "https://arxiv.org/abs/2510.13654",
+      "pdf_url": "https://arxiv.org/pdf/2510.13654.pdf",
+      "snippet": "Time Series Foundation Models (TSFMs) represent a new paradigm for time-series forecasting, promising zero-shot predictions without the need for task-specific training or fine-tuni..."
+    },
+    {
+      "id": "2510.08602",
+      "title": "Human Texts Are Outliers: Detecting LLM-generated Texts via Out-of-distribution Detection",
+      "year": 2025,
+      "venue": "NeurIPS",
+      "keywords": [
+        "GPT",
+        "GPT-4",
+        "Large language model (LLM)",
+        "LLaMa",
+        "Anomaly Detection",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2510.08602",
+      "pdf_url": "https://arxiv.org/pdf/2510.08602.pdf",
+      "snippet": "The rapid advancement of large language models (LLMs) such as ChatGPT, DeepSeek, and Claude has significantly increased the presence of AI-generated text in digital communication...."
+    },
+    {
+      "id": "2508.01274",
+      "title": "Multi-TW: Benchmarking Multimodal Models on Traditional Chinese Question\n  Answering in Taiwan",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Fine-tuning",
+        "Large language model (LLM)",
+        "LLaMa",
+        "Whisper",
+        "Image Understanding",
+        "Language Modeling",
+        "Omni models"
+      ],
+      "source_url": "https://arxiv.org/abs/2508.01274",
+      "pdf_url": "https://arxiv.org/pdf/2508.01274.pdf",
+      "snippet": "Multimodal Large Language Models (MLLMs) process visual, acoustic, and\ntextual inputs, addressing the limitations of single-modality LLMs. However,\nexisting benchmarks often overlo..."
+    },
+    {
+      "id": "2603.03192",
+      "title": "MoD-DPO: Towards Mitigating Cross-modal Hallucinations in Omni LLMs using Modality Decoupled Preference Optimization",
+      "year": 2026,
+      "venue": "CVPR",
+      "keywords": [
+        "Direct Preference Optimization (DPO)",
+        "GRPO",
+        "Hallucination",
+        "Large language model (LLM)",
+        "Language Modeling",
+        "Omni models"
+      ],
+      "source_url": "https://arxiv.org/abs/2603.03192",
+      "pdf_url": "https://arxiv.org/pdf/2603.03192.pdf",
+      "snippet": "Omni-modal large language models (omni LLMs) have recently achieved strong performance across audiovisual understanding tasks, yet they remain highly susceptible to cross-modal hal..."
+    },
+    {
+      "id": "2604.07429",
+      "title": "GameWorld: Towards Standardized and Verifiable Evaluation of Multimodal Game Agents",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Large language model (LLM)",
+        "Computer Use Agents",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2604.07429",
+      "pdf_url": "https://arxiv.org/pdf/2604.07429.pdf",
+      "snippet": "Towards an embodied generalist for real-world interaction, Multimodal Large Language Model (MLLM) agents still suffer from challenging latency, sparse feedback, and irreversible mi..."
+    },
+    {
+      "id": "2604.08540",
+      "title": "AVGen-Bench: A Task-Driven Benchmark for Multi-Granular Evaluation of Text-to-Audio-Video Generation",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "CLIP",
+        "Diffusion Transformer (DiT)",
+        "Embedding",
+        "Flow matching",
+        "Large language model (LLM)",
+        "Whisper",
+        "Audio Generation",
+        "Image Understanding",
+        "Language Modeling",
+        "Video generation"
+      ],
+      "source_url": "https://arxiv.org/abs/2604.08540",
+      "pdf_url": "https://arxiv.org/pdf/2604.08540.pdf",
+      "snippet": "Text-to-Audio-Video (T2AV) generation is rapidly becoming a core interface for media creation, yet its evaluation remains fragmented. Existing benchmarks largely assess audio and v..."
+    },
+    {
+      "id": "2506.15594",
+      "title": "WikiMixQA: A Multimodal Benchmark for Question Answering over Tables and Charts",
+      "year": 2025,
+      "venue": "arXiv",
+      "keywords": [
+        "Gemini 1.5",
+        "GPT-4",
+        "Large language model (LLM)",
+        "Document Understanding",
+        "Image Understanding",
+        "Language Modeling",
+        "Question Answering"
+      ],
+      "source_url": "https://arxiv.org/abs/2506.15594",
+      "pdf_url": "https://arxiv.org/pdf/2506.15594.pdf",
+      "snippet": "Documents are fundamental to preserving and disseminating information, often incorporating complex layouts, tables, and charts that pose significant challenges for automatic docume..."
+    },
+    {
+      "id": "2506.17901",
+      "title": "PostAlign: Multimodal Grounding as a Corrective Lens for MLLMs",
+      "year": 2026,
+      "venue": "ICLR",
+      "keywords": [
+        "GPT-4",
+        "Hallucination",
+        "Large language model (LLM)",
+        "LLaVa",
+        "Segment Anything (SAM)",
+        "Image Understanding",
+        "Language Modeling",
+        "Question Answering"
+      ],
+      "source_url": "https://arxiv.org/abs/2506.17901",
+      "pdf_url": "https://arxiv.org/pdf/2506.17901.pdf",
+      "snippet": "Multimodal Large Language Models (MLLMs) have shown remarkable performance in vision-language tasks, such as image captioning and visual question answering. However, these models o..."
+    },
+    {
+      "id": "2601.09385",
+      "title": "SLAM-LLM: A Modular, Open-Source Multimodal Large Language Model Framework and Best Practice for Speech, Language, Audio and Music Processing",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "CLIP",
+        "Conformer",
+        "Large language model (LLM)",
+        "LLaMa",
+        "LLaVa",
+        "LoRa",
+        "PEFT",
+        "SLAM",
+        "Whisper",
+        "Audio understanding",
+        "Automatic Speech Recognition",
+        "Image Understanding",
+        "Language Modeling"
+      ],
+      "source_url": "https://arxiv.org/abs/2601.09385",
+      "pdf_url": "https://arxiv.org/pdf/2601.09385.pdf",
+      "snippet": "The recent surge in open-source Multimodal Large Language Models (MLLM) frameworks, such as LLaVA, provides a convenient kickoff for artificial intelligence developers and research..."
+    },
+    {
+      "id": "2605.21852",
+      "title": "Seizure-Semiology-Suite($S^3$): A Clinically Multimodal Dataset, Benchmark, and Models for Seizure Semiology Understanding",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "Autoencoder (AE)",
+        "Fine-tuning",
+        "GRPO",
+        "Large language model (LLM)",
+        "Qwen3",
+        "RLHF",
+        "Image Understanding",
+        "Language Modeling",
+        "Video classification"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.21852",
+      "pdf_url": "https://arxiv.org/pdf/2605.21852.pdf",
+      "snippet": "While Multimodal Large Language Models (MLLMs) have demonstrated remarkable proficiency in general video understanding, their capacity to interpret involuntary, and spatio-temporal..."
+    },
+    {
+      "id": "2605.21852",
+      "title": "Seizure-Semiology-Suite($S^3$): A Clinically Multimodal Dataset, Benchmark, and Models for Seizure Semiology Understanding",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "Autoencoder (AE)",
+        "Fine-tuning",
+        "GRPO",
+        "Large language model (LLM)",
+        "Qwen3",
+        "RLHF",
+        "Image Understanding",
+        "Language Modeling",
+        "Video classification"
+      ],
+      "source_url": "https://arxiv.org/abs/2605.21852",
+      "pdf_url": "https://arxiv.org/pdf/2605.21852.pdf",
+      "snippet": "While Multimodal Large Language Models (MLLMs) have demonstrated remarkable proficiency in general video understanding, their capacity to interpret involuntary, and spatio-temporal..."
+    },
+    {
+      "id": "2601.13836",
+      "title": "FutureOmni: Evaluating Future Forecasting from Omni-Modal Context for Multimodal LLMs",
+      "year": 2026,
+      "venue": "ICML",
+      "keywords": [
+        "CLIP",
+        "Large language model (LLM)",
+        "LLaVa",
+        "Vision Transformer",
+        "Whisper",
+        "Image Understanding",
+        "Language Modeling",
+        "Omni models",
+        "Question Answering"
+      ],
+      "source_url": "https://arxiv.org/abs/2601.13836",
+      "pdf_url": "https://arxiv.org/pdf/2601.13836.pdf",
+      "snippet": "Although Multimodal Large Language Models (MLLMs) demonstrate strong omni-modal perception, their ability to forecast future events from audio-visual cues remains largely unexplore..."
+    },
+    {
+      "id": "2603.19217",
+      "title": "LVOmniBench: Pioneering Long Audio-Video Understanding Evaluation for Omnimodal LLMs",
+      "year": 2026,
+      "venue": "arXiv",
+      "keywords": [
+        "Gemini 1.5",
+        "Gemini 2.5",
+        "Large language model (LLM)",
+        "LLaVa",
+        "Language Modeling",
+        "Omni models",
+        "Question Answering",
+        "Video classification"
+      ],
+      "source_url": "https://arxiv.org/abs/2603.19217",
+      "pdf_url": "https://arxiv.org/pdf/2603.19217.pdf",
+      "snippet": "Recent advancements in omnimodal large language models (OmniLLMs) have significantly improved the comprehension of audio and video inputs. However, current evaluations primarily fo..."
+    }
+  ],
+  "metadata": {
+    "agent": "chuangx",
+    "created_at": "2026-07-20T10:54:38Z",
+    "mode": "full",
+    "top_k": 2,
+    "language": "zh",
+    "literature_search": {
+      "query_terms": [
+        "多模态大模型安全检测",
+        "multimodal",
+        "LLM",
+        "safety",
+        "多模态",
+        "multi-modal",
+        "vision-language",
+        "cross-modal",
+        "大模型",
+        "large language model",
+        "foundation model",
+        "large models",
+        "安全",
+        "security",
+        "robustness",
+        "adversarial",
+        "risk",
+        "检测",
+        "detection",
+        "evaluation",
+        "benchmark",
+        "assessment"
+      ],
+      "total_documents": 10218,
+      "matched_documents": 10167,
+      "top_hit_terms": [
+        "LLM",
+        "large language model",
+        "benchmark",
+        "evaluation",
+        "multimodal",
+        "detection",
+        "robustness",
+        "safety",
+        "assessment",
+        "adversarial",
+        "cross-modal",
+        "vision-language",
+        "risk",
+        "multi-modal",
+        "security",
+        "foundation model"
+      ],
+      "time_range": null
+    },
+    "clusters": [
+      {
+        "id": "CLUSTER-01",
+        "name": "Language Modeling",
+        "size": 78,
+        "representative_docs": [
+          "2504.07887",
+          "2506.12992",
+          "2606.11409",
+          "2504.10158",
+          "2604.10971"
+        ],
+        "summary": "围绕 Language Modeling 的文献簇，共 78 篇候选文献。"
+      },
+      {
+        "id": "CLUSTER-02",
+        "name": "Large language model (LLM)",
+        "size": 76,
+        "representative_docs": [
+          "2504.07887",
+          "2506.12992",
+          "2606.11409",
+          "2504.10158",
+          "2604.10971"
+        ],
+        "summary": "围绕 Large language model (LLM) 的文献簇，共 76 篇候选文献。"
+      },
+      {
+        "id": "CLUSTER-03",
+        "name": "to",
+        "size": 80,
+        "representative_docs": [
+          "2504.07887",
+          "2506.12992",
+          "2606.11409",
+          "2504.10158",
+          "2604.10971"
+        ],
+        "summary": "围绕 to 的文献簇，共 80 篇候选文献。"
+      },
+      {
+        "id": "CLUSTER-04",
+        "name": "Image Understanding",
+        "size": 50,
+        "representative_docs": [
+          "2506.12992",
+          "2504.10158",
+          "2604.10971",
+          "2603.02482",
+          "2602.24021"
+        ],
+        "summary": "围绕 Image Understanding 的文献簇，共 50 篇候选文献。"
+      },
+      {
+        "id": "CLUSTER-05",
+        "name": "of",
+        "size": 78,
+        "representative_docs": [
+          "2504.07887",
+          "2506.12992",
+          "2606.11409",
+          "2504.10158",
+          "2604.10971"
+        ],
+        "summary": "围绕 of 的文献簇，共 78 篇候选文献。"
+      },
+      {
+        "id": "CLUSTER-06",
+        "name": "in",
+        "size": 80,
+        "representative_docs": [
+          "2504.07887",
+          "2506.12992",
+          "2606.11409",
+          "2504.10158",
+          "2604.10971"
+        ],
+        "summary": "围绕 in 的文献簇，共 80 篇候选文献。"
+      },
+      {
+        "id": "CLUSTER-07",
+        "name": "language",
+        "size": 79,
+        "representative_docs": [
+          "2504.07887",
+          "2506.12992",
+          "2606.11409",
+          "2504.10158",
+          "2604.10971"
+        ],
+        "summary": "围绕 language 的文献簇，共 79 篇候选文献。"
+      },
+      {
+        "id": "CLUSTER-08",
+        "name": "we",
+        "size": 80,
+        "representative_docs": [
+          "2504.07887",
+          "2506.12992",
+          "2606.11409",
+          "2504.10158",
+          "2604.10971"
+        ],
+        "summary": "围绕 we 的文献簇，共 80 篇候选文献。"
+      }
+    ],
+    "completed_at": "2026-07-20T10:54:39Z",
+    "document_count": 80,
+    "trend_count": 8,
+    "gap_count": 8,
+    "candidate_count": 8,
+    "proposal_count": 2,
+    "output_contract": {
+      "for_wengao": "innovations[*].downstream_wengao_inputs",
+      "score_formula": "0.35*Novelty + 0.25*Feasibility + 0.30*Impact - 0.10*Risk"
+    }
+  }
+}

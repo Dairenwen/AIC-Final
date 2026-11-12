@@ -1,0 +1,316 @@
+/*
+ * Motion layer.
+ *
+ * Four kinds of movement, each tied to a cause:
+ *   1. arriving   – a page or a list of results enters (rise + fade, staggered)
+ *   2. answering  – a control responds to the pointer (lift, press, draw)
+ *   3. tracking   – an indicator follows the current selection (slide)
+ *   4. waiting    – something is loading (shimmer, sweep)
+ *
+ * Only transform, opacity and stroke-dashoffset are animated, so nothing here
+ * triggers layout.  Durations and curves come from tokens.css.  The global
+ * reduced-motion rule in base.css collapses every animation in this file;
+ * the block at the end additionally removes the travel distance.
+ */
+
+@keyframes zy-rise {
+  from {
+    opacity: 0;
+    transform: translate3d(0, var(--rise-distance, 10px), 0);
+  }
+}
+
+@keyframes zy-fade {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes zy-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+}
+
+@keyframes zy-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes zy-shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes zy-sweep {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(350%);
+  }
+}
+
+@keyframes zy-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ====================================================================== *
+ * 1. Arriving
+ * ====================================================================== */
+
+/* Route change.  The old page leaves quickly and without travel so the new
+ * one is never kept waiting; the new page rises a short distance. */
+.page-enter-active {
+  animation: zy-rise var(--duration-base) var(--ease-standard) both;
+  --rise-distance: 6px;
+}
+
+.page-leave-active {
+  transition: opacity var(--duration-instant) var(--ease-exit);
+}
+
+.page-leave-to {
+  opacity: 0;
+}
+
+/* Children enter one after another.  Capped at twelve steps so a long list
+ * does not make its last rows wait. */
+.stagger > * {
+  animation: zy-rise var(--duration-slow) var(--ease-standard) both;
+  animation-delay: calc(var(--stagger-step) * var(--i, 12));
+}
+
+.stagger > :nth-child(1) { --i: 0; }
+.stagger > :nth-child(2) { --i: 1; }
+.stagger > :nth-child(3) { --i: 2; }
+.stagger > :nth-child(4) { --i: 3; }
+.stagger > :nth-child(5) { --i: 4; }
+.stagger > :nth-child(6) { --i: 5; }
+.stagger > :nth-child(7) { --i: 6; }
+.stagger > :nth-child(8) { --i: 7; }
+.stagger > :nth-child(9) { --i: 8; }
+.stagger > :nth-child(10) { --i: 9; }
+.stagger > :nth-child(11) { --i: 10; }
+.stagger > :nth-child(12) { --i: 11; }
+
+.rise-in {
+  animation: zy-rise var(--duration-slow) var(--ease-standard) both;
+  animation-delay: calc(var(--stagger-step) * var(--i, 0));
+}
+
+.fade-in {
+  animation: zy-fade var(--duration-base) var(--ease-standard) both;
+}
+
+/* Swapping one block for another in place (form modes, tab panels). */
+.swap-enter-active {
+  animation: zy-rise var(--duration-base) var(--ease-standard) both;
+  --rise-distance: 4px;
+}
+
+.swap-leave-active {
+  display: none;
+}
+
+/* Menus and dialogs grow from where they were opened. */
+.pop-enter-active {
+  animation: zy-pop var(--duration-base) var(--ease-standard) both;
+}
+
+.pop-leave-active {
+  transition: opacity var(--duration-instant) var(--ease-exit);
+}
+
+.pop-leave-to {
+  opacity: 0;
+}
+
+/* Rows that are added to or removed from a list. */
+.list-enter-active {
+  animation: zy-rise var(--duration-base) var(--ease-standard) both;
+}
+
+.list-leave-active {
+  transition: opacity var(--duration-fast) var(--ease-exit);
+}
+
+.list-leave-to {
+  opacity: 0;
+}
+
+.list-move {
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+
+/* ====================================================================== *
+ * 2. Answering
+ * ====================================================================== */
+
+/* A surface that can be opened lifts towards the pointer. */
+.lift {
+  transition:
+    transform var(--duration-base) var(--ease-standard),
+    box-shadow var(--duration-base) var(--ease-standard),
+    border-color var(--duration-base) var(--ease-standard);
+}
+
+@media (hover: hover) {
+  .lift:hover {
+    transform: translate3d(0, -2px, 0);
+    box-shadow: var(--shadow-2);
+    border-color: var(--border-default);
+  }
+}
+
+.lift:active {
+  transform: translate3d(0, 0, 0) scale(0.99);
+  transition-duration: var(--duration-instant);
+}
+
+/* Line icons draw themselves: once when they arrive with `.zy-icon--draw`,
+ * and again whenever the surface around them is hovered. */
+.zy-icon > * {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 0;
+}
+
+.zy-icon__dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+.zy-icon--draw > *:not(.zy-icon__dot) {
+  animation: zy-draw 720ms var(--ease-standard) both;
+  animation-delay: 120ms;
+}
+
+.zy-icon--draw > .zy-icon__dot {
+  animation: zy-fade var(--duration-base) var(--ease-standard) both;
+  animation-delay: 620ms;
+}
+
+@media (hover: hover) {
+  .draw-on-hover:hover .zy-icon > *:not(.zy-icon__dot) {
+    animation: zy-draw 560ms var(--ease-standard) both;
+  }
+}
+
+/* A trailing arrow leans in the direction it leads. */
+.nudge-arrow > svg:last-child {
+  transition: transform var(--duration-base) var(--ease-standard);
+}
+
+@media (hover: hover) {
+  .nudge-arrow:hover > svg:last-child,
+  .draw-on-hover:hover .nudge-arrow > svg:last-child {
+    transform: translate3d(3px, 0, 0);
+  }
+}
+
+/* ====================================================================== *
+ * 3. Tracking
+ * ====================================================================== */
+
+/* One indicator slides between entries instead of each entry switching its
+ * own background on and off.  Position is supplied by the component. */
+.track-indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background: var(--bg-selected);
+  border-radius: var(--radius-control);
+  opacity: 0;
+  transform: translate3d(var(--track-x, 0), var(--track-y, 0), 0);
+  transition:
+    transform var(--duration-slow) var(--ease-standard),
+    width var(--duration-slow) var(--ease-standard),
+    height var(--duration-slow) var(--ease-standard),
+    opacity var(--duration-fast) var(--ease-standard);
+}
+
+.track-indicator--ready {
+  opacity: 1;
+}
+
+/* The first placement must not animate from the corner. */
+.track-indicator--instant {
+  transition: none;
+}
+
+/* ====================================================================== *
+ * 4. Waiting
+ * ====================================================================== */
+.skeleton {
+  background-image: linear-gradient(
+    100deg,
+    var(--bg-sunken) 30%,
+    var(--bg-surface) 50%,
+    var(--bg-sunken) 70%
+  );
+  background-size: 200% 100%;
+  animation: zy-shimmer 1.4s linear infinite;
+}
+
+.spin {
+  animation: zy-spin 0.9s linear infinite;
+}
+
+/* Indeterminate progress: a short bar sweeping a hairline track. */
+.sweep {
+  position: relative;
+  height: 2px;
+  overflow: hidden;
+  background: var(--border-hairline);
+  border-radius: var(--radius-pill);
+}
+
+.sweep::after {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 30%;
+  content: '';
+  background: var(--accent-fill);
+  border-radius: inherit;
+  animation: zy-sweep 1.3s var(--ease-exit) infinite;
+}
+
+/* ====================================================================== *
+ * Reduced motion: keep the fades, drop the travel and the drawing.
+ * ====================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  .page-enter-active,
+  .stagger > *,
+  .rise-in,
+  .swap-enter-active,
+  .list-enter-active {
+    --rise-distance: 0px;
+  }
+
+  .lift:hover,
+  .lift:active,
+  .nudge-arrow:hover > svg:last-child {
+    transform: none;
+  }
+
+  .zy-icon--draw > *,
+  .draw-on-hover:hover .zy-icon > * {
+    animation: none;
+  }
+
+  .skeleton,
+  .sweep::after {
+    animation: none;
+  }
+}

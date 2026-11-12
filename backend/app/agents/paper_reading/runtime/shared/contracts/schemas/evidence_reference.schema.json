@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhiyan.local/contracts/evidence_reference.schema.json",
+  "title": "EvidenceReference",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "evidence_id", "paper_id", "evidence_type", "page_number", "section_path", "object_id", "evidence_text", "content_sha256"],
+  "properties": {
+    "schema_version": {"const": "evidence_reference_v1"},
+    "evidence_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "paper_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "evidence_type": {"enum": ["TEXT", "EQUATION", "FIGURE", "TABLE", "CAPTION", "REFERENCE"]},
+    "page_number": {"type": "integer", "minimum": 1},
+    "section_path": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1, "maxLength": 300}},
+    "object_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "evidence_text": {"type": "string", "minLength": 1, "maxLength": 2000},
+    "content_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

@@ -1,0 +1,58 @@
+智研华为云私有部署包说明（2026-11-10）
+
+本包取代 2026-11-05 的旧包（上一级目录中的 zhiyan-complete-private.tar，未删除）。
+内容范围与旧包相同：代码、数据库备份、已下载的论文、历史附件、公式识别 CPU 权重
+和 Docling 模型。27B 模型不在包内。包内含历史用户数据，只能私下传输，不能公开或开源；
+生产密钥、证书和任何 .env 文件都不在包内。
+
+一、与旧包相比的变化
+1. 前端：界面整体重做（文字、图标、布局、动效），知识库管理和训练集生成两个页面
+   也已统一风格。功能入口和接口没有变化。
+2. 后端：
+   - 未指定模型的任务使用用户在模型库里设为「默认」的对话模型；自研微调模型
+     未启用时不再向它发请求。
+   - 新增修改密码接口，个人中心的「修改密码」现在真正生效。
+   - 对 DeepSeek 这类带推理过程的模型，短回答不再被推理过程占满而返回空内容。
+   - Redis 已真实使用：短信验证码发送间隔、智能体就绪状态缓存。
+3. 生产编排（deploy/huawei）：数据库改用华为云 RDS for PostgreSQL 18，缓存改用
+   华为云 DCS Redis，云主机上不再运行数据库和 Redis 容器。
+   .env.production 需要新增 POSTGRES_HOST、POSTGRES_SERVER_PORT、REDIS_URL，
+   见 deploy/huawei/production.env.example 和 生产部署说明.txt 第 2a、2b、2c 条。
+
+二、部署前仍需准备（均未就绪，本包无法替代）
+1. 华为云 ECS（Linux x86_64，Docker，Docker Compose 2.24.6 或更高）。
+2. RDS for PostgreSQL 18 实例和 DCS Redis 实例，与 ECS 同一 VPC。
+   赛题要求通过 CodeArts 智能体和官方 Skills 开通、关联这些云服务并部署，
+   过程要留存真实记录；步骤指引见包内 .codeartsdoer/skills/zhiyan-huawei-deploy/SKILL.md。
+3. 已备案域名和 HTTPS 证书。PUBLIC_ORIGIN 目前留空，证书目录也是空的；
+   在补齐之前 deploy.sh --check 会明确拒绝，不会以不安全方式启动。
+4. 模型 API Key：包内没有任何 Key。部署后由各用户在「个人中心 / 模型库」填写，
+   或在 .env.production 中填写系统级的翻译、向量和重排接口 Key。
+
+三、解压与部署
+与旧包相同：
+  umask 077
+  shasum -a 256 -c zhiyan-complete-private.tar.sha256     （Linux 上用 sha256sum -c）
+  mkdir -m 700 ~/zhiyan && tar -xf zhiyan-complete-private.tar -C ~/zhiyan && cd ~/zhiyan
+  按 deploy/huawei/生产部署说明.txt 准备 .env.production 和证书后：
+  bash deploy/huawei/deploy.sh --check
+  bash deploy/huawei/deploy.sh --apply
+
+只想在一台普通 Linux 或 macOS 机器上本机运行（数据库和 Redis 用容器，不需要域名）：
+  cd deploy/docker && ./start.sh        → http://127.0.0.1:18080
+
+四、已验证与未验证
+已在本机 Docker（macOS arm64）验证：
+- 后端自动测试 481 项通过、9 项跳过；前端类型检查通过，单元测试 56 项通过。
+- 33 个页面逐一打开，无控制台报错和失败请求；23 项界面操作流程通过
+  （登录、导航、筛选搜索、四个转换工具、修改密码校验、深浅色、移动端抽屉等）。
+- 使用 DeepSeek 官方接口真实运行：首页对话、审稿意见回复、文稿辅助、文献检索；
+  公式图片识别在容器内真实运行。
+- Redis 真实读写；停掉 Redis 后服务照常、恢复后自动重连。
+- 生产编排文件能正确渲染为「无数据库和 Redis 容器、后端连接外部地址」。
+未验证（需要真实云资源）：
+- 在华为云 ECS x86_64 上的构建与运行；连接真实 RDS 和 DCS 实例；
+  向 RDS 恢复历史数据库；域名、证书和 HTTPS；Elasticsearch 在云端的运行。
+- 论文精读、专利撰写、创新点生成、合规检测、绘图、翻译、投稿推荐、智囊团
+  这几个智能体本轮没有用真实模型完整跑过。
+- CodeArts 官方 Skills 的实际调用与云服务关联。

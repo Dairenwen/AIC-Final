@@ -1,0 +1,32 @@
+[
+  {
+    "publication_number": "FIXTURE-CN-0001",
+    "application_number": "FIXTURE-APP-0001",
+    "title": "分层缓存对象迁移方法（测试 Fixture）",
+    "applicant": "虚构申请人甲",
+    "filing_date": "2025-01-01",
+    "publication_date": "2025-06-01",
+    "abstract": "固定测试数据：依据访问频率将对象在两个缓存层之间迁移，用于离线合同测试，不代表真实专利著录。",
+    "source_url": "fixture://cnipa/FIXTURE-CN-0001",
+    "source_name": "TEST_FIXTURE"
+  },
+  {
+    "publication_number": "FIXTURE-CN-0002",
+    "application_number": "FIXTURE-APP-0002",
+    "title": "缓存热度预测方法（测试 Fixture）",
+    "applicant": "虚构申请人乙",
+    "filing_date": "2025-02-01",
+    "publication_date": "2025-07-01",
+    "abstract": "固定测试数据：使用两个统计窗口估计对象热度，用于离线合同测试，不代表真实专利著录。",
+    "source_url": "fixture://cnipa/FIXTURE-CN-0002",
+    "source_name": "TEST_FIXTURE"
+  },
+  {
+    "publication_number": "FIXTURE-CN-0001",
+    "application_number": "FIXTURE-APP-0001",
+    "title": "重复项用于去重测试",
+    "applicant": "虚构申请人甲",
+    "source_url": "fixture://cnipa/FIXTURE-CN-0001",
+    "source_name": "TEST_FIXTURE"
+  }
+]

@@ -1,0 +1,37 @@
+qwen:
+  base_url: "${QWEN_BASE_URL}"
+  model: "${QWEN_MODEL_NAME}"
+  api_key_env: "QWEN_API_KEY"
+  timeout_seconds: 90
+  retries: 2
+  temperature: 0.2
+  max_tokens: 8192
+  response_format: json_object
+  # V1.0 要求 OpenAI-compatible 结构化 JSON 输出。
+
+workflow:
+  mode: flow_first
+  # flow_first 为默认模式；strict 保留原有失败关闭行为。
+
+cnipa:
+  tool: "vendor/patent-disclosure-skill/tools/cnipa_epub_search.py"
+  timeout_seconds: 60
+  max_queries: 4
+  allow_fixture_fallback: false
+  # 正式模式绝不自动启用 Fixture 回退。
+  fixture: "patent_agent/fixtures/cnipa_hits.json"
+
+parser:
+  min_effective_characters: 50
+
+export:
+  docx_required: false
+  docx_font: "Noto Sans CJK SC"
+
+paths:
+  runs_dir: "runs"
+  outputs_dir: "outputs"
+
+logging:
+  level: "INFO"
+  include_prompt_bodies: false

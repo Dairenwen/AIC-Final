@@ -1,0 +1,56 @@
+# Python
+**/.venv/
+**/.tmp/
+**/.pip-cache/
+**/venv/
+**/__pycache__/
+**/.pytest_cache/
+**/.pytest-*/
+**/.mypy_cache/
+**/.ruff_cache/
+*.py[cod]
+.coverage
+coverage/
+
+# Frontend
+**/node_modules/
+**/.puppeteer-cache/
+frontend/dist/
+frontend/*.tsbuildinfo
+
+# Local configuration and runtime output
+**/.env
+**/.env.local
+**/.env.production
+!**/.env.example
+*.log
+output/
+backend/generated/
+backend/uploads/
+backend/var/
+backend/submission_agent.db
+backend/knowledge_base_runtime/infrastructure/file-storage/data/pdfs/
+backend/knowledge_base_runtime/infrastructure/file-storage/data/uploads/
+
+# IDE and OS
+.idea/
+.vscode/
+.trae/
+.DS_Store
+Thumbs.db
+
+# Huawei migration: additional private/runtime files
+**/.env.*
+!**/.env.example
+**/.venv-*/
+backend/tmp/
+backend/knowledge_base_runtime/infrastructure/file-storage/data/
+*.dump
+*.sql.gz
+
+# Downloaded runtime weights are delivered separately from source.
+backend/app/tools/formula_recognition/runtime/unimernet/models/unimernet_base/
+
+# Handoff backups and paper corpus are private deployment data, not source.
+/补充/
+/文献/

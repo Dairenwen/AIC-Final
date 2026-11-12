@@ -1,0 +1,47 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "langgraph-agent"
+version = "0.1.0"
+description = "审稿意见回复 Agent 可导入包（LangGraph 工作流，无 Web 依赖）"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "langchain==1.3.14",
+    "langchain-core==1.4.9",
+    "langchain-openai==1.3.5",
+    "langgraph==1.2.9",
+    "langgraph-checkpoint==4.1.1",
+    "langgraph-checkpoint-postgres==3.1.0",
+    "openai==2.46.0",
+    "sqlalchemy==2.0.51",
+    "alembic==1.18.5",
+    "psycopg[binary]==3.3.4",
+    "pydantic==2.13.4",
+    "pydantic-settings>=2.0,<3",
+    "python-dotenv==1.2.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src", "."]
+markers = [
+    "integration: 需要真实数据库、外部 LLM 或本机大文件的集成测试",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning",
+    # LangGraph checkpoint msgpack 对 str Enum 反序列化的提示（不影响功能）
+    "ignore:.*msgpack.*:UserWarning",
+    "ignore:.*orjson.*:UserWarning",
+    "ignore:.*Enum.*checkpoint.*:UserWarning",
+]

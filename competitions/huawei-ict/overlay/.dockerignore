@@ -1,0 +1,18 @@
+# Docker builds use source and dependency manifests only; private data and
+# heavyweight runtime assets are mounted read-only at container startup.
+补充/
+文献/
+**/.env
+**/.env.*
+!**/.env.example
+**/.venv/
+**/node_modules/
+**/__pycache__/
+**/.pytest_cache/
+**/.mypy_cache/
+**/*.pyc
+**/unimernet/models/
+**/generated/
+**/uploads/
+frontend/dist/
+deploy/huawei/tls/

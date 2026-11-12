@@ -1,0 +1,624 @@
+Window: "预览 旧服务器交接清单.md — ICT", App: CodeArts Agent.
+0 标准窗口 预览 旧服务器交接清单.md — ICT, Secondary Actions: Raise
+	1 container 预览 旧服务器交接清单.md — ICT
+		2 container
+			3 HTML 内容 预览 旧服务器交接清单.md — ICT, URL: vscode-file://vscode-app/Applications/CodeArts%20Agent.app/Contents/Resources/app/out/vs/code/electron-browser/workbench/workbench.html
+				4 container
+					5 container
+						6 container
+							7 container
+								8 文本 IDE
+								9 文本 Space
+							10 工具栏
+								11 按钮 ICT
+							12 工具栏 标题操作
+								13 按钮 限时福利
+								14 复选框 Description: 切换主侧栏 (⌘B), Value: 1
+									15 文本 
+								16 复选框 Description: 切换面板 (⌘J), Value: 0
+									17 文本 
+								18 复选框 Description: 关闭AI侧边栏 (⌥⌘B), Value: 1
+									19 文本 
+								20 按钮 设置
+									21 文本 
+								22 按钮 满意度调研
+									23 文本 
+								24 弹出式按钮 hid_cqgw76e3qpmcrt2
+									25 container hid_cqgw76e3qpmcrt2
+										26 文本 
+							27 工具栏 标题操作
+						28 container
+							29 container
+								30 container
+									31 container
+										32 container
+											33 container
+												34 标签页组 活动视图切换器
+													35 标签 (selected) 资源管理器 (⇧⌘E), Value: 1
+														36 container 资源管理器 (⇧⌘E)
+															37 文本 
+													38 标签 (settable, integer) 搜索 (⇧⌘F), Value: 0
+														39 container 搜索 (⇧⌘F)
+															40 文本 
+													41 标签 (settable, integer) Description: 源代码管理 (⌃⇧G), Value: 0
+														42 container 源代码管理 (⌃⇧G)
+															43 文本 
+													44 标签 (settable, integer) 运行和调试 (⇧⌘D), Value: 0
+														45 container 运行和调试 (⇧⌘D)
+															46 文本 
+													47 标签 (settable, integer) 远程资源管理器, Value: 0
+														48 container 远程资源管理器
+															49 文本 
+													50 标签 (settable, integer) 扩展 (⇧⌘X), Value: 0
+														51 container 扩展 (⇧⌘X)
+															52 文本 
+													53 标签 (settable, integer) Description: CodebaseWiki, Value: 0
+														54 container CodebaseWiki
+													55 标签 (settable, integer) Description: 远程开发, Value: 0
+														56 container 远程开发
+															57 文本 
+													58 标签 (settable, integer) Claude Code, Value: 0
+														59 container Claude Code
+													60 标签 (settable, integer) Description: Continue, Value: 0
+														61 container Continue
+												62 内容列表 管理
+											63 container
+												64 标题 资源管理器, Value: 2
+													65 文本 资源管理器
+												66 工具栏 资源管理器操作
+													67 弹出式按钮 视图和更多操作…
+												68 container
+													69 container
+														70 按钮 资源管理器部分: ICT
+															71 文本 
+															72 标题 Description: 资源管理器部分: ICT, Value: 3
+																73 文本 ICT
+														74 外框 文件资源管理器
+															75 container
+																76 row .arts
+																	77 container
+																		78 文本 
+																		79 container ~/Downloads/比赛/ICT/.arts
+																			80 文本 .arts
+																81 row .codeartsdoer
+																	82 container
+																		83 文本 
+																		84 container ~/Downloads/比赛/ICT/.codeartsdoer
+																			85 文本 .codeartsdoer
+																86 row 武汉理工大学—学科垂类大模型与创新应用开发—智研——面向人工智能学科科研全流程赋能的垂类大模型应用系统
+																	87 container
+																		88 文本 
+																		89 container ~/Downloads/比赛/ICT/武汉理工大学—学科垂类大模型与创新应用开发—智研——面向人工智能学科科研全流程赋能的垂类大模型应用系统
+																			90 文本 武汉理工大学—学科垂类大模型与创新应用开发—智研——面向人工智能学科科研全流程赋能的垂类大模型应用系统
+																91 row newcode
+																	92 container
+																		93 文本 
+																		94 container ~/Downloads/比赛/ICT/newcode
+																			95 文本 newcode
+																96 row zhiyan_sub
+																	97 container
+																		98 文本 
+																		99 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub
+																			100 文本 zhiyan_sub
+																101 row 补充
+																	102 container
+																		103 文本 
+																		104 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/补充
+																			105 文本 补充
+																106 row 文献
+																	107 container
+																		108 文本 
+																		109 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/文献
+																			110 文本 文献
+																111 row backend
+																	112 container
+																		113 文本 
+																		114 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/backend
+																			115 文本 backend
+																116 row deploy
+																	117 container
+																		118 文本 
+																		119 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/deploy
+																			120 文本 deploy
+																121 row huawei
+																	122 container
+																		123 文本 
+																		124 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/docs/huawei
+																			125 container
+																				126 row docs
+																					127 文本 docs
+																					128 文本 /
+																				129 row huawei, compact, docs
+																					130 文本 huawei
+																131 row (selected) 旧服务器交接清单.md
+																	132 container
+																		133 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/docs/huawei/旧服务器交接清单.md
+																			134 文本 旧服务器交接清单.md
+																135 row 修复进度.md
+																	136 container
+																		137 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/docs/huawei/修复进度.md
+																			138 文本 修复进度.md
+																139 row acceptance.md
+																	140 container
+																		141 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/docs/huawei/acceptance.md
+																			142 文本 acceptance.md
+																143 row frontend
+																	144 container
+																		145 文本 
+																		146 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/frontend
+																			147 文本 frontend
+																148 row scripts
+																	149 container
+																		150 文本 
+																		151 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/scripts
+																			152 文本 scripts
+																153 row .gitignore
+																	154 container
+																		155 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/.gitignore
+																			156 文本 .gitignore
+																157 row docker-compose.yml
+																	158 container
+																		159 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/docker-compose.yml
+																			160 文本 docker-compose.yml
+																161 row README.md
+																	162 container
+																		163 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/README.md
+																			164 文本 README.md
+																165 row original-source-sha256.json
+																	166 container
+																		167 container ~/Downloads/比赛/ICT/newcode/original-source-sha256.json
+																			168 文本 original-source-sha256.json
+																169 row 智研_华为ICT创新赛赛题一_工程改造清单.md
+																	170 container
+																		171 container ~/Downloads/比赛/ICT/智研_华为ICT创新赛赛题一_工程改造清单.md
+																			172 文本 智研_华为ICT创新赛赛题一_工程改造清单.md
+													173 按钮 大纲部分
+														174 文本 
+														175 标题 大纲, Value: 3
+															176 文本 大纲
+													177 按钮 时间线部分
+														178 文本 
+														179 标题 时间线, Value: 3
+															180 文本 时间线
+											181 container
+												182 container
+												183 container
+													184 container
+														185 container
+															186 标签页组
+																187 标签 (settable, integer) Description: 旧服务器交接清单.md, Value: 0
+																	188 container ~/Downloads/比赛/ICT/newcode/zhiyan_sub/docs/huawei/旧服务器交接清单.md
+																		189 文本 旧服务器交接清单.md
+																	190 工具栏 选项卡操作
+																		191 按钮 关闭 (⌘W)
+																			192 文本 
+																193 标签 (selected) Description: 预览 旧服务器交接清单.md, Value: 1
+																	194 container 预览 旧服务器交接清单.md
+																		195 文本 预览 旧服务器交接清单.md
+																	196 工具栏 选项卡操作
+																		197 按钮 关闭 (⌘W)
+																			198 文本 
+															199 工具栏 编辑器操作
+																200 按钮 Run Code (⌃⌥N)
+																	201 文本 
+																202 按钮 Claude Code: Open
+																203 按钮 Open Codex Sidebar
+																204 按钮 显示源
+																	205 文本 
+																206 按钮 返回 (⌃-)
+																	207 文本 
+																208 按钮 前进 (⌃⇧-)
+																	209 文本 
+																210 按钮 向右拆分编辑器 [⌥] 向下拆分编辑器
+																	211 文本 
+																212 按钮 关闭 (⌘W) [⌥] 全部关闭 (⌘K W)
+																	213 文本 
+																214 弹出式按钮 更多操作...
+																	215 文本 
+								216 container
+									217 container remote
+										218 按钮 remote
+									219 container 没有问题
+										220 按钮 没有问题
+											221 文本 
+											222 文本  0 
+											223 文本 
+											224 文本  0
+									225 container resource-manager-high-usage, 打开资源管理器
+										226 按钮 resource-manager-high-usage, 打开资源管理器
+									227 container 通知
+										228 按钮 通知
+									229 container logo-ready-light LSP服务已停止
+										230 按钮 logo-ready-light LSP服务已停止
+											231 文本 
+											232 文本   LSP服务已停止
+									233 container broadcast Go Live, Click to run live server
+										234 按钮 broadcast Go Live, Click to run live server
+											235 文本 
+											236 文本  Go Live
+									237 container 重启AI对话
+										238 按钮 重启AI对话
+									239 container logo-ready-light 华为云码道CodeArts代码智能体
+										240 按钮 logo-ready-light 华为云码道CodeArts代码智能体
+											241 文本 
+											242 文本   华为云码道CodeArts代码智能体
+					243 文本 辅助侧边栏已显示
+					244 HTML 内容 vscode-webview://17np1q4k61tk0p0ffvgq67prk8kibhcn7glv1qh0ch0t9eibeioa/index.html?id=9f161f68-6712-4070-9163-b5c7284e4c37&parentId=1&origin=a3d85721-b3b7-497e-88b0-7fd5ba9d0989&swVersion=4&extensionId=huaweicloud.codearts-snap&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app&purpose=webviewView
+						245 container 聊天
+							246 HTML 内容 vscode-webview://17np1q4k61tk0p0ffvgq67prk8kibhcn7glv1qh0ch0t9eibeioa/index.html?id=9f161f68-6712-4070-9163-b5c7284e4c37&parentId=1&origin=a3d85721-b3b7-497e-88b0-7fd5ba9d0989&swVersion=4&extensionId=huaweicloud.codearts-snap&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app&purpose=webviewView#/SnapChat
+								247 container
+									248 container
+										249 图像
+										250 图像
+										251 文本 
+										252 文本 
+										253 container
+											254 文本 请进行一次真实的只读部署方案审查，仅在本对话回复，不创建、修改、删除任何文件，不运行终端命令，不调用云资源或外部API。不要读取工作区文件、.env、密钥、数据库、论文或附件，只使用以下脱敏信息。项目为智研科研平台，Vue3前端、Flask后端、PostgreSQL18、嵌入式知识库、Milvus Lite、本地BGE-M3和重排模型、CPU公式识别；保留现有技术栈，27B不部署。已有Linux测试240项和前端50项通过，但尚未在华为云上线。部署方案：Python3.12 venv、Node22、Gunicorn单worker/gthread4线程，Nginx HTTPS，systemd以zhiyan用户启动，EnvironmentFile=/etc/zhiyan.env，数据根/srv/zhiyan-data。现有deploy.sh先运行生产预检，然后备份已有服务配置，安装systemd和Nginx配置，nginx -t、restart服务、reload nginx、健康检查；没有创建服务用户、安装系统依赖或失败自动回退。公式工具安装脚本会在执行用户默认目录下载Puppeteer浏览器，正式服务启用NoN
+											255 文本 
+										256 container
+											257 文本 2026/10/26 19:11
+											258 container
+												259 文本 请进行一次真实的只读部署方案审查，仅在本对话回复，不创建、修改、删除任何文件，不运行终端命令，不调用云资源或外部API。不要读取工作区文件、.env、密钥、数据库、论文或附件，只使用以下脱敏信息。项目为智研科研平台，Vue3前端、Flask后端、PostgreSQL18、嵌入式知识库、Milvus Lite、本地BGE-M3和重排模型、CPU公式识别；保留现有技术栈，27B不部署。已有Linux测试240项和前端50项通过，但尚未在华为云上线。部署方案：Python3.12 venv、Node22、Gunicorn单worker/gthread4线程，Nginx HTTPS，systemd以zhiyan用户启动，EnvironmentFile=/etc/zhiyan.env，数据根/srv/zhiyan-data。现有deploy.sh先运行生产预检，然后备份已有服务配置，安装systemd和Nginx配置，nginx -t、restart服务、reload nginx、健康检查；没有创建服务用户、安装系统依赖或失败自动回退。公式工具安装脚本会在执行用户默认目录下载Puppeteer浏览器，正式服务启用NoN
+											260 container
+												261 文本 思考过程:
+												262 图像
+											263 container
+												264 container
+													265 标题 智研科研平台部署方案审查（只读）, Value: 1
+														266 文本 智研科研平台部署方案审查（只读）
+													267 标题 一、首次上线风险, Value: 2
+														268 文本 一、首次上线风险
+													269 标题 已知缺口（deploy.sh 明确缺失）, Value: 3
+														270 文本 已知缺口（deploy.sh 明确缺失）
+													271 表格
+														272 row
+															273 列标题
+																274 文本 #
+															275 列标题
+																276 文本 风险
+															277 列标题
+																278 文本 影响
+														279 row
+															280 单元格
+																281 文本 1
+															282 单元格
+																283 文本 未创建 zhiyan 服务用户
+																284 文本 ，但 systemd 以该用户启动
+															285 单元格
+																286 文本 服务启动直接报错 
+																287 文本 Failed to start
+																288 文本 ，属硬性阻断
+														289 row
+															290 单元格
+																291 文本 2
+															292 单元格
+																293 文本 未安装系统依赖
+																294 文本 （Python3.12 / Node22 / PostgreSQL18 / Nginx）
+															295 单元格
+																296 文本 若云主机为裸机，后续所有步骤失败
+														297 row
+															298 单元格
+																299 文本 3
+															300 单元格
+																301 文本 无失败自动回退
+															302 单元格
+																303 文本 中途失败后旧配置已备份但未恢复，系统处于半安装状态，需手动修复
+														304 row
+															305 单元格
+																306 文本 4
+															307 单元格
+																308 文本 Puppeteer 在执行用户默认目录下载
+																309 文本 ，服务以 zhiyan 用户运行
+															310 单元格
+																311 文本 路径不一致 → 运行时找不到浏览器，公式识别静默失败
+														312 row
+															313 单元格
+																314 文本 5
+															315 单元格
+																316 文本 NoNewPrivileges=true + Puppeteer/Chromium
+															317 单元格
+																318 文本 Chromium 沙箱需 setuid 辅助，该限制可能阻止浏览器启动，需验证是否需 
+																319 文本 --no-sandbox
+														320 row
+															321 单元格
+																322 文本 6
+															323 单元格
+																324 文本 数据库仅恢复空库
+															325 单元格
+																326 文本 首次上线风险较低，但若目标机已有数据则被覆盖丢失
+													327 标题 待验证风险, Value: 3
+														328 文本 待验证风险
+													329 内容列表
+														330 container
+															331 AXListMarker • 
+															332 text PostgreSQL 18 驱动兼容性 ：psycopg2 / SQLAlchemy 是否已适配 PG18（2026 年较新）
+														333 container
+															334 AXListMarker • 
+															335 text BGE-M3 + 重排模型 CPU 内存 ：单 worker 加载双模型是否 OOM，需确认云主机内存规格
+														336 container
+															337 AXListMarker • 
+															338 text /etc/zhiyan.env 是否存在 ：systemd EnvironmentFile 要求文件预先就位且可读
+														339 container
+															340 AXListMarker • 
+															341 text HTTPS 证书路径 ：Nginx 配置引用的证书是否已部署
+														342 container
+															343 AXListMarker • 
+															344 text Gunicorn gthread4 线程安全性 ：Flask 应用及嵌入式知识库是否线程安全
+														345 container
+															346 AXListMarker • 
+															347 text 前端构建产物路径 与 Nginx root 是否匹配
+														348 container
+															349 AXListMarker • 
+															350 text Milvus Lite  在  /srv/zhiyan-data  下的写入权限与磁盘空间
+													351 标题 二、最小部署顺序（技术栈不变）, Value: 2
+														352 文本 二、最小部署顺序（技术栈不变）
+													353 container
+														354 图像 /default.svg
+														355 文本 code
+														356 文本 
+														357 文本 
+													358 container
+														359 text 1 ① 创建 zhiyan 用户 + /srv/zhiyan-data 目录权限
+ 2 ② 安装系统依赖（Python3.12 / Node22 / PG18 / Nginx）
+ 3 ③ 创建 /etc/zhiyan.env（脱敏变量）
+ 4 ④ 部署 HTTPS 证书
+ 5 ⑤ Node22 构建前端 → 静态产物
+ 6 ⑥ Python3.12 venv + 后端依赖
+ 7 ⑦ 下载 BGE-M3 / 重排模型至数据目录
+ 8 ⑧ 初始化 PG 空库 + Milvus Lite
+ 9 ⑨ 以 zhiyan 用户安装 Puppeteer 至服务可访问路径
+ 10 ⑩ 安装 systemd unit → daemon-reload
+ 11 ⑪ 安装 Nginx 配置 → nginx -t
+ 12 ⑫ 启动后端 → 启动 Nginx → 健康检查
+ 13
+													360 标题 免费验收清单, Value: 3
+														361 文本 免费验收清单
+													362 内容列表
+														363 container
+															364 AXListMarker • 
+															365 复选框 (disabled) 0
+															366 text  zhiyan 用户存在，对  /srv/zhiyan-data  有读写权限
+														367 container
+															368 AXListMarker • 
+															369 复选框 (disabled) 0
+															370 文本  venv 可激活，后端依赖完整
+														371 container
+															372 AXListMarker • 
+															373 复选框 (disabled) 0
+															374 文本  PG18 运行，空库可连接
+														375 container
+															376 AXListMarker • 
+															377 复选框 (disabled) 0
+															378 文本  BGE-M3 可加载，记录内存峰值
+														379 container
+															380 AXListMarker • 
+															381 复选框 (disabled) 0
+															382 文本  Milvus Lite 可写入 + 查询
+														383 container
+															384 AXListMarker • 
+															385 复选框 (disabled) 0
+															386 文本  Puppeteer 浏览器可被 zhiyan 用户访问
+														387 container
+															388 AXListMarker • 
+															389 复选框 (disabled) 0
+															390 text  systemd 服务  active (running)
+														391 container
+															392 AXListMarker • 
+															393 复选框 (disabled) 0
+															394 text nginx -t  通过，Nginx active
+														395 container
+															396 AXListMarker • 
+															397 复选框 (disabled) 0
+															398 文本  HTTPS 可访问，证书有效
+														399 container
+															400 AXListMarker • 
+															401 复选框 (disabled) 0
+															402 文本  前端页面加载正常
+														403 container
+															404 AXListMarker • 
+															405 复选框 (disabled) 0
+															406 文本  后端健康端点返回 200
+														407 container
+															408 AXListMarker • 
+															409 复选框 (disabled) 0
+															410 文本  公式识别可调用（重点验证 NoNewPrivileges 影响）
+														411 container
+															412 AXListMarker • 
+															413 复选框 (disabled) 0
+															414 文本  历史未完成任务已标记失败
+													415 标题 三、后续 CodeArts 关联华为云, Value: 2
+														416 文本 三、后续 CodeArts 关联华为云
+													417 文本 本次仅为方案审查，未执行任何部署，未调用任何云资源。
+													418 文本 后续实际部署路径：
+													419 内容列表
+														420 container
+															421 AXListMarker 1. 
+															422 text 人工确认 ：目标华为云资源规格（ECS/CCE）、费用、IAM 权限——必须人工逐项审批
+														423 container
+															424 AXListMarker 2. 
+															425 text CodeArts 流水线 ：配置构建任务（前端 Node22 + 后端 Python3.12），关联代码仓库
+														426 container
+															427 AXListMarker 3. 
+															428 text CodeArts 部署服务 ：创建部署任务，通过 SSH/Agent 关联目标主机，引用审查通过的部署顺序
+														429 container
+															430 AXListMarker 4. 
+															431 text Skills/智能体 ：可编写部署检查 Skill，在流水线中自动执行验收清单项，结果回传人工确认
+														432 container
+															433 AXListMarker 5. 
+															434 text 费用说明 ：本次仅使用已有积分，不购买或订阅任何新服务；实际云资源费用由人工确认后产生
+													435 文本 关键提醒
+													436 文本 ：上述第 1 步未完成前，不得触发任何部署动作。deploy.sh 需补充用户创建、依赖安装、回退逻辑后方可投入使用。
+												437 文本 
+												438 文本 
+												439 文本 
+												440 图像
+											441 文本 2026/10/26 19:20
+											442 container
+												443 文本 继续只读审查，不读取工作区、不执行命令、不改文件、不调用云服务。更正已核实事实：恢复脚本遇非空目标库会拒绝并事务回滚，不覆盖数据；Puppeteer用于专利Mermaid渲染，公式识别使用UniMERNet；PostgreSQL18已通过本机恢复与应用测试；本次仅方案审查，尚未通过已有智能体和Skills关联云服务或部署。请按这些事实用300字内给出修正后的剩余风险与真实证据缺口，不建议关闭安全防护，不声称任何未执行的操作已经完成。
+											444 container
+												445 文本 思考过程:
+												446 图像
+											447 container
+												448 container
+													449 标题 修正后剩余风险（只读）, Value: 1
+														450 文本 修正后剩余风险（只读）
+													451 文本 已解除
+													452 文本 ：恢复脚本对非空库拒绝并事务回滚，覆盖风险不成立；PG18 本机恢复与应用测试通过，兼容性风险降级为待验证。
+													453 文本 已知缺口（仍存在）
+													454 文本 ：
+													455 内容列表
+														456 container
+															457 AXListMarker 1. 
+															458 文本 未创建 zhiyan 用户，systemd 以该用户启动将直接失败
+														459 container
+															460 AXListMarker 2. 
+															461 文本 未安装系统依赖，裸机上线阻断
+														462 container
+															463 AXListMarker 3. 
+															464 文本 无失败自动回退，半安装状态需手动修复
+													465 文本 重新定位的风险
+													466 文本 ：
+													467 内容列表
+														468 container
+															469 AXListMarker • 
+															470 文本 Puppeteer 实际服务专利 Mermaid 渲染，在执行用户默认目录下载、服务以 zhiyan 运行 → 路径不可达风险仍在
+														471 container
+															472 AXListMarker • 
+															473 文本 NoNewPrivileges=true / PrivateTmp=true 对 Chromium 沙箱的影响仍待验证（应调整下载路径或配置，不建议关闭防护）
+														474 container
+															475 AXListMarker • 
+															476 文本 UniMERNet CPU 推理的依赖、权重获取与内存占用未验证
+													477 文本 真实证据缺口
+													478 文本 ：
+													479 内容列表
+														480 container
+															481 AXListMarker • 
+															482 文本 本机通过 ≠ 云主机通过：依赖版本、内存规格、SELinux/AppArmor 差异均无云上证据
+														483 container
+															484 AXListMarker • 
+															485 文本 /etc/zhiyan.env 存在性与可读性未验证
+														486 container
+															487 AXListMarker • 
+															488 文本 HTTPS 证书路径未验证
+														489 container
+															490 AXListMarker • 
+															491 文本 gthread4 线程安全性未验证
+														492 container
+															493 AXListMarker • 
+															494 文本 未通过已有智能体与 Skills 关联云资源或部署，无任何相关执行证据
+													495 文本 结论
+													496 文本 ：方案可继续细化，但上述缺口未补齐前不具备上线条件。
+												497 文本 
+												498 文本 
+												499 文本 
+												500 文本 
+												501 图像
+											502 text 猜你想问： 剩余风险有哪些具体项？ 证据缺口如何补齐？ 恢复脚本回滚逻辑可靠吗？
+										503 container
+											504 文本输入区 (settable) / 调用快捷指令, # 添加上下文
+
+												505 文本 / 调用快捷指令, # 添加上下文
+											506 文本 
+											507 图像
+											508 文本 智能问答
+											509 文本 
+											510 文本 DeepSeek-V4.1-Flash
+											511 文本 
+											512 图像
+											513 文本 
+											514 图像
+											515 text 0.2% 内容由AI生成
+					516 HTML 内容 vscode-webview://1fapr7pqqed1rc714mij54urf5sqdunqcles57q1k47rt7op79sh/index.html?id=31c16ef7-9f7c-4dde-9c7a-8d852b33ed43&parentId=1&origin=154e4432-980f-4b8a-b410-2269778cf41b&swVersion=4&extensionId=vscode.markdown-language-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app
+						517 container 预览 旧服务器交接清单.md
+							518 HTML 内容 vscode-webview://1fapr7pqqed1rc714mij54urf5sqdunqcles57q1k47rt7op79sh/index.html?id=31c16ef7-9f7c-4dde-9c7a-8d852b33ed43&parentId=1&origin=154e4432-980f-4b8a-b410-2269778cf41b&swVersion=4&extensionId=vscode.markdown-language-features&platform=electron&vscode-resource-base-authority=vscode-resource.vscode-cdn.net&parentOrigin=vscode-file%3A%2F%2Fvscode-app
+								519 container
+									520 标题 交接清单, Value: 1
+										521 文本 交接清单
+									522 表格
+										523 row
+											524 列标题
+												525 文本 顺序
+											526 列标题
+												527 文本 要什么
+											528 列标题
+												529 文本 为什么还缺
+											530 列标题
+												531 文本 交接内容
+										532 container
+											533 row
+												534 单元格
+													535 文本 1
+												536 单元格
+													537 文本 PostgreSQL 完整备份
+												538 单元格
+													539 文本 代码包没有旧服务器的实际数据库数据。
+												540 单元格
+													541 文本 pg_dump
+													542 文本  自定义格式 
+													543 文本 .dump
+													544 文本  / 
+													545 文本 .backup
+													546 文本 ；包含结构和数据，覆盖业务 
+													547 文本 zhiyan
+													548 文本  和知识库 schema（默认 
+													549 文本 knowledge_base
+													550 文本 ）。若分属两个库，两个都导出。注明 PostgreSQL 版本、扩展及备份时间。
+											551 row
+												552 单元格
+													553 文本 2
+												554 单元格
+													555 文本 论文、附件和检索资料
+												556 单元格
+													557 文本 数据库中的文件路径不能还原文件本身，当前没有旧服务器文件的完整备份。
+												558 单元格
+													559 文本 实际使用的 
+													560 文本 uploads/
+													561 文本 、需要保留的 
+													562 文本 generated/
+													563 文本 、知识库 
+													564 文本 KB_DATA_DIR
+													565 文本  对应文件。外部检索索引只交接原来实际启用的。注明原路径即可。
+											566 row
+												567 单元格
+													568 文本 3
+												569 单元格
+													570 文本 文献 PPT 工具目录
+													571 文本 （原来启用才需要）
+												572 单元格
+													573 文本 包内有调用代码，但缺实际工具脚本 
+													574 文本 document_parser.py
+													575 文本 、
+													576 文本 ppt_builder.py
+													577 文本 ；在 AIC 文件包中也未找到对应工具。
+												578 单元格
+													579 文本 提供实际工具目录、配套模板/字体和依赖文件，运行环境由我重建。若旧站没启用，说明即可，不为迁移新增功能。
+											580 row
+												581 单元格
+													582 文本 4
+												583 单元格
+													584 文本 原研究技能清单
+													585 文本 （不能随数据库恢复时才需要）
+												586 单元格
+													587 文本 缺导入文件 
+													588 文本 backend/data/innovation_mining_skills.json
+													589 文本 ，在 AIC 文件包中也未找到。
+												590 单元格
+													591 文本 提供原 JSON 文件；如果第 1 项备份已经包含完整 
+													592 文本 zhiyan.skills
+													593 文本  数据，这一项可直接随数据库交接，不用另找文件。
+	594 关闭按钮
+	595 全屏幕按钮 Help: 此按钮也可以执行缩放窗口的操作, Secondary Actions: 缩放窗口
+	596 最小化按钮
+597 menu bar
+	598 CodeArts Agent
+	599 文件
+	600 编辑
+	601 查看
+	602 转到
+	603 运行
+	604 Git
+	605 终端
+	606 窗口
+	607 帮助
+
+The focused UI element is 504 文本输入区 (settable) / 调用快捷指令, # 添加上下文

@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhiyan.local/contracts/reading_result.schema.json",
+  "title": "ReadingResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "result_id", "request_id", "paper_id", "basic_information", "research_questions", "method_structure", "key_equations_and_figures", "experiment_findings", "innovations", "limitations", "claims", "evidence", "warnings", "output_version"],
+  "properties": {
+    "schema_version": {"const": "reading_result_v1"},
+    "result_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "request_id": {"type": "string", "pattern": "^req_[a-z0-9_]+$"},
+    "paper_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "basic_information": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "authors", "year"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1, "maxLength": 1000},
+        "authors": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "year": {"type": ["integer", "null"], "minimum": 1600, "maximum": 3000}
+      }
+    },
+    "research_questions": {"$ref": "#/$defs/claimIds"},
+    "method_structure": {"$ref": "#/$defs/claimIds"},
+    "key_equations_and_figures": {"$ref": "#/$defs/claimIds"},
+    "experiment_findings": {"$ref": "#/$defs/claimIds"},
+    "innovations": {"$ref": "#/$defs/claimIds"},
+    "limitations": {"$ref": "#/$defs/claimIds"},
+    "claims": {"type": "array", "minItems": 1, "items": {"$ref": "https://zhiyan.local/contracts/reading_claim.schema.json"}},
+    "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "https://zhiyan.local/contracts/evidence_reference.schema.json"}},
+    "warnings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["warning_code", "message"],
+        "properties": {
+          "warning_code": {"type": "string", "pattern": "^[A-Z][A-Z0-9_]+$"},
+          "message": {"type": "string", "minLength": 1, "maxLength": 1000}
+        }
+      }
+    },
+    "output_version": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_version", "revision"],
+      "properties": {
+        "contract_version": {"const": "reading_result_v1"},
+        "revision": {"type": "integer", "minimum": 1}
+      }
+    }
+  },
+  "$defs": {
+    "claimIds": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 3, "maxLength": 128}}
+  }
+}

@@ -1,0 +1,292 @@
+{
+  "date": "2026-10-09",
+  "status": "incomplete",
+  "source_copy": "newcode/zhiyan_sub",
+  "preserved_stack": [
+    "Vue 3",
+    "Flask",
+    "PostgreSQL",
+    "LangGraph",
+    "original models and retrieval parameters"
+  ],
+  "vendor": {
+    "repository": "https://github.com/handsomestWei/patent-disclosure-skill",
+    "commit": "e4bcb12d02490e8b44e5c9c7cd574644dd70da41",
+    "license": "MIT",
+    "scope": "LICENSE, INSTALL.md, README.md, SKILL.md, requirements.txt, tools, prompts",
+    "sha256": {
+      "LICENSE": "d9329ae3b2de58aebaa015d8d1570513d48f1702318e6423896a4620845ab798",
+      "requirements.txt": "93e21a7128999aed8112e4f079a93fdcbbeea83ac30ff567f097b6ba55c5fe72",
+      "INSTALL.md": "dc22df046b9142f77d8803595f52da073b02164b5ab46992747251a78808da26",
+      "README.md": "d41ac0de82f45861cfb5319c8462bd437cb6b0728faeb5b72461f74d58c7e262",
+      "SKILL.md": "b89d7bbdec1ade394b0da537cd2136a824cdcec4f96e857ecd9b33c316c8ba9d",
+      "tools/md_to_docx.py": "2206410f7ef81e149fec1bb21ead18863c879a13e94a5f1a92c9d6db5971c19a",
+      "tools/cnipa_epub_parse.py": "c2ed6175d61e71d57dee63e77f4ee78961065d003945c939b2557f61d7804a18",
+      "tools/iteration_dialog_log.py": "d43374f0f99bdb8903bde9b5133bc2235fe472bc3641bb64a638146df3c51987",
+      "tools/mermaid_render.py": "f4373f071de5ee8b0f1ad46b5087d43ab493fd3483c57c817fd9c2b06f9a5234",
+      "tools/docx_to_md.py": "f08b89add198e6806264041d691888d56508a622f2a9331b8bc9b51c03b2e90d",
+      "tools/README.md": "717d090ff4ec82643219b234e4bad115d31b1fdc8edf8e32e3b21de6c2173f55",
+      "tools/requirements-cnipa.txt": "f95972185aa136705eef4274c400e70ece84092cb910d6082e67df7bf6720466",
+      "tools/package-lock.json": "11b7d611f2da47f1416d40341bb18dadd2c49cb6413aeedc81e72f6a4af9da63",
+      "tools/package.json": "7c9f83526d454a0ea8044b2b8df286e1351009995622461a7e4abbdd09e02cbe",
+      "tools/pptx_to_md.py": "9aa95e5b143aee49cc00d1f127a5472ff5b464e185af92992545d3708b1d2f1f",
+      "tools/cnipa_epub_search.py": "cd6cee9ca5a1dfe417d08c20bffa583992be34c2248611e3dda6290292c7dede",
+      "tools/cnipa_epub_crawler.py": "18101e5731b00398d77f26a950baaf7094b9988dab0297e1fcda168e6f808b2b",
+      "tools/math_render.py": "4f8d932a1e3063042db817fbf31b8f53c0496dea437c8b55f97caa8f17aae17b",
+      "prompts/disclosure_builder.md": "f8c0d7d71d624718a90a9a1d928b46a42bf1040b61470e704960a0fbd734eb7f",
+      "prompts/correction_handler.md": "e29676a5944cb8d9213c67bd8cd2b8fbc2b12d1f18f21fa7f6eb8d0487981318",
+      "prompts/merger.md": "8707af472fe09943bba9c1428a34521a55604210e9f89949f5ad8c70d7f004cd",
+      "prompts/disclosure_self_check.md": "f42fcf691d43fd84e0ab2855833611a119e52442e9bacc655878923f1557541c",
+      "prompts/iteration_context.md": "2cea7d5f149c8c359214306a0ea0a6bb121c67cb8a45ae7619f23e8667a051be",
+      "prompts/template_reference.md": "0323ef31ad7d9cd12327e83ab20ee6d2815362b0d919f13c71e333f3a827fea8",
+      "prompts/disclosure_preview.md": "669b5ffb59cecb1bfa8a80e7d550dfefb18954166de26ebc0b812cc359fb854e",
+      "prompts/prior_art_search.md": "3e8ec5a0bf4844c4760239c1ba654a10f5a989b086b62b19f159dede4c278652",
+      "prompts/intake.md": "e9d54f4fc5467383788e899dfc38aa89e287370e436c815758b2223ecce8a819",
+      "prompts/project_scan.md": "80f885034d79c7419730f57aec54e8072cb2c2f543919e13aeba536e2325b064",
+      "prompts/patent_points_analyzer.md": "14da46b85319010912990d2c5c0f6060b2affa25c323dca56842977f6ff18429"
+    }
+  },
+  "source_preflight_missing": [
+    {
+      "item": "literature-PPT parser",
+      "ok": false,
+      "path": "/Users/drw/Downloads/比赛/ICT/newcode/zhiyan_sub/backend/runtimes/literature_ppt_tools/document_parser.py"
+    },
+    {
+      "item": "literature-PPT builder",
+      "ok": false,
+      "path": "/Users/drw/Downloads/比赛/ICT/newcode/zhiyan_sub/backend/runtimes/literature_ppt_tools/ppt_builder.py"
+    },
+    {
+      "item": "literature-PPT interpreter",
+      "ok": false,
+      "path": "/Users/drw/Downloads/比赛/ICT/newcode/zhiyan_sub/backend/runtimes/literature_ppt_tools/.venv/bin/python"
+    }
+  ],
+  "unprovided_assets": [
+    "PostgreSQL full backup with both business and knowledge-base schemas, actual version/extensions",
+    "Actual papers/uploads/needed generated files and enabled retrieval indexes",
+    "Original literature-PPT tool scripts/templates/dependency files, only if originally enabled",
+    "Original Skill JSON, only if complete zhiyan.skills rows cannot be restored from the database"
+  ],
+  "pending_target_checks": [
+    "Restore original database, files and actual retrieval indexes; verify counts/hashes",
+    "Literature-PPT restoration only if originally enabled; complete skill catalog restoration",
+    "Verify the current DeepSeek API and original embedding/reranker configuration; fine-tuned model deployment is optional",
+    "Target Linux patent browser and actual CNIPA/model pipeline verification",
+    "Huawei ECS/systemd/Nginx, RDS TLS and CodeArts agent/Skills association/deployment",
+    "User-configured real API/SMS and full cloud feature regression"
+  ],
+  "sensitive_operations": "Ask user before spending, subscription, credits, real API/key configuration, recharge.",
+  "linux_validation": {
+    "environment": "local Docker Linux x86_64, Python 3.12.15, PostgreSQL 16",
+    "image_id": "sha256:dd7d40db11c34923a32fd077898fecc95f75c11f87fed1bad1e3815c42e0bcff",
+    "python_base_digest": "sha256:05cda9777409a9c3ffddd94a4c476b79f0769a0b4857f0c7ed9226b6800b0d6f",
+    "postgres_base_digest": "sha256:ca0bd484cb98bf4b24eb1010e73fb3fcbd6714d240fbc1a10eea5b7dbecb641d",
+    "dependency_pins_sha256": "bf0f68e24067f4cce3254c51596446c89009ef86d519cb3aef11d6a1970e014f",
+    "dependency_install": "passed",
+    "backend_tests": 177,
+    "gunicorn_embedded_kb_startup": "passed",
+    "readiness": "degraded; correctly rejected without model services",
+    "network": "none; test/API containers share isolated PostgreSQL loopback, no host ports",
+    "limits": [
+      "ECS/systemd/Nginx and RDS TLS not tested",
+      "Main Zhiyan model and Linux patent browser not tested; formula CPU runtime now separately passed",
+      "Original database/files/indexes and full actual application inference not verified"
+    ]
+  },
+  "cloud_read_only": {
+    "date": "2026-10-09",
+    "account_status": "Login restored; homepage current month bill 0.00 yuan. Earlier 0.06 yuan ModelArts storage arrears recorded; invoice amount is not current arrears evidence.",
+    "region_checked": "cn-north-4",
+    "ecs": "empty list",
+    "rds_instances": 0,
+    "all_region_home_summary": "1 VPC security group only; no server or database service shown",
+    "other_regions": "not individually inspected",
+    "config_recorder": "not enabled",
+    "mutations": "none",
+    "voucher_count": 0
+  },
+  "original_server": {
+    "url": "https://zhiyan.uc1002.xyz/tools",
+    "visible_agents": 11,
+    "visible_tools": 5,
+    "package_tool_catalog": 6,
+    "version": "User confirmed the supplied code package is the final deployed version.",
+    "real_function_invocation": "Text statistics, citation formatter and CSV/TSV table converter completed through existing logged-in UI. No new agent tasks or model calls on original server.",
+    "functional_observations": {
+      "statistics": "37 characters, 4 Chinese, 4 English words, 3 sentences, 2 paragraphs; empty input rejected",
+      "citation": "4 formats produced as original code specifies",
+      "tables": "CSV quoted comma preserved and LaTeX special characters escaped; TSV 3 rows/2 columns",
+      "formula_status": "First view not ready; rechecked status HTTP 200 and CPU ready. No new image submitted.",
+      "personal_kb": "0 folders, 0 papers; advanced retrieval not verified",
+      "historical_literature_search": "Saved completed task has 13 results; local adapter uses PostgreSQL ILIKE, not proof of Milvus/ES",
+      "academic_daily": "30 saved papers in cs.LG; last sync 09-19; no new sync submitted",
+      "tool_catalog": "5 visible tools vs 6 in source catalog; original PPT enablement pending restored DB"
+    }
+  },
+  "optional_import_sources": [
+    {
+      "item": "skill crawl file",
+      "ok": false,
+      "path": "/Users/drw/Downloads/比赛/ICT/newcode/zhiyan_sub/backend/data/innovation_mining_skills.json",
+      "required": false,
+      "purpose": "Import source; existing skills are restored from PostgreSQL."
+    }
+  ],
+  "provided_model": {
+    "repository": "lzx420/qwen3.6-27b-zhiyan",
+    "directory": "/Users/drw/Downloads/比赛/AIC-zhi_yan/finalproduct/网盘/待填编号-AI+学科交叉-智研——学科垂类科研智能平台/待填编号-AI+学科交叉-智研——学科垂类科研智能平台-模型权重文件/lzx420--qwen3.6-27b-zhiyan/snapshots/master",
+    "format": "merged BF16 Safetensors; no separate LoRA adapter required",
+    "model_type": "qwen3_5",
+    "architectures": [
+      "Qwen3_5ForConditionalGeneration"
+    ],
+    "shards": 12,
+    "tensor_count": 1184,
+    "total_file_bytes": 54713606768,
+    "validation": "file structure and lengths verified; reference payload checksum and actual inference not verified",
+    "copied": false,
+    "parameter_count": 27356728560,
+    "metadata_sha256": {
+      "config.json": "af1bed5d54960c039c419bbba14a081e0cc784cda47665885bc93845e0d9f22a",
+      "generation_config.json": "c24de42a4ab92e23435a05732213d124c990dda55814c4f9232805165364e82b",
+      "tokenizer.json": "06b9509352d2af50381ab2247e083b80d32d5c0aba91c272ca9ff729b6a0e523",
+      "tokenizer_config.json": "e8ebf58cc6c37a6a42c1a7938f38732ea47da3fc988dca54ab1b5938f3ce3e08",
+      "chat_template.jinja": "e84f32a23fdda27689f868aa4a1a5621f41133e51a48d7f3efcbea2839574259",
+      "model.safetensors.index.json": "a600c6626eb1eb653a3f078ab3dd1c7a8fab2e71185c7ef3aa923a39aaa637be"
+    },
+    "deployment_requirement": "Optional; retain original weights without forcing GPU deployment."
+  },
+  "formula_runtime": {
+    "status": "restored and verified",
+    "source_commit": "5a2c80d96b1d2dba447ff18d873e5fb73ba03c35",
+    "lock": "backend/app/tools/formula_recognition/runtime/requirements.lock.txt",
+    "real_cpu_inference": "passed on macOS arm64 and network-isolated Linux amd64; identical sample LaTeX",
+    "service_wrapper": "ready; real recognition passed",
+    "model_source": "https://huggingface.co/wanderkid/unimernet_base/tree/main",
+    "model_files": [
+      {
+        "file": "config.json",
+        "bytes": 4919,
+        "sha256": "b5f609df71c3aefd53c1dc3f23530316492d166a760e090e4e37d23636739027"
+      },
+      {
+        "file": "preprocessor_config.json",
+        "bytes": 617,
+        "sha256": "d06c4b87fd6aa74b8b2cdbc4361227d8073ce37e8cfe9e6442802d0bee64da03"
+      },
+      {
+        "file": "pytorch_model.pth",
+        "bytes": 1300760949,
+        "sha256": "16cd0891233cfee3c11215a7b87306f160f7e7f3f52091a6253751c149a8c180"
+      },
+      {
+        "file": "tokenizer.json",
+        "bytes": 2140013,
+        "sha256": "02c318d9cfa95bf323371762b8f838a82709530274d36dba6eca880f0add6cc4"
+      },
+      {
+        "file": "tokenizer_config.json",
+        "bytes": 4491,
+        "sha256": "fd4d94f8b9dbb7deeb3a3ef084ca0e16c43d45774a180730b7e9cfd6359a074b"
+      }
+    ],
+    "lock_sha256": "f0961936f982930ff07ff8b252916f5a43074bab3480e20527c0d95859ca22e4",
+    "verification_limits": [
+      "One public sample and existing runtime; not a full accuracy benchmark.",
+      "Main Zhiyan 27B model was not loaded."
+    ]
+  },
+  "patent_export": {
+    "local_status": "passed",
+    "node_dependencies": "installed from original package-lock.json",
+    "browser": "local Chromium installed at original exporter-required cache path",
+    "limits": "Local export only; target Linux browser, CNIPA and model-driven patent generation pending.",
+    "embedded_images": 2,
+    "mermaid_pngs": 1
+  },
+  "runtime_regression": {
+    "tests": 21,
+    "result": "passed"
+  },
+  "configuration_owner": "Project owner fills env.example and API keys; old env or keys are not a senior handoff requirement. Re-save configs if old encrypted credentials cannot be decrypted.",
+  "cleanup": {
+    "test_resources": "6 test containers, 5 images, 1 test database volume removed",
+    "build_cache": "cleared by user-approved one-time exception",
+    "download_cache": "duplicate browser and formula pip-cache cleared",
+    "retained": "Required dependencies, weights, source and other projects",
+    "disposable_reports": "Separate diagnostic JSON/XML snapshots and migration sample outputs removed; summary and asset provenance retained in this manifest and existing progress document."
+  },
+  "diagnostic_snapshots": "Discarded by user request; rerun preflight/tests/verify_model_files to inspect current state. No static report is a runtime dependency.",
+  "production_model_mode": {
+    "current_mode": "Default account chat API; provider set by latest explicit user configuration",
+    "provider": "DeepSeek official",
+    "base_url": "https://api.deepseek.com",
+    "model": "deepseek-flash",
+    "platform_finetuned_model": "User confirmed not deployed due to cost; optional, not a required migration target",
+    "credentials": "Saved in private env only. One explicitly approved short verification request passed; no retry, thinking disabled, max_tokens=64.",
+    "runtime_readiness": "Accepts an existing verified default account API with decryptable credentials; empty/unrestored credentials still fail",
+    "translation_and_chunk_qa": "User explicitly confirmed shared DeepSeek endpoint/model/key; saved privately. Full translation/chunk QA pipeline not tested.",
+    "real_api_validation": {
+      "requests": 1,
+      "result": "passed",
+      "permission": "explicit user approval for this request only",
+      "prompt": "Reply with OK.",
+      "max_tokens": 64,
+      "thinking": "disabled",
+      "retries": 0,
+      "limits": "Connection verification only; full agent workflows and actual usage charge not measured."
+    }
+  },
+  "api_only_regression": {
+    "tests": 9,
+    "result": "passed",
+    "reports": "stdout only; no new report files"
+  },
+  "provider_compatibility_regression": {
+    "tests": 13,
+    "result": "passed with mocked responses only",
+    "reports": "stdout only; no new report files"
+  },
+  "knowledge_retrieval_mode": {
+    "original_package_example": "Milvus and Elasticsearch disabled by final env.example values; embedding and reranking backend API, addresses and keys blank",
+    "models": [
+      "BAAI/bge-m3",
+      "BAAI/bge-reranker-v2-m3"
+    ],
+    "embedding_dimension": 1024,
+    "production_enablement": "Pending user confirmation of original deployed state; disabled settings are placeholders and not evidence of complete feature restoration"
+  },
+  "production_resources": {
+    "domain": "zhiyan.com",
+    "dns_and_tls": "Pending verification and certificate installation; no public DNS changes made",
+    "database": "Pending original PostgreSQL backup and available Huawei target database",
+    "budget": "No voucher or cloud budget currently available; obtain explicit approval before paid resources, credits or real API requests",
+    "console_access": "Login restored; read-only resource overview checked. No resources provisioned."
+  },
+  "uv_discovery_regression": {
+    "tests": 4,
+    "result": "passed",
+    "preflight": "active interpreter venv uv found without PATH activation",
+    "reports": "stdout only"
+  },
+  "formula_status_client": {
+    "timeout_ms": 30000,
+    "backend_probe_timeout_seconds": 20,
+    "validation": "frontend typecheck passed; no new report or build cache"
+  },
+  "in_memory_tool_checks": {
+    "checks": 4,
+    "result": "passed",
+    "scope": [
+      "bilingual statistics matched original site",
+      "CSV quoting and LaTeX escaping matched original site",
+      "citation matched original implementation",
+      "DOCX valid zip with title, Chinese text and table"
+    ],
+    "database": false,
+    "network": false,
+    "output_files": false
+  }
+}

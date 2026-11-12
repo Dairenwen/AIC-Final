@@ -1,0 +1,37 @@
+[project]
+name = "agent-core"
+version = "0.1.0"
+description = "Document Assistant - 基于LangChain+LangGraph的多Agent协作系统"
+authors = [{ name = "Your Name" }]
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+dependencies = [
+    "langchain>=0.2.0",
+    "langchain-openai>=0.1.0",
+    "langchain-community>=0.2.0",
+    "langgraph>=0.1.0",
+    "faiss-cpu>=1.7.4",
+    "pydantic>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "tiktoken>=0.5.0",
+    "arxiv>=2.1.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+ui = ["gradio>=4.0.0"]
+api = ["fastapi>=0.110.0", "uvicorn>=0.27.0"]
+full = ["gradio>=4.0.0", "fastapi>=0.110.0", "uvicorn>=0.27.0", "chromadb>=0.4.0", "semanticscholar>=0.8.0"]
+
+[project.scripts]
+agent-core = "src.main:main"
+
+[build-system]
+requires = ["setuptools>=68.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*"]
