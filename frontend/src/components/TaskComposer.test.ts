@@ -36,7 +36,8 @@ describe('TaskComposer file and knowledge-base entry points', () => {
     expect(script).toContain("const model = ref('api_model')")
     expect(script).toContain("getData<DefaultModelConfig>('/model-configs/default')")
     expect(script).toContain("defaultModelValue.value = 'api_model'")
-    expect(script).toContain("const PLATFORM_DISPLAY_MODEL = 'qwen3.6-27B-sft'")
+    expect(script).toContain("const platformDisplayModel = ref('Qwen3.8-27B-SFT')")
+    expect(script).toContain("getData<SystemModel[]>('/model-configs/system')")
     expect(script).toContain('model: modelDisplayName(model.value)')
     expect(script).not.toContain("if (model.value.startsWith('model_config:')) model.value = 'auto'")
   })
@@ -58,6 +59,17 @@ describe('TaskComposer file and knowledge-base entry points', () => {
     expect(script).toContain('chatModeChange: [active: boolean]')
     expect(script).toContain("watch(isChatMode, (active) => emit('chatModeChange', active), { immediate: true })")
     expect(script).toContain('chatList.value.scrollTop = chatList.value.scrollHeight')
+  })
+
+  it('streams chat answers and lets the user stop a running answer', () => {
+    const { descriptor } = parse(source, { filename: 'TaskComposer.vue' })
+    const script = descriptor.scriptSetup?.content || ''
+    const template = descriptor.template?.content || ''
+
+    expect(script).toContain("import { streamChat } from '@/api/chatStream'")
+    expect(script).toContain('window.requestAnimationFrame(flushStream)')
+    expect(template).toContain('aria-label="停止生成"')
+    expect(template).toContain("'composer-chat__markdown--streaming': message.streaming")
   })
 
   it('shows the AI-generated notice on every completed assistant reply', () => {

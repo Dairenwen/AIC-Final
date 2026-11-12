@@ -75,10 +75,17 @@ class AnnualPublicationFishboneTool(BaseTool):
             raise ValueError("output_path must use the .png extension")
         path.parent.mkdir(parents=True, exist_ok=True)
 
+        checkpoints = render_checkpoints(len(items))
+
         for inserted_count, item in enumerate(items, start=1):
-            render_annual_fishbone(items, inserted_count, path, title)
+            # Redrawing the whole figure for every paper dominated the run time;
+            # a handful of intermediate frames gives the same "growing" effect.
+            rendered = inserted_count in checkpoints
+            if rendered:
+                render_annual_fishbone(items, inserted_count, path, title)
             yield {
                 "event": "paper_inserted",
+                "rendered": rendered,
                 "sequence": item.sequence,
                 "year": item.year,
                 "inserted": inserted_count,
@@ -99,6 +106,13 @@ class AnnualPublicationFishboneTool(BaseTool):
             "path": str(path),
             "years": sorted({item.year for item in items if item.year is not None}),
         }
+
+
+def render_checkpoints(total: int, frames: int = 5) -> set[int]:
+    """Indexes (1-based) after which the timeline image is redrawn; always includes the last."""
+    if total <= frames:
+        return set(range(1, total + 1))
+    return {max(1, round(total * step / frames)) for step in range(1, frames + 1)} | {total}
 
 
 def normalize_literature_list(values: list[dict[str, Any]]) -> list[LiteratureListItem]:

@@ -39,8 +39,17 @@ def build_qwen_dpo_chat_model() -> ChatOpenAI:
     )
 
 
-def build_system_chat_model(user_id) -> ChatOpenAI:
+def build_system_chat_model(user_id, *, fast: bool = False) -> ChatOpenAI:
+    """Chat model chosen as the system default.
+
+    `fast=True` asks providers that expose a thinking switch (DeepSeek) to
+    answer directly. Pipelines such as literature search make several calls
+    per task and need tool-call output, which thinking mode does not support.
+    """
     runtime = get_system_model_runtime(user_id)
+    options: dict[str, Any] = dict()
+    if fast and "deepseek.com" in str(runtime["base_url"]).lower():
+        options["extra_body"] = {"thinking": {"type": "disabled"}}
     return ChatOpenAI(
         api_key=runtime["api_key"],
         base_url=runtime["base_url"],
@@ -48,9 +57,8 @@ def build_system_chat_model(user_id) -> ChatOpenAI:
         temperature=0,
         timeout=float(runtime["timeout_seconds"]),
         max_retries=1,
+        **options,
     )
-
-
 def run_openai_compatible_chat(
     *,
     messages: list[dict[str, str]],

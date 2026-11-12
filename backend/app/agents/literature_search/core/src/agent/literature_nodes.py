@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import re
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime
@@ -72,11 +73,7 @@ class LiteratureNodes:
         if history_context:
             system_prompt = f"{system_prompt}\n\n同一会话的最近检索上下文：\n{history_context}"
         try:
-            structured_model = self.chat_model.with_structured_output(QueryPlanDraft)
-            response = structured_model.invoke(
-                [SystemMessage(content=system_prompt), HumanMessage(content=user_text)]
-            )
-            draft = response if isinstance(response, QueryPlanDraft) else QueryPlanDraft.model_validate(response)
+            draft = self._plan_with_model(system_prompt, user_text)
         except Exception:
             # Query planning must never prevent the independent source searches
             # from starting.  When the optional LLM is unavailable, retain the
@@ -86,6 +83,40 @@ class LiteratureNodes:
             draft = fallback_bilingual_query_plan(user_text, self.current_year)
         return {"query_plan": normalize_query_plan(user_text, draft, self.current_year)}
 
+    def _plan_with_model(self, system_prompt: str, user_text: str) -> QueryPlanDraft:
+        """Ask the model for a query plan, trying the output modes providers actually support.
+
+        Providers disagree on structured output: some only accept JSON-schema
+        responses, some only tool calls, some neither. Each mode is tried once
+        and the last resort is a plain JSON answer parsed here.
+        """
+        messages = [SystemMessage(content=system_prompt), HumanMessage(content=user_text)]
+        last_error: Exception | None = None
+        for method in (None, "function_calling"):
+            try:
+                structured_model = (
+                    self.chat_model.with_structured_output(QueryPlanDraft, method=method)
+                    if method
+                    else self.chat_model.with_structured_output(QueryPlanDraft)
+                )
+                response = structured_model.invoke(messages)
+                draft = response if isinstance(response, QueryPlanDraft) else QueryPlanDraft.model_validate(response)
+                if draft.queries:
+                    return draft
+            except Exception as exc:  # noqa: BLE001
+                last_error = exc
+        json_prompt = (
+            f"{system_prompt}\n\n只输出一个 JSON 对象，不要输出其他文字。字段："
+            'intent_summary（字符串）、keywords（字符串数组）、start_year（整数）、end_year（整数）、queries（5 个字符串的数组）。'
+        )
+        try:
+            response = self.chat_model.invoke([SystemMessage(content=json_prompt), HumanMessage(content=user_text)])
+            match = re.search(r"\{.*\}", message_text(response), flags=re.S)
+            if match:
+                return QueryPlanDraft.model_validate(json.loads(match.group(0)))
+        except Exception as exc:  # noqa: BLE001
+            last_error = exc
+        raise last_error or ValueError("The query planning model returned no usable plan")
     def retrieve_local(self, state: LiteratureAgentState) -> LiteratureAgentState:
         return self._retrieve_source("local_knowledge", state)
 
@@ -133,6 +164,15 @@ class LiteratureNodes:
         plan: QueryPlan,
         minimum_interval: float,
     ) -> LiteratureAgentState:
+        # A rate-limited source (arXiv asks for one request every few seconds)
+        # used to be queried once per rewritten query with a sleep in between.
+        # One OR-combined request returns the same candidates in a single round
+        # trip; the per-query batches are rebuilt locally for rank fusion.
+        if len(plan.queries) > 1:
+            try:
+                return self._retrieve_combined(source, retriever, plan)
+            except Exception:  # noqa: BLE001
+                pass
         batches: list[RetrievalBatch] = []
         errors: list[RetrievalError] = []
         for index, query in enumerate(plan.queries):
@@ -143,6 +183,45 @@ class LiteratureNodes:
             except Exception as exc:  # noqa: BLE001
                 errors.append(RetrievalError(source=source, query=query, message=str(exc)))
         return {retrieval_state_key(source): batches, "errors": errors}
+
+    def _retrieve_combined(self, source: PaperSource, retriever: Any, plan: QueryPlan) -> LiteratureAgentState:
+        terms = [term for term in (combined_query_term(query) for query in plan.queries) if term]
+        if not terms:
+            return {retrieval_state_key(source): [], "errors": []}
+        combined_query = "(" + " OR ".join(dict.fromkeys(terms)) + ")"
+        cache_key = (source, combined_query, plan.start_year, plan.end_year)
+        raw_papers = SEARCH_CACHE.get(cache_key)
+        if raw_papers is None:
+            response = retriever.invoke(
+                {
+                    "query": combined_query,
+                    "start_year": plan.start_year,
+                    "end_year": plan.end_year,
+                    "max_results": min(DEFAULT_MAX_RESULTS * len(plan.queries), 50),
+                }
+            )
+            raw_papers = response.get("papers", []) if isinstance(response, dict) else []
+            SEARCH_CACHE.put(cache_key, raw_papers)
+        batches = [
+            RetrievalBatch(source=source, query=query, papers=self._papers_for_query(source, raw_papers, query))
+            for query in plan.queries
+        ]
+        return {retrieval_state_key(source): batches, "errors": []}
+
+    @staticmethod
+    def _papers_for_query(source: PaperSource, raw_papers: list[Any], query: str) -> list[AcademicPaper]:
+        papers: list[AcademicPaper] = []
+        for item in raw_papers:
+            data = item.model_dump() if isinstance(item, AcademicPaper) else dict(item)
+            if not matches_search_query(data, query):
+                continue
+            data["source"] = source
+            existing_sources = data.get("sources") or []
+            data["sources"] = list(dict.fromkeys([source, *existing_sources]))
+            papers.append(AcademicPaper.model_validate(data))
+            if len(papers) >= DEFAULT_MAX_RESULTS:
+                break
+        return papers
 
     def _invoke_retriever(
         self,
@@ -158,18 +237,16 @@ class LiteratureNodes:
             max_results=DEFAULT_MAX_RESULTS,
         )
         payload = request.model_dump()
-        response = retriever.invoke(payload)
-        raw_papers = response.get("papers", []) if isinstance(response, dict) else []
-        papers: list[AcademicPaper] = []
-        for item in raw_papers:
-            data = item.model_dump() if isinstance(item, AcademicPaper) else dict(item)
-            if not matches_search_query(data, query):
-                continue
-            data["source"] = source
-            existing_sources = data.get("sources") or []
-            data["sources"] = list(dict.fromkeys([source, *existing_sources]))
-            papers.append(AcademicPaper.model_validate(data))
-        return RetrievalBatch(source=source, query=query, papers=papers)
+        # Only public sources are cached: library and favorites change per user.
+        cacheable = source in CACHEABLE_SOURCES
+        cache_key = (source, query, plan.start_year, plan.end_year)
+        raw_papers = SEARCH_CACHE.get(cache_key) if cacheable else None
+        if raw_papers is None:
+            response = retriever.invoke(payload)
+            raw_papers = response.get("papers", []) if isinstance(response, dict) else []
+            if cacheable:
+                SEARCH_CACHE.put(cache_key, raw_papers)
+        return RetrievalBatch(source=source, query=query, papers=self._papers_for_query(source, raw_papers, query))
 
     def aggregate_and_rank(self, state: LiteratureAgentState) -> LiteratureAgentState:
         batches: list[RetrievalBatch] = []
@@ -198,16 +275,14 @@ class LiteratureNodes:
             f"检索意图：{plan.intent_summary}\n"
             f"关键词：{', '.join(plan.keywords)}\n"
             f"时间范围：{plan.start_year}-{plan.end_year}\n\n"
-            f"候选文献 JSON：\n{json.dumps(paper_payload, ensure_ascii=False, indent=2)}"
+            f"候选文献 JSON：\n{json.dumps(paper_payload, ensure_ascii=False)}"
         )
+        prompt_messages = [
+            SystemMessage(content=read_prompt("literature_report.txt")),
+            HumanMessage(content=human_prompt),
+        ]
         try:
-            response = self.chat_model.invoke(
-                [
-                    SystemMessage(content=read_prompt("literature_report.txt")),
-                    HumanMessage(content=human_prompt),
-                ]
-            )
-            markdown = message_text(response)
+            markdown = self._stream_report(prompt_messages)
         except Exception as exc:  # noqa: BLE001
             if not self.allow_report_fallback:
                 raise
@@ -221,6 +296,37 @@ class LiteratureNodes:
             )
         }
 
+    def _stream_report(self, prompt_messages: list[Any]) -> str:
+        """Generate the report, forwarding partial text so the UI can show it as it is written."""
+        stream = getattr(self.chat_model, "stream", None)
+        if stream is None:
+            return message_text(self.chat_model.invoke(prompt_messages))
+        writer = get_stream_writer()
+        parts: list[str] = []
+        pending: list[str] = []
+        last_flush = time.monotonic()
+        try:
+            for chunk in stream(prompt_messages):
+                text = message_text(chunk) if not isinstance(getattr(chunk, "content", None), str) else chunk.content
+                if not text:
+                    continue
+                parts.append(text)
+                pending.append(text)
+                if time.monotonic() - last_flush >= REPORT_FLUSH_SECONDS:
+                    writer({"event": "report_delta", "text": "".join(pending)})
+                    pending.clear()
+                    last_flush = time.monotonic()
+        except Exception:  # noqa: BLE001
+            if parts:
+                raise
+            # The provider does not support streaming here; ask once more in one piece.
+            return message_text(self.chat_model.invoke(prompt_messages))
+        if pending:
+            writer({"event": "report_delta", "text": "".join(pending)})
+        markdown = "".join(parts).strip()
+        if not markdown:
+            return message_text(self.chat_model.invoke(prompt_messages))
+        return markdown
     def format_literature_list(self, state: LiteratureAgentState) -> LiteratureAgentState:
         papers = [paper.model_dump(mode="json") for paper in state.get("all_ranked_papers", [])]
         result = self.list_tool.invoke({"papers": papers})
@@ -242,6 +348,69 @@ class LiteratureNodes:
         return {"fishbone_result": final_event}
 
 
+REPORT_FLUSH_SECONDS = 0.35
+CACHEABLE_SOURCES = {"google_scholar", "arxiv"}
+
+
+class SearchResultCache:
+    """Small in-process TTL cache for public literature sources.
+
+    Repeating or refining a search within a few minutes re-sends mostly the
+    same queries; serving them from memory avoids the slowest network hops.
+    """
+
+    def __init__(self, ttl_seconds: float = 1800.0, max_entries: int = 256) -> None:
+        self.ttl_seconds = ttl_seconds
+        self.max_entries = max_entries
+        self._entries: dict[Any, tuple[float, list[Any]]] = dict()
+        self._lock = threading.Lock()
+
+    def get(self, key: Any) -> list[Any] | None:
+        with self._lock:
+            entry = self._entries.get(key)
+            if entry is None:
+                return None
+            if time.monotonic() - entry[0] > self.ttl_seconds:
+                self._entries.pop(key, None)
+                return None
+            return entry[1]
+
+    def put(self, key: Any, papers: list[Any]) -> None:
+        if not papers:
+            return
+        with self._lock:
+            if len(self._entries) >= self.max_entries:
+                oldest = min(self._entries, key=lambda item: self._entries[item][0])
+                self._entries.pop(oldest, None)
+            self._entries[key] = (time.monotonic(), list(papers))
+
+    def clear(self) -> None:
+        with self._lock:
+            self._entries.clear()
+
+
+SEARCH_CACHE = SearchResultCache()
+
+
+ARXIV_STOPWORDS = {"a", "an", "and", "for", "in", "of", "on", "or", "the", "to", "with", "using", "based", "via"}
+
+
+def combined_query_term(query: str) -> str | None:
+    """One operand of the OR-combined request, or None when the query has no usable English terms.
+
+    Short queries stay exact phrases. A long natural-language query almost
+    never occurs verbatim in a title or abstract, so its content words are
+    combined with AND instead; arXiv indexes English text only.
+    """
+    normalized = query.strip()
+    if '"' in normalized or re.search(r"\b(?:AND|OR)\b|[()]", normalized):
+        return f"({normalized})"
+    words = [word for word in re.findall(r"[A-Za-z][A-Za-z0-9.-]*", normalized) if word.casefold() not in ARXIV_STOPWORDS]
+    if not words:
+        return None
+    if len(words) <= 3:
+        return '"' + " ".join(words) + '"'
+    return "(" + " AND ".join(f'"{word}"' for word in words[:5]) + ")"
 def normalize_query_plan(user_text: str, draft: QueryPlanDraft, current_year: int) -> QueryPlan:
     keywords = unique_nonempty(draft.keywords)[:12]
     if not keywords:

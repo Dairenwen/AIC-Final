@@ -16,6 +16,7 @@ import {
 
 import { apiUrl, http } from '@/api/http'
 import AgentPromptBox from '@/components/AgentPromptBox.vue'
+import { renderMarkdown } from '@/utils/renderMarkdown'
 import type { LiteraturePaper, ResearchTask } from '@/types'
 
 interface TaskEvent {
@@ -24,6 +25,7 @@ interface TaskEvent {
   progress: number
   message: string
   source?: string
+  text?: string
 }
 
 interface AgentPromptPayload {
@@ -43,13 +45,17 @@ const events = ref<TaskEvent[]>([])
 const busy = ref(false)
 const errorMessage = ref('')
 const activeTab = ref<'papers' | 'report' | 'timeline'>('papers')
+// Report text received while the model is still writing it.
+const liveReport = ref('')
+let lastDeltaSequence = 0
+let tabChosenByUser = false
 const panelHeights = ref<Record<ResizePanel, number>>({
   // Keep the three trace sections close to the balanced proportions used by
   // the desktop literature-search layout. The previous event-heavy defaults
   // forced the query plan and source cards down to their minimum heights.
-  plan: 230,
-  sources: 155,
-  events: 245,
+  plan: 212,
+  sources: 186,
+  events: 232,
 })
 let closeEvents: (() => void) | null = null
 
@@ -63,7 +69,11 @@ const output = computed(() => task.value?.output ?? {})
 const papers = computed(() => output.value.papers ?? [])
 const queryPlan = computed(() => output.value.query_plan)
 const isRunning = computed(() => task.value != null && !['SUCCEEDED', 'FAILED', 'CANCELED'].includes(task.value.status))
-const reportBlocks = computed(() => parseMarkdown(output.value.report_markdown ?? ''))
+const reportStreaming = computed(() => isRunning.value && Boolean(liveReport.value) && !output.value.fishbone_url && task.value?.status !== 'SUCCEEDED')
+const reportMarkdown = computed(() => (isRunning.value && liveReport.value.length > (output.value.report_markdown ?? '').length
+  ? liveReport.value
+  : output.value.report_markdown || liveReport.value))
+const reportHtml = computed(() => renderMarkdown(reportMarkdown.value))
 
 async function startSearch(payload?: AgentPromptPayload | Event) {
   const agentPayload = isAgentPromptPayload(payload) ? payload : null
@@ -72,6 +82,7 @@ async function startSearch(payload?: AgentPromptPayload | Event) {
   busy.value = true
   errorMessage.value = ''
   events.value = []
+  resetLiveReport()
   try {
     const response = await http.post('/tasks', {
       prompt,
@@ -113,6 +124,30 @@ async function refreshTask() {
   task.value = response.data.data as ResearchTask
 }
 
+function resetLiveReport() {
+  liveReport.value = ''
+  lastDeltaSequence = 0
+  tabChosenByUser = false
+}
+
+function selectTab(tab: 'papers' | 'report' | 'timeline') {
+  tabChosenByUser = true
+  activeTab.value = tab
+}
+
+function handleReportDelta(event: Event) {
+  const payload = JSON.parse((event as MessageEvent).data) as TaskEvent
+  if (payload.sequence <= lastDeltaSequence) return
+  lastDeltaSequence = payload.sequence
+  liveReport.value += payload.text ?? ''
+  if (task.value) {
+    task.value.progress = Math.max(task.value.progress, payload.progress)
+    task.value.current_step = payload.message
+  }
+  // Bring the report into view once, unless the reader already picked a tab.
+  if (!tabChosenByUser && activeTab.value !== 'report') activeTab.value = 'report'
+}
+
 function subscribe(taskId: string) {
   closeEvents?.()
   const source = new EventSource(apiUrl(`/tasks/${taskId}/events`))
@@ -131,7 +166,7 @@ function subscribe(taskId: string) {
     const payload = JSON.parse((event as MessageEvent).data) as TaskEvent
     if (!events.value.some((item) => item.sequence === payload.sequence)) events.value.push(payload)
     if (task.value) {
-      task.value.progress = payload.progress
+      task.value.progress = Math.max(task.value.progress, payload.progress)
       task.value.current_step = payload.message
     }
     if (payload.type !== 'timeline.inserted' || payload.progress % 4 === 0) void refreshTask()
@@ -141,6 +176,7 @@ function subscribe(taskId: string) {
     }
   }
   eventTypes.forEach((eventType) => source.addEventListener(eventType, handle))
+  source.addEventListener('report.delta', handleReportDelta)
   source.onerror = () => {
     void refreshTask().finally(() => {
       if (task.value && ['SUCCEEDED', 'FAILED', 'CANCELED'].includes(task.value.status)) source.close()
@@ -154,6 +190,7 @@ function resetWorkspace() {
   closeEvents = null
   task.value = null
   events.value = []
+  resetLiveReport()
   query.value = ''
   errorMessage.value = ''
   void router.replace({ path: route.path })
@@ -223,17 +260,6 @@ function sourceLabel(source: string) {
 
 function paperLink(paper: LiteraturePaper) {
   return paper.pdf_url || paper.url || ''
-}
-
-function parseMarkdown(markdown: string) {
-  return markdown.split('\n').map((line) => {
-    const text = line.trim().replaceAll('**', '')
-    if (text.startsWith('### ')) return { type: 'h3', text: text.slice(4) }
-    if (text.startsWith('## ')) return { type: 'h2', text: text.slice(3) }
-    if (text.startsWith('# ')) return { type: 'h1', text: text.slice(2) }
-    if (text.startsWith('- ')) return { type: 'li', text: text.slice(2) }
-    return { type: text ? 'p' : 'space', text }
-  })
 }
 
 function requestError(error: unknown) {
@@ -352,9 +378,9 @@ onBeforeUnmount(() => closeEvents?.())
 
       <section class="literature-result-pane">
         <nav class="literature-result-tabs" aria-label="检索结果视图">
-          <button type="button" :class="{ active: activeTab === 'papers' }" @click="activeTab = 'papers'"><FileSearch :size="15" />检索结果 <span>{{ papers.length }}</span></button>
-          <button type="button" :class="{ active: activeTab === 'report' }" @click="activeTab = 'report'"><FileText :size="15" />研究报告</button>
-          <button type="button" :class="{ active: activeTab === 'timeline' }" @click="activeTab = 'timeline'"><RouteIcon :size="15" />年度脉络</button>
+          <button type="button" :class="{ active: activeTab === 'papers' }" @click="selectTab('papers')"><FileSearch :size="15" />检索结果 <span>{{ papers.length }}</span></button>
+          <button type="button" :class="{ active: activeTab === 'report' }" @click="selectTab('report')"><FileText :size="15" />研究报告</button>
+          <button type="button" :class="{ active: activeTab === 'timeline' }" @click="selectTab('timeline')"><RouteIcon :size="15" />年度脉络</button>
         </nav>
 
         <div v-if="activeTab === 'papers'" class="literature-paper-list">
@@ -373,15 +399,13 @@ onBeforeUnmount(() => closeEvents?.())
         </div>
 
         <article v-else-if="activeTab === 'report'" class="literature-report-view">
-          <div v-if="!output.report_markdown" class="literature-result-empty"><LoaderCircle v-if="isRunning" class="spin" :size="24" /><FileText v-else :size="24" /><strong>研究报告尚未生成</strong></div>
-          <template v-for="(block, index) in reportBlocks" :key="index">
-            <h1 v-if="block.type === 'h1'">{{ block.text }}</h1>
-            <h2 v-else-if="block.type === 'h2'">{{ block.text }}</h2>
-            <h3 v-else-if="block.type === 'h3'">{{ block.text }}</h3>
-            <li v-else-if="block.type === 'li'">{{ block.text }}</li>
-            <p v-else-if="block.type === 'p'">{{ block.text }}</p>
-            <br v-else />
-          </template>
+          <div v-if="!reportMarkdown" class="literature-result-empty"><LoaderCircle v-if="isRunning" class="spin" :size="24" /><FileText v-else :size="24" /><strong>{{ isRunning ? '文献排序完成后开始撰写报告' : '研究报告尚未生成' }}</strong></div>
+                        <div
+            v-else
+            class="markdown-body literature-report-body"
+            :class="{ 'composer-chat__markdown--streaming': reportStreaming }"
+            v-html="reportHtml"
+                        ></div>
         </article>
 
         <div v-else class="literature-timeline-view">

@@ -316,6 +316,7 @@ def task_events(task_id: str):
     if task is None:
         return error("任务不存在", code="TASK_NOT_FOUND", status=404)
     last_sequence = max(int(request.headers.get("Last-Event-ID", "0") or 0), 0)
+    stream_task_id = task.id
 
     @stream_with_context
     def generate():
@@ -324,7 +325,7 @@ def task_events(task_id: str):
         while True:
             events = db.session.scalars(
                 select(TaskEvent)
-                .where(TaskEvent.task_id == task.id, TaskEvent.sequence > last_sequence)
+                .where(TaskEvent.task_id == stream_task_id, TaskEvent.sequence > last_sequence)
                 .order_by(TaskEvent.sequence)
             ).all()
             for event in events:
@@ -336,12 +337,15 @@ def task_events(task_id: str):
                     f"data: {json.dumps(payload, ensure_ascii=False)}\n\n"
                 )
             db.session.expire_all()
-            current = db.session.get(Task, task.id)
+            current = db.session.get(Task, stream_task_id)
             if current is None or current.status in STREAM_END_STATES:
                 idle_after_terminal = idle_after_terminal + 1 if not events else 0
                 if idle_after_terminal >= 2:
                     break
-            time.sleep(0.35)
+            # Hand the connection back to the pool while waiting; a long task
+            # must not pin one of the few pooled connections per open browser tab.
+            db.session.remove()
+            time.sleep(0.25)
 
     return Response(
         generate(),

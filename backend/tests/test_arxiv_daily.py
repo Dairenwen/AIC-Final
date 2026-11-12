@@ -1,3 +1,4 @@
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -64,7 +65,7 @@ def test_arxiv_daily_runtime_command_is_isolated(monkeypatch):
     assert payload["categories"][0]["code"] == "cs.AI"
     assert captured["command"][-2:] == ["--category", "cs.AI"]
     assert captured["timeout"] == 37
-    assert captured["cwd"].endswith("arxiv_daily\\runtime")
+    assert Path(captured["cwd"]).parts[-2:] == ("arxiv_daily", "runtime")
     assert captured["env"]["PYTHONIOENCODING"] == "utf-8"
 
 

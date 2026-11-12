@@ -66,8 +66,11 @@ def build_literature_graph(
     for node_name in retrieval_nodes:
         graph.add_edge("rewrite_query", node_name)
     graph.add_edge(retrieval_nodes, "aggregate_and_rank")
-    graph.add_edge("aggregate_and_rank", "generate_report")
-    graph.add_edge("generate_report", "format_literature_list")
+    # The report (one long model call) and the timeline image (local rendering)
+    # only depend on the ranked list, so they run side by side in one step.
+    graph.add_edge("format_literature_list", "generate_report")
+    graph.add_edge("aggregate_and_rank", "format_literature_list")
     graph.add_edge("format_literature_list", "generate_annual_fishbone")
+    graph.add_edge("generate_report", END)
     graph.add_edge("generate_annual_fishbone", END)
     return graph.compile(checkpointer=checkpointer)

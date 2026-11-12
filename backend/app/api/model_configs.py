@@ -111,7 +111,8 @@ def create_model_type():
 
 @bp.get("/model-configs")
 def list_model_configs():
-    ensure_user_api_config(g.current_user.id)
+    account_item = ensure_user_api_config(g.current_user.id)
+    default_value = stored_default_value(account_item)
     items = db.session.scalars(
         select(ModelConfig)
         .where(
@@ -121,38 +122,96 @@ def list_model_configs():
         )
         .order_by(ModelConfig.updated_at.desc())
     ).all()
-    return ok([serialize_config(item) for item in items], meta={"total": len(items)})
+    rows = [
+        {**serialize_config(item), "is_default": default_value == f"model_config:{item.id}"}
+        for item in items
+    ]
+    return ok(rows, meta={"total": len(rows)})
+
+
+@bp.get("/model-configs/system")
+def list_system_models():
+    """The two platform-managed chat models shown at the top of the model library."""
+    api_runtime = get_user_api_model_runtime()
+    return ok([
+        {
+            "value": API_MODEL_VALUE,
+            "name": "API 对话模型",
+            "model_name": api_runtime.model_name,
+            "provider": "DeepSeek" if "deepseek" in api_runtime.base_url.lower() else "API 模型服务",
+            "description": "通用对话与推理，响应快，适合日常问答与写作。",
+        },
+        {
+            "value": "vertical_domain",
+            "name": "平台微调模型",
+            "model_name": platform_display_name(),
+            "provider": "智研平台",
+            "description": "基于 Qwen3.8-27B 在科研语料上微调的垂域模型，面向文献理解与学术写作。",
+        },
+    ])
+
+
+def platform_display_name() -> str:
+    return str(current_app.config.get("PLATFORM_MODEL_DISPLAY_NAME") or "Qwen3.8-27B-SFT")
+
+
+def stored_default_value(account_item: ModelConfig | None) -> str:
+    if account_item is None:
+        return API_MODEL_VALUE
+    return str((account_item.settings or dict()).get("system_default") or API_MODEL_VALUE)
+
+
+def find_default_personal_config(default_value: str) -> ModelConfig | None:
+    if not default_value.startswith("model_config:"):
+        return None
+    item = find_owned_config(default_value.removeprefix("model_config:"), active_only=True)
+    if item is None or item.model_type_code != "chat" or item.is_account_api:
+        return None
+    return item
 
 
 @bp.get("/model-configs/default")
 def get_default_model_config():
-    item = ensure_user_api_config(g.current_user.id)
-    if item is not None and (item.settings or {}).get("system_default", API_MODEL_VALUE) == API_MODEL_VALUE:
-        runtime = get_user_api_model_runtime()
+    account_item = ensure_user_api_config(g.current_user.id)
+    default_value = stored_default_value(account_item)
+    personal = find_default_personal_config(default_value)
+    if personal is not None:
         return ok({
-            "value": API_MODEL_VALUE,
-            "name": "API 对话模型",
-            "model_name": runtime.model_name,
-            "source": "account_api",
-            "config_id": str(item.id),
+            "value": f"model_config:{personal.id}",
+            "name": personal.name,
+            "model_name": personal.model_name,
+            "source": "personal",
+            "config_id": str(personal.id),
         })
-    return ok(builtin_vertical_model())
+    if default_value == "vertical_domain":
+        return ok(builtin_vertical_model())
+    runtime = get_user_api_model_runtime()
+    return ok({
+        "value": API_MODEL_VALUE,
+        "name": "API 对话模型",
+        "model_name": runtime.model_name,
+        "source": "account_api",
+        "config_id": str(account_item.id) if account_item is not None else None,
+    })
 
 
 @bp.post("/model-configs/default")
 def set_default_model_config():
-    payload = request.get_json(silent=True) or {}
+    payload = request.get_json(silent=True) or dict()
     config_id = str(payload.get("config_id") or API_MODEL_VALUE)
-    if config_id not in {API_MODEL_VALUE, "vertical_domain"}:
-        return error("系统模型由平台统一管理，不能切换个人模型", code="MODEL_DEFAULT_LOCKED", status=403)
+    if config_id in {API_MODEL_VALUE, "vertical_domain"}:
+        default_value = config_id
+    else:
+        default_value = f"model_config:{config_id.removeprefix('model_config:')}"
+        if find_default_personal_config(default_value) is None:
+            return error("只能把已通过连接测试的对话模型设为默认", code="MODEL_DEFAULT_INVALID", status=409)
 
     account_item = ensure_user_api_config(g.current_user.id)
-    if account_item is not None:
-        account_item.settings = {**(account_item.settings or {}), "system_default": config_id}
+    if account_item is None:
+        return error("默认模型暂时无法保存，请稍后重试", code="MODEL_DEFAULT_UNAVAILABLE", status=503)
+    account_item.settings = {**(account_item.settings or dict()), "system_default": default_value}
     db.session.commit()
     return get_default_model_config()
-
-
 @bp.post("/model-configs")
 def create_model_config():
     payload = request.get_json(silent=True) or {}
@@ -264,7 +323,8 @@ def verify_model_config(config_id: str):
     item.last_error_code = None
     db.session.commit()
     try:
-        verify_openai_compatible(
+        verify_model_by_type(
+            model_type_code=item.model_type_code,
             base_url=item.base_url,
             model_name=item.model_name,
             api_key=api_key,
@@ -389,8 +449,8 @@ def find_default_chat_config(user_id) -> ModelConfig | None:
 def builtin_vertical_model() -> dict:
     return {
         "value": "vertical_domain",
-        "name": "平台专用模型",
-        "model_name": str(current_app.config.get("PLATFORM_MODEL_DISPLAY_NAME") or "qwen3.6-27B-sft"),
+        "name": "平台微调模型",
+        "model_name": platform_display_name(),
         "source": "builtin",
         "config_id": None,
     }
@@ -522,23 +582,14 @@ class ModelVerificationError(RuntimeError):
         self.public_message = public_message
 
 
-def verify_openai_compatible(*, base_url: str, model_name: str, api_key: str | None, timeout: float) -> None:
-    body = json.dumps(
-        {
-            "model": model_name,
-            "messages": [{"role": "user", "content": "Reply with OK."}],
-            "temperature": 0,
-            "max_tokens": 64,
-            "chat_template_kwargs": {"enable_thinking": False},
-        }
-    ).encode("utf-8")
+def _post_verification(url: str, body: dict, api_key: str | None, timeout: float) -> dict:
     headers = {"Content-Type": "application/json"}
     normalized_api_key = str(api_key or "").strip()
     if normalized_api_key and normalized_api_key.upper() != "EMPTY":
         headers["Authorization"] = f"Bearer {normalized_api_key}"
     api_request = url_request.Request(
-        f"{base_url.rstrip('/')}/chat/completions",
-        data=body,
+        url,
+        data=json.dumps(body).encode("utf-8"),
         method="POST",
         headers=headers,
     )
@@ -548,11 +599,68 @@ def verify_openai_compatible(*, base_url: str, model_name: str, api_key: str | N
     except url_error.HTTPError as exc:
         if exc.code in {401, 403}:
             raise ModelVerificationError("MODEL_AUTH_FAILED", "API Key 校验失败") from exc
+        if exc.code == 404:
+            raise ModelVerificationError("MODEL_NOT_FOUND", "接口地址或模型名称不存在（HTTP 404）") from exc
         raise ModelVerificationError("MODEL_HTTP_ERROR", f"模型服务返回 HTTP {exc.code}") from exc
     except (url_error.URLError, TimeoutError, socket.timeout, OSError) as exc:
         raise ModelVerificationError("MODEL_CONNECTION_FAILED", "无法连接模型服务，请检查地址和网络") from exc
     except (UnicodeDecodeError, json.JSONDecodeError) as exc:
         raise ModelVerificationError("MODEL_RESPONSE_INVALID", "模型服务返回了无效响应") from exc
+    if not isinstance(payload, dict):
+        raise ModelVerificationError("MODEL_RESPONSE_INVALID", "模型服务返回了无效响应")
+    return payload
+
+
+def verify_embedding_model(*, base_url: str, model_name: str, api_key: str | None, timeout: float) -> None:
+    payload = _post_verification(
+        f"{base_url.rstrip('/')}/embeddings",
+        {"model": model_name, "input": ["connection test"]},
+        api_key,
+        timeout,
+    )
+    rows = payload.get("data")
+    first = rows[0] if isinstance(rows, list) and rows else None
+    if not isinstance(first, dict) or not first.get("embedding"):
+        raise ModelVerificationError("MODEL_RESPONSE_INVALID", "接口不是兼容的 Embeddings 服务")
+
+
+def verify_rerank_model(*, base_url: str, model_name: str, api_key: str | None, timeout: float) -> None:
+    payload = _post_verification(
+        f"{base_url.rstrip('/')}/rerank",
+        {"model": model_name, "query": "connection test", "documents": ["first document", "second document"]},
+        api_key,
+        timeout,
+    )
+    if not isinstance(payload.get("results"), list) or not payload["results"]:
+        raise ModelVerificationError("MODEL_RESPONSE_INVALID", "接口不是兼容的 Rerank 服务")
+
+
+def verify_model_by_type(*, model_type_code: str, base_url: str, model_name: str, api_key: str | None, timeout: float) -> None:
+    """Probe the endpoint that matches the model type."""
+    probes = {"embedding": verify_embedding_model, "rerank": verify_rerank_model}
+    probe = probes.get(model_type_code, verify_openai_compatible)
+    probe(base_url=base_url, model_name=model_name, api_key=api_key, timeout=timeout)
+
+
+def verify_openai_compatible(*, base_url: str, model_name: str, api_key: str | None, timeout: float) -> None:
+    body = {
+        "model": model_name,
+        "messages": [{"role": "user", "content": "Reply with OK."}],
+        "temperature": 0,
+        "max_tokens": 64,
+        "chat_template_kwargs": {"enable_thinking": False},
+    }
+    url = f"{base_url.rstrip('/')}/chat/completions"
+    try:
+        payload = _post_verification(url, body, api_key, timeout)
+    except ModelVerificationError as exc:
+        # Strict gateways reject fields they do not know (the thinking switch,
+        # or `max_tokens` on newer reasoning models). Probe once more with the
+        # minimal request before reporting the model as unusable.
+        if exc.code != "MODEL_HTTP_ERROR":
+            raise
+        minimal = {"model": model_name, "messages": body["messages"]}
+        payload = _post_verification(url, minimal, api_key, timeout)
     choices = payload.get("choices")
     if not isinstance(choices, list) or not choices:
         raise ModelVerificationError("MODEL_RESPONSE_INVALID", "接口不是兼容的 Chat Completions 服务")
@@ -563,5 +671,8 @@ def verify_openai_compatible(*, base_url: str, model_name: str, api_key: str | N
             str(item.get("text", "")) if isinstance(item, dict) else str(item)
             for item in content
         )
-    if not str(content or "").strip():
+    reasoning = first_message.get("reasoning_content") if isinstance(first_message, dict) else None
+    # A reasoning model may spend the small probe budget on thinking; a
+    # well-formed reply with reasoning still proves the connection works.
+    if not str(content or "").strip() and not str(reasoning or "").strip():
         raise ModelVerificationError("MODEL_RESPONSE_INVALID", "模型服务未返回可用文本内容")

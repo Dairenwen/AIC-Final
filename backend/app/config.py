@@ -296,9 +296,9 @@ class Config:
         5, int(os.getenv("TRANSLATION_HEARTBEAT_SECONDS", "30"))
     )
     TRANSLATION_LLM_BACKEND = os.getenv("TRANSLATION_LLM_BACKEND", "api").strip().lower()
-    TRANSLATION_API_BASE_URL = os.getenv("TRANSLATION_API_BASE_URL", "https://api.siliconflow.cn/v1")
+    TRANSLATION_API_BASE_URL = os.getenv("TRANSLATION_API_BASE_URL", "https://api.deepseek.com/v1")
     TRANSLATION_API_MODEL = os.getenv(
-        "TRANSLATION_API_MODEL", "deepseek-ai/DeepSeek-V4-Flash"
+        "TRANSLATION_API_MODEL", "deepseek-flash"
     )
     TRANSLATION_API_KEY = os.getenv("TRANSLATION_API_KEY", "")
     TRANSLATION_API_TIMEOUT_SECONDS = max(30.0, float(os.getenv("TRANSLATION_API_TIMEOUT_SECONDS", "240")))
@@ -323,18 +323,22 @@ class Config:
     TRANSLATION_PDF2ZH_COMMAND = os.getenv("TRANSLATION_PDF2ZH_COMMAND", "")
     LITERATURE_EXTERNAL_SEARCH = as_bool(os.getenv("LITERATURE_EXTERNAL_SEARCH"), True)
     LITERATURE_FORCE_OFFLINE_MODEL = as_bool(os.getenv("LITERATURE_FORCE_OFFLINE_MODEL"), False)
+    # Answer without the provider's thinking phase where it can be switched off.
+    LITERATURE_FAST_MODEL = as_bool(os.getenv("LITERATURE_FAST_MODEL"), True)
     LITERATURE_REPORT_LIMIT = int(os.getenv("LITERATURE_REPORT_LIMIT", "10"))
-    # Platform model: OpenAI-compatible Unsloth deployment.
+    # Platform fine-tuned model. While the fine-tuned weights are not deployed,
+    # requests are served by the DeepSeek API; the UI keeps showing
+    # PLATFORM_MODEL_DISPLAY_NAME.
     QWEN_DPO_BASE_URL = os.getenv(
         "QWEN_DPO_BASE_URL",
-        "https://k9n4n0vf52f6239t-9001.js01-webservice.gpuhome.cc:50000/v1",
+        "https://api.deepseek.com/v1",
     )
-    QWEN_DPO_MODEL = os.getenv("QWEN_DPO_MODEL", "Qwen3.8-27B-UD-Q4_K_XL")
-    QWEN_DPO_API_KEY = os.getenv("QWEN_DPO_API_KEY", "sk-unsloth-YOUR_KEY")
+    QWEN_DPO_MODEL = os.getenv("QWEN_DPO_MODEL", "deepseek-flash")
+    QWEN_DPO_API_KEY = os.getenv("QWEN_DPO_API_KEY") or os.getenv("USER_API_MODEL_API_KEY", "")
     QWEN_DPO_TIMEOUT_SECONDS = float(os.getenv("QWEN_DPO_TIMEOUT_SECONDS", "180"))
     # Stable public label for the platform model. The actual request is sent
     # through USER_API_MODEL_* below, while this name is shown in the UI.
-    PLATFORM_MODEL_DISPLAY_NAME = os.getenv("PLATFORM_MODEL_DISPLAY_NAME", "qwen3.6-27B-sft")
+    PLATFORM_MODEL_DISPLAY_NAME = os.getenv("PLATFORM_MODEL_DISPLAY_NAME", "Qwen3.8-27B-SFT")
     # Connection checks may wait for a queued model server, but should still
     # return before the normal generation timeout becomes unbounded.
     MODEL_VERIFY_TIMEOUT_SECONDS = max(
@@ -349,8 +353,8 @@ class Config:
     QWEN_DPO_ENV_OVERRIDE = as_bool(os.getenv("QWEN_DPO_ENV_OVERRIDE"), True)
     # Default account API chat model. Keep the model ID in provider-native form
     # so OpenAI-compatible gateways (such as SiliconFlow) receive it unchanged.
-    USER_API_MODEL_BASE_URL = os.getenv("USER_API_MODEL_BASE_URL", "https://api.siliconflow.cn/v1")
-    USER_API_MODEL_NAME = os.getenv("USER_API_MODEL_NAME", "deepseek-ai/DeepSeek-V4-Flash")
+    USER_API_MODEL_BASE_URL = os.getenv("USER_API_MODEL_BASE_URL", "https://api.deepseek.com/v1")
+    USER_API_MODEL_NAME = os.getenv("USER_API_MODEL_NAME", "deepseek-flash")
     USER_API_MODEL_API_KEY = os.getenv("USER_API_MODEL_API_KEY", "")
     USER_API_MODEL_TIMEOUT_SECONDS = int(os.getenv("USER_API_MODEL_TIMEOUT_SECONDS", "120"))
     USER_API_MODEL_MAX_OUTPUT_TOKENS = int(os.getenv("USER_API_MODEL_MAX_OUTPUT_TOKENS", "3072"))

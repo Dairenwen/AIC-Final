@@ -62,8 +62,8 @@ def ensure_user_api_config(user_id: UUID | str) -> ModelConfig | None:
             provider_code="openai_compatible",
             model_type_code="chat",
             name=ACCOUNT_API_CONFIG_NAME,
-            base_url=str(current_app.config.get("USER_API_MODEL_BASE_URL") or "https://api.siliconflow.cn/v1").rstrip("/"),
-            model_name=str(current_app.config.get("USER_API_MODEL_NAME") or "deepseek-ai/DeepSeek-V4-Flash"),
+            base_url=str(current_app.config.get("USER_API_MODEL_BASE_URL") or "https://api.deepseek.com/v1").rstrip("/"),
+            model_name=str(current_app.config.get("USER_API_MODEL_NAME") or "deepseek-flash"),
             capabilities=["chat_completions"],
             settings={
                 "timeout_seconds": int(current_app.config.get("USER_API_MODEL_TIMEOUT_SECONDS", 120)),

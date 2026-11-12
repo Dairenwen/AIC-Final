@@ -78,7 +78,7 @@ class LiteratureSearchService:
         )
         use_offline_model = bool(self.app.config["LITERATURE_FORCE_OFFLINE_MODEL"])
         graph = adapter.build_graph(
-            chat_model=OfflineResearchModel() if use_offline_model else build_system_chat_model(user_id),
+            chat_model=OfflineResearchModel() if use_offline_model else build_system_chat_model(user_id, fast=bool(self.app.config.get("LITERATURE_FAST_MODEL", True))),
             local_retriever=DatabasePaperRetriever(engine=engine, user_id=None),
             personal_retriever=DatabasePaperRetriever(engine=engine, user_id=user_id),
             arxiv_tool=arxiv_tool,
@@ -96,6 +96,7 @@ class LiteratureSearchService:
         source_progress: dict[str, dict[str, Any]] = {}
         persistence_warnings: list[str] = []
         completed_sources = 0
+        report_text = ""
         context = adapter.runtime_context(user_id=str(user_id), thread_id=str(task.id))
 
         for mode, payload in graph.stream(
@@ -111,7 +112,12 @@ class LiteratureSearchService:
                 final_state = payload
                 continue
             if mode == "custom":
-                if payload.get("event") == "paper_inserted":
+                if payload.get("event") == "report_delta":
+                    report_text += str(payload.get("text") or "")
+                    self.merge_output(task, report_markdown=report_text)
+                    self.emit(task, "report.delta", 70, "正在撰写研究报告", text=str(payload.get("text") or ""))
+                    continue
+                if payload.get("event") == "paper_inserted" and payload.get("rendered", True):
                     progress = 84 + int(float(payload.get("progress", 0)) * 14)
                     self.emit(
                         task,
@@ -229,7 +235,8 @@ class LiteratureSearchService:
         sequence = db.session.scalar(
             select(func.coalesce(func.max(TaskEvent.sequence), 0)).where(TaskEvent.task_id == task.id)
         )
-        task.progress = min(progress, 100)
+        # Report and timeline branches run in parallel; never move the bar backwards.
+        task.progress = max(int(task.progress or 0), min(progress, 100))
         task.current_step = message[:150]
         db.session.add(
             TaskEvent(
@@ -258,7 +265,7 @@ class LiteratureSearchService:
                     """
                     SELECT id FROM zhiyan.papers
                     WHERE normalized_title = :normalized
-                      AND publish_year IS NOT DISTINCT FROM :year
+                                    AND publish_year IS NOT DISTINCT FROM :year
                     LIMIT 1
                     """
                 ),
@@ -372,7 +379,7 @@ class DatabasePaperRetriever:
         statement = text(
             f"""
             SELECT p.id, p.title, p.abstract, p.authors, p.venue, p.publish_year,
-                   p.pdf_url, p.citation_count, p.source_json
+                                        p.pdf_url, p.citation_count, p.source_json
             FROM zhiyan.papers p
             {join}
             WHERE {' AND '.join(conditions)}

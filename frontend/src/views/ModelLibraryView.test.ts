@@ -4,16 +4,18 @@ import { describe, expect, it } from 'vitest'
 import source from './ModelLibraryView.vue?raw'
 
 describe('ModelLibraryView', () => {
-  it('presents one read-only platform API model card', () => {
+  it('presents the platform models and lets users add their own', () => {
     const { descriptor } = parse(source, { filename: 'ModelLibraryView.vue' })
     const template = descriptor.template?.content || ''
 
     expect(template).toContain('模型库')
     expect(template).toContain('API 对话模型')
-    expect(template).toContain('平台专用模型')
-    expect(template).toContain('qwen3.6-27B-sft')
+    expect(template).toContain('平台微调模型')
+    expect(template).toContain('{{ platformModelName }}')
     expect(template).toContain('API 模型服务')
-    expect(template).toContain('v-if="false"')
+    expect(template).not.toContain('v-if="false')
+    expect(template).toContain('添加模型')
+    expect(template).toContain('保存并测试连接')
     expect(template).toContain('测试')
     expect(template).toContain('当前默认')
     expect(template).toContain('class="model-card-grid"')

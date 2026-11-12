@@ -5,6 +5,7 @@ import App from './App.vue'
 import router from './router'
 import './styles/main.css'
 import './styles/editorial-theme.css'
+import './styles/chat-refine.css'
 import { initializeTheme } from './utils/theme'
 
 initializeTheme()

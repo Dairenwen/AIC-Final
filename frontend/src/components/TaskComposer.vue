@@ -18,12 +18,14 @@ import {
   Send,
   Share2,
   Sparkles,
+  Square,
   ThumbsDown,
   ThumbsUp,
   UsersRound,
   X,
 } from 'lucide-vue-next'
 
+import { streamChat } from '@/api/chatStream'
 import { apiUrl, getData, http, taskIdFromResponse } from '@/api/http'
 import { getAgentPromptTemplate } from '@/components/agentPromptTemplates'
 import { renderMarkdown } from '@/utils/renderMarkdown'
@@ -63,6 +65,13 @@ interface ChatMessage {
   rag?: RagAnswer
   copied?: boolean
   rating?: 'up' | 'down' | null
+  /** Placeholder shown while no answer text has arrived yet. */
+  statusText?: string
+  /** The model's thinking text, when the provider streams it. */
+  reasoning?: string
+  streaming?: boolean
+  error?: boolean
+  warning?: string
 }
 
 const emit = defineEmits<{
@@ -71,7 +80,7 @@ const emit = defineEmits<{
 }>()
 const props = defineProps<{ preset?: string; projectId?: string; conversationId?: string }>()
 const router = useRouter()
-const PLATFORM_DISPLAY_MODEL = 'qwen3.6-27B-sft'
+const platformDisplayModel = ref('Qwen3.8-27B-SFT')
 
 const prompt = ref('')
 const promptBeforeAgentSelection = ref<string | null>(null)
@@ -96,7 +105,9 @@ const progress = ref(0)
 const fileInput = ref<HTMLInputElement | null>(null)
 const promptInput = ref<HTMLTextAreaElement | null>(null)
 const chatList = ref<HTMLElement | null>(null)
-let thinkingTimer: number | null = null
+const isStreaming = ref(false)
+// Follow new text only while the reader is at the bottom of the conversation.
+let stickToBottom = true
 
 const canSubmit = computed(() => prompt.value.trim().length > 0 && taskStatus.value !== 'submitting' && taskStatus.value !== 'running')
 const selectedResource = computed(() => selectedAgent.value ?? selectedTeam.value)
@@ -113,9 +124,15 @@ const isChatMode = computed(() => chatMessages.value.length > 0)
 watch(isChatMode, (active) => emit('chatModeChange', active), { immediate: true })
 watch(chatMessages, () => {
   void nextTick(() => {
-    if (chatList.value) chatList.value.scrollTop = chatList.value.scrollHeight
+    if (chatList.value && stickToBottom) chatList.value.scrollTop = chatList.value.scrollHeight
   })
 }, { deep: true })
+
+function onChatScroll() {
+  const element = chatList.value
+  if (!element) return
+  stickToBottom = element.scrollHeight - element.scrollTop - element.clientHeight < 96
+}
 
 const fileAccept = computed(() => {
   if (selectedAgent.value?.code === 'paper_reading') return '.pdf,application/pdf'
@@ -136,7 +153,7 @@ const fileAccept = computed(() => {
 
 function modelDisplayName(value?: string) {
   if (value === 'api_model') return 'API 对话模型'
-  if (value === 'vertical_domain' || value === 'qwen3.6-dpo' || value === 'platform') return PLATFORM_DISPLAY_MODEL
+  if (value === 'vertical_domain' || value === 'qwen3.6-dpo' || value === 'platform') return platformDisplayModel.value
   if (value === 'auto') return '自动选择模型'
   if (value?.startsWith('model_config:')) {
     return personalModels.value.find((item) => `model_config:${item.id}` === value)?.name || '个人模型'
@@ -321,57 +338,44 @@ onMounted(() => {
   void loadPersonalModels()
 })
 
+interface SystemModel {
+  value: string
+  name: string
+  model_name: string
+}
+
 async function loadPersonalModels() {
   try {
-    const [items, backendDefaultModel] = await Promise.all([
+    const [items, backendDefaultModel, systemModels] = await Promise.all([
       getData<ModelConfig[]>('/model-configs'),
       getData<DefaultModelConfig>('/model-configs/default'),
+      getData<SystemModel[]>('/model-configs/system').catch(() => [] as SystemModel[]),
     ])
-     // Keep legacy personal-model loading for compatibility, while exposing
-     // only the two platform-managed system services in the composer.
-     void items
-     void backendDefaultModel
-    personalModels.value = []
-     defaultModelValue.value = backendDefaultModel.value || 'api_model'
-     model.value = defaultModelValue.value
+    // Verified personal chat models can be picked next to the two platform models.
+    personalModels.value = items.filter((item) => !item.is_account_api && item.status === 'ACTIVE' && item.model_type_code === 'chat')
+    const platformModel = systemModels.find((item) => item.value === 'vertical_domain')
+    if (platformModel?.model_name) platformDisplayModel.value = platformModel.model_name
+    defaultModelValue.value = backendDefaultModel.value || 'api_model'
+    model.value = defaultModelValue.value
   } catch {
     personalModels.value = []
     defaultModelValue.value = 'api_model'
     model.value = 'api_model'
   }
 }
-
 onBeforeUnmount(() => {
   document.removeEventListener('pointerdown', onDocumentPointerDown)
   document.removeEventListener('keydown', onDocumentKeydown)
-  stopThinkingPreview()
+  stopStreaming()
 })
 
-function startThinkingPreview(messageIndex: number) {
-  stopThinkingPreview()
-  const steps = [
-    '正在理解你的问题',
-    '正在选择合适的回答角度',
-    '正在组织科研语境下的回答',
-    '正在检查表达是否清晰',
-  ]
-  let stepIndex = 0
-  thinkingTimer = window.setInterval(() => {
-    stepIndex = Math.min(stepIndex + 1, steps.length - 1)
-    updateChatMessage(messageIndex, { content: steps[stepIndex] })
-  }, 1100)
-}
-
-function stopThinkingPreview() {
-  if (thinkingTimer == null) return
-  window.clearInterval(thinkingTimer)
-  thinkingTimer = null
+function isBusy() {
+  return taskStatus.value === 'submitting' || taskStatus.value === 'running'
 }
 
 function updateChatMessage(index: number, updates: Partial<ChatMessage>) {
-  chatMessages.value = chatMessages.value.map((message, messageIndex) => (
-    messageIndex === index ? { ...message, ...updates } : message
-  ))
+  const message = chatMessages.value[index]
+  if (message) Object.assign(message, updates)
 }
 
 async function copyMessage(message: ChatMessage, index: number) {
@@ -411,8 +415,7 @@ function handlePromptEnter(event: KeyboardEvent) {
 
 function editMessage(index: number) {
   const message = chatMessages.value[index]
-  if (!message || message.role !== 'user' || taskStatus.value === 'submitting' || taskStatus.value === 'running') return
-  stopThinkingPreview()
+  if (!message || message.role !== 'user' || isBusy()) return
   chatMessages.value = chatMessages.value.slice(0, index)
   if (message.kind) knowledgeBaseMode.value = message.kind === 'rag'
   prompt.value = message.content
@@ -427,10 +430,9 @@ function editMessage(index: number) {
 
 async function resendMessage(index: number) {
   const message = chatMessages.value[index]
-  if (!message || message.role !== 'user' || taskStatus.value === 'submitting' || taskStatus.value === 'running') return
+  if (!message || message.role !== 'user' || isBusy()) return
   const content = message.content.trim()
   if (!content) return
-  stopThinkingPreview()
   chatMessages.value = chatMessages.value.slice(0, index)
   if (message.kind) knowledgeBaseMode.value = message.kind === 'rag'
   prompt.value = content
@@ -439,51 +441,146 @@ async function resendMessage(index: number) {
   else await submitChatMessage()
 }
 
+// ---- Streaming chat -------------------------------------------------------
+// Text arrives in very small pieces. It is buffered and applied once per
+// animation frame so a fast model does not re-render Markdown hundreds of
+// times per second.
+let streamController: AbortController | null = null
+let streamIndex = -1
+let pendingDelta = ''
+let pendingReasoning = ''
+let flushHandle: number | null = null
+let revealTimer: number | null = null
+
+function scheduleFlush() {
+  if (flushHandle != null) return
+  flushHandle = window.requestAnimationFrame(flushStream)
+}
+
+function flushStream() {
+  flushHandle = null
+  const message = chatMessages.value[streamIndex]
+  if (!message) return
+  if (pendingReasoning) {
+    message.reasoning = (message.reasoning || '') + pendingReasoning
+    message.statusText = '正在思考'
+    pendingReasoning = ''
+  }
+  if (pendingDelta) {
+    message.content += pendingDelta
+    message.pending = false
+    pendingDelta = ''
+  }
+}
+
+function stopStreaming() {
+  streamController?.abort()
+  if (revealTimer != null) {
+    window.clearTimeout(revealTimer)
+    revealTimer = null
+  }
+}
+
 async function submitChatMessage() {
   const content = prompt.value.trim()
   taskStatus.value = 'submitting'
   taskMessage.value = ''
   progress.value = 5
-  const history = chatMessages.value.map((item) => ({ role: item.role, content: item.content }))
+  const history = chatMessages.value
+    .filter((item) => !item.error && item.content)
+    .map((item) => ({ role: item.role, content: item.content }))
   chatMessages.value.push({ role: 'user', content, kind: 'chat' })
   const assistantIndex = chatMessages.value.length
   chatMessages.value.push({
     role: 'assistant',
-    content: '正在理解你的问题',
+    content: '',
+    statusText: '正在连接模型',
     model: modelDisplayName(model.value),
     pending: true,
+    streaming: true,
   })
-  startThinkingPreview(assistantIndex)
   prompt.value = ''
+  stickToBottom = true
+  streamIndex = assistantIndex
+  pendingDelta = ''
+  pendingReasoning = ''
+  streamController = new AbortController()
+  isStreaming.value = true
+  void nextTick(resetPromptInputHeight)
 
   try {
-    const response = await http.post('/chat', {
+    await streamChat({
       prompt: content,
       model: model.value,
       model_config_id: model.value.startsWith('model_config:') ? model.value.slice('model_config:'.length) : null,
       messages: history,
       project_id: props.projectId || null,
       conversation_id: props.conversationId || null,
-    })
-    const data = response.data.data as { content: string; model?: string }
-    stopThinkingPreview()
-    updateChatMessage(assistantIndex, {
-      content: data.content || '模型没有返回内容，请稍后重试。',
-      model: modelDisplayName(model.value),
-      pending: false,
-    })
+    }, {
+      onReasoning: (text) => {
+        pendingReasoning += text
+        scheduleFlush()
+      },
+      onDelta: (text) => {
+        pendingDelta += text
+        scheduleFlush()
+      },
+    }, streamController.signal)
+    flushStream()
+    const message = chatMessages.value[assistantIndex]
+    if (message) {
+      message.streaming = false
+      message.pending = false
+      if (!message.content.trim()) message.content = '模型没有返回内容，请稍后重试。'
+    }
     taskStatus.value = 'idle'
-    taskMessage.value = ''
     progress.value = 0
   } catch (error) {
-    stopThinkingPreview()
-    updateChatMessage(assistantIndex, {
-      content: requestError(error),
-      pending: false,
-    })
-    taskStatus.value = 'error'
+    flushStream()
+    const aborted = (error as { name?: string }).name === 'AbortError'
+    const message = chatMessages.value[assistantIndex]
+    if (message) {
+      message.streaming = false
+      message.pending = false
+      if (aborted) {
+        message.warning = '已停止生成'
+      } else if (message.content.trim()) {
+        message.warning = `回答未完整生成：${requestError(error)}`
+      } else {
+        message.error = true
+        message.content = requestError(error)
+      }
+    }
+    taskStatus.value = aborted ? 'idle' : 'error'
     taskMessage.value = ''
+  } finally {
+    streamController = null
+    isStreaming.value = false
   }
+}
+
+/** Show an answer that arrived in one piece progressively instead of all at once. */
+function revealAnswer(index: number, text: string) {
+  const message = chatMessages.value[index]
+  if (!message) return
+  message.pending = false
+  message.streaming = true
+  message.content = ''
+  let position = 0
+  const step = Math.max(4, Math.ceil(text.length / 120))
+  const tick = () => {
+    const current = chatMessages.value[index]
+    if (!current || current !== message) return
+    position = Math.min(text.length, position + step)
+    current.content = text.slice(0, position)
+    if (position < text.length) {
+      revealTimer = window.setTimeout(tick, 16)
+    } else {
+      current.streaming = false
+      revealTimer = null
+    }
+  }
+  tick()
 }
 
 async function submitRagQuestion() {
@@ -495,11 +592,14 @@ async function submitRagQuestion() {
   const assistantIndex = chatMessages.value.length
   chatMessages.value.push({
     role: 'assistant',
-    content: '正在检索授权文献与证据',
+    content: '',
+    statusText: '正在检索授权文献与证据',
     model: '个人学术 RAG',
     pending: true,
   })
   prompt.value = ''
+  stickToBottom = true
+  void nextTick(resetPromptInputHeight)
 
   try {
     const response = await http.post<{ data: RagAnswer }>('/rag/answers', {
@@ -510,11 +610,10 @@ async function submitRagQuestion() {
     }, { timeout: 120000 })
     const data = response.data.data
     updateChatMessage(assistantIndex, {
-      content: data.answer,
       model: modelDisplayName(model.value),
-      pending: false,
       rag: data,
     })
+    revealAnswer(assistantIndex, data.answer || '知识库没有返回内容，请稍后重试。')
     taskStatus.value = 'idle'
     taskMessage.value = ''
     progress.value = 0
@@ -523,12 +622,12 @@ async function submitRagQuestion() {
       content: requestError(error),
       model: '个人学术 RAG',
       pending: false,
+      error: true,
     })
     taskStatus.value = 'error'
     taskMessage.value = ''
   }
 }
-
 async function submitTask() {
   if (!canSubmit.value) return
   if (knowledgeBaseMode.value) {
@@ -687,18 +786,38 @@ function requestError(error: unknown) {
 
 <template>
   <section class="composer" :class="{ 'composer--chat-mode': isChatMode }" aria-label="新建科研任务">
-    <div v-if="chatMessages.length" ref="chatList" class="composer-chat" aria-live="polite">
+    <div v-if="chatMessages.length" ref="chatList" class="composer-chat" aria-live="polite" @scroll.passive="onChatScroll">
       <article
         v-for="(message, index) in chatMessages"
         :key="`${message.role}-${index}`"
         class="composer-chat__message"
-        :class="[`composer-chat__message--${message.role}`, { 'composer-chat__message--pending': message.pending }]"
+        :class="[
+          `composer-chat__message--${message.role}`,
+          { 'composer-chat__message--pending': message.pending, 'composer-chat__message--error': message.error },
+        ]"
       >
-        <span class="composer-chat__avatar">{{ message.role === 'user' ? '我' : '智研' }}</span>
+        <span class="composer-chat__avatar" aria-hidden="true">{{ message.role === 'user' ? '我' : '智研' }}</span>
         <div class="composer-chat__body">
-          <div v-if="message.role === 'assistant' && !message.pending" class="composer-chat__markdown markdown-body" v-html="renderMarkdown(message.content)"></div>
-          <p v-else>{{ message.content }}</p>
-          <details v-if="message.rag" class="rag-answer-details" :open="message.rag.evidence.length > 0">
+          <header v-if="message.role === 'assistant'" class="composer-chat__head">
+            <strong>智研</strong>
+            <small v-if="message.model" class="composer-chat__model">{{ message.model }}</small>
+          </header>
+          <details v-if="message.reasoning" class="chat-reasoning" :open="message.streaming && !message.content">
+            <summary><Sparkles :size="13" />{{ message.streaming && !message.content ? '正在思考' : '思考过程' }}</summary>
+            <p>{{ message.reasoning }}</p>
+          </details>
+          <div
+            v-if="message.role === 'assistant' && !message.pending"
+            class="composer-chat__markdown markdown-body"
+            :class="{ 'composer-chat__markdown--streaming': message.streaming }"
+            v-html="renderMarkdown(message.content)"
+          ></div>
+          <p v-else-if="message.pending" v-show="!message.reasoning" class="composer-chat__status">
+            <span class="chat-typing" aria-hidden="true"><i></i><i></i><i></i></span>{{ message.statusText || '正在生成回答' }}
+          </p>
+          <p v-else class="composer-chat__text">{{ message.content }}</p>
+          <p v-if="message.warning" class="composer-chat__warning">{{ message.warning }}</p>
+          <details v-if="message.rag && !message.streaming" class="rag-answer-details" :open="message.rag.evidence.length > 0">
             <summary class="rag-answer-summary">
               <span
                 class="rag-answer-status"
@@ -719,24 +838,23 @@ function requestError(error: unknown) {
             </div>
             <p v-for="warning in message.rag.warnings" :key="warning" class="rag-answer-warning">{{ ragWarningLabel(warning) }}</p>
           </details>
-          <footer v-if="message.role === 'assistant' && !message.pending" class="composer-chat__meta">
-            <small v-if="message.model" class="composer-chat__model">{{ message.model }}</small>
+          <footer v-if="message.role === 'assistant' && !message.pending && !message.streaming && !message.error" class="composer-chat__meta">
+            <div class="composer-chat__actions" aria-label="回答操作">
+              <button type="button" :class="{ active: message.rating === 'up' }" aria-label="点赞回答" title="点赞" @click="rateMessage(index, 'up')">
+                <ThumbsUp :size="15" />
+              </button>
+              <button type="button" :class="{ active: message.rating === 'down' }" aria-label="不喜欢回答" title="不喜欢" @click="rateMessage(index, 'down')">
+                <ThumbsDown :size="15" />
+              </button>
+              <button type="button" aria-label="复制回答" :title="message.copied ? '已复制' : '复制'" @click="copyMessage(message, index)">
+                <Check v-if="message.copied" :size="15" />
+                <Copy v-else :size="15" />
+              </button>
+              <button type="button" aria-label="分享回答" title="分享" @click="shareMessage(message, index)"><Share2 :size="15" /></button>
+            </div>
             <small class="composer-chat__disclaimer">内容由智研ai生成</small>
           </footer>
-          <div v-if="message.role === 'assistant' && !message.pending" class="composer-chat__actions" aria-label="回答操作">
-            <button type="button" :class="{ active: message.rating === 'up' }" aria-label="点赞回答" title="点赞" @click="rateMessage(index, 'up')">
-              <ThumbsUp :size="15" />
-            </button>
-            <button type="button" :class="{ active: message.rating === 'down' }" aria-label="不喜欢回答" title="不喜欢" @click="rateMessage(index, 'down')">
-              <ThumbsDown :size="15" />
-            </button>
-            <button type="button" aria-label="复制回答" :title="message.copied ? '已复制' : '复制'" @click="copyMessage(message, index)">
-              <Check v-if="message.copied" :size="15" />
-              <Copy v-else :size="15" />
-            </button>
-            <button type="button" aria-label="分享回答" title="分享" @click="shareMessage(message, index)"><Share2 :size="15" /></button>
-          </div>
-          <div v-if="message.role === 'user' && !message.pending" class="composer-chat__actions composer-chat__actions--user" aria-label="输入操作">
+          <div v-if="message.role === 'user'" class="composer-chat__actions composer-chat__actions--user" aria-label="输入操作">
             <button type="button" :title="message.copied ? '已复制' : '复制'" :aria-label="message.copied ? '已复制输入' : '复制输入'" @click="copyMessage(message, index)">
               <Check v-if="message.copied" :size="15" />
               <Copy v-else :size="15" />
@@ -744,11 +862,9 @@ function requestError(error: unknown) {
             <button type="button" title="编辑" aria-label="编辑输入" :disabled="taskStatus === 'submitting' || taskStatus === 'running'" @click="editMessage(index)"><Pencil :size="15" /></button>
             <button type="button" title="重新发送" aria-label="重新发送输入" :disabled="taskStatus === 'submitting' || taskStatus === 'running'" @click="resendMessage(index)"><RefreshCw :size="15" /></button>
           </div>
-          <small v-if="message.model && (message.role !== 'assistant' || message.pending)" class="composer-chat__model">{{ message.model }}</small>
         </div>
       </article>
     </div>
-
     <div class="composer-input-panel">
       <textarea
         ref="promptInput"
@@ -879,17 +995,22 @@ function requestError(error: unknown) {
           <span v-else-if="selectedAgent?.code === 'arxiv_daily'" class="composer-fixed-model">arXivDaily 实时源</span>
           <select v-else v-model="model" class="composer-model-select" aria-label="选择模型">
             <option value="api_model">API 对话模型</option>
-            <option value="vertical_domain">平台专用模型</option>
-            <optgroup v-if="false && personalModels.length" label="我的模型">
+            <option value="vertical_domain">{{ platformDisplayModel }}（微调）</option>
+            <optgroup v-if="personalModels.length" label="我的模型">
               <option v-for="item in personalModels" :key="item.id" :value="`model_config:${item.id}`">{{ item.name }}</option>
             </optgroup>
           </select>
         </div>
-        <button class="send-button" type="button" :disabled="!canSubmit" aria-label="发送任务" title="发送任务" @click="submitTask">
+        <button v-if="isStreaming" class="send-button send-button--stop" type="button" aria-label="停止生成" title="停止生成" @click="stopStreaming">
+          <Square :size="13" />
+        </button>
+        <button v-else class="send-button" type="button" :disabled="!canSubmit" aria-label="发送任务" title="发送任务" @click="submitTask">
           <LoaderCircle v-if="taskStatus === 'submitting' || taskStatus === 'running'" class="spin" :size="17" />
           <Send v-else :size="17" />
         </button>
       </div>
+
+      <p v-if="isChatMode" class="composer-hint">Enter 发送 · Shift + Enter 换行 · 回答由 AI 生成，请结合原始文献核实</p>
 
       <div v-if="taskStatus !== 'idle' && !isChatMode" class="task-feedback" :class="`task-feedback--${taskStatus}`">
         <CheckCircle2 v-if="taskStatus === 'completed'" :size="15" />

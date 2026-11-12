@@ -74,24 +74,24 @@ def test_serialized_config_marks_chat_default():
 
 
 def test_builtin_default_is_vertical_domain_model():
-    app = create_app({"TESTING": True, "QWEN_DPO_MODEL": "vertical-test-model"})
+    app = create_app({"TESTING": True, "PLATFORM_MODEL_DISPLAY_NAME": "vertical-test-model"})
     with app.app_context():
         payload = builtin_vertical_model()
 
     assert payload == {
         "value": "vertical_domain",
-        "name": "平台通用模型",
+        "name": "平台微调模型",
         "model_name": "vertical-test-model",
         "source": "builtin",
         "config_id": None,
     }
 
 
-def test_account_api_defaults_to_siliconflow_deepseek_v4_flash():
+def test_account_api_defaults_to_deepseek_flash():
     app = create_app({"TESTING": True})
 
-    assert app.config["USER_API_MODEL_BASE_URL"] == "https://api.siliconflow.cn/v1"
-    assert app.config["USER_API_MODEL_NAME"] == "deepseek-ai/DeepSeek-V4-Flash"
+    assert app.config["USER_API_MODEL_BASE_URL"] == "https://api.deepseek.com/v1"
+    assert app.config["USER_API_MODEL_NAME"] == "deepseek-flash"
 
 
 def test_platform_runtime_can_prefer_deployment_environment(monkeypatch):

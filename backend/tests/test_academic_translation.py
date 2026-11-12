@@ -54,8 +54,8 @@ def test_translation_options_are_normalized_and_bounded():
 
 def test_translation_defaults_to_openai_compatible_api():
     assert Config.TRANSLATION_LLM_BACKEND == "api"
-    assert Config.TRANSLATION_API_BASE_URL == "https://api.siliconflow.cn/v1"
-    assert Config.TRANSLATION_API_MODEL == "deepseek-ai/DeepSeek-V4-Flash"
+    assert Config.TRANSLATION_API_BASE_URL == "https://api.deepseek.com/v1"
+    assert Config.TRANSLATION_API_MODEL == "deepseek-flash"
 
 
 def test_translation_upload_is_user_isolated_and_validated(tmp_path):
