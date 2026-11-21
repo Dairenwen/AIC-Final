@@ -1,0 +1,305 @@
+╔══════════════════════════════════════════════════════════════╗
+║           智研 · 投稿推荐 Agent  使用指南                    ║
+╚══════════════════════════════════════════════════════════════╝
+
+
+【目录】
+  一、环境准备
+  二、运行演示 (demo.py)
+  三、编程调用 (agent.py)
+  四、API Server (server.py)
+  五、数据库管理 (setup_db.py)
+  六、知识库扩充 (fetch_venues.py)
+  七、自定义会议/期刊
+  八、配置说明
+  九、常见问题
+
+
+═══════════════════════════════════════════════════════════════
+一、环境准备
+═══════════════════════════════════════════════════════════════
+
+1. 安装依赖:
+   cd "C:\Users\srx\Desktop\桌面\垂域模型\投稿推荐agent"
+   pip install -r requirements.txt
+
+2. 设置 API Key:
+   编辑项目目录下的 .env 文件，填入:
+     ANTHROPIC_AUTH_TOKEN=你的DeepSeek_API_Key
+     ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
+     ANTHROPIC_MODEL=deepseek-v4-pro
+
+   获取 API Key: https://platform.deepseek.com/api_keys
+
+3. 初始化数据库 (首次使用):
+   python setup_db.py
+   或强制使用本地文件数据库:
+   python setup_db.py --sqlite
+
+
+═══════════════════════════════════════════════════════════════
+二、运行演示 — 最快体验
+═══════════════════════════════════════════════════════════════
+
+方式A: VS Code
+  1. 打开 demo.py
+  2. 按 F5
+
+方式B: 终端
+  python demo.py
+
+演示做了什么:
+  输入一篇模拟论文 → 10个节点流水线 → 输出三级推荐
+  运行约 2-3 分钟，结果保存在 output/ 目录
+
+修改 demo 为自己的论文:
+  编辑 demo.py，找到 SAMPLE_PAPER，替换:
+    SAMPLE_PAPER = {
+        "title": "你的论文标题",
+        "abstract": "你的摘要...",
+        "keywords": ["关键词1", "关键词2"],
+        "references": [
+            {"title": "某论文", "venue": "NeurIPS", "year": 2024},
+            {"title": "某论文", "venue": "CVPR", "year": 2023},
+        ],
+    }
+    SAMPLE_QUALITY = {
+        "experiment_completeness": 0.8   # 实验完整度 0-1
+        "novelty_level": "substantial"   # incremental/substantial/breakthrough
+    }
+    SAMPLE_PREFS = {
+        "target_ccf_levels": ["CCF-A", "CCF-B"]
+        "max_review_weeks": 12           # 审稿周期上限(周)
+        "prefer_oa": true                # 是否偏向开放获取
+    }
+
+
+═══════════════════════════════════════════════════════════════
+三、编程调用 — 集成到自己的代码
+═══════════════════════════════════════════════════════════════
+
+import sys, asyncio
+sys.path.insert(0, r"C:\Users\srx\Desktop\桌面\垂域模型\投稿推荐agent")
+from agent import recommend_submission
+
+result = asyncio.run(recommend_submission(
+    paper_id="你的论文ID",
+    parsed_paper={
+        "title": "论文标题",
+        "abstract": "论文摘要...",
+        "keywords": ["关键词1", "关键词2"],
+        "references": [{"title": "...", "venue": "NeurIPS"}, ...],
+    },
+    quality_estimate={
+        "experiment_completeness": 0.8,      # 0-1
+        "novelty_level": "substantial",       # incremental / substantial / breakthrough
+        "theoretical_rigor": 0.7,             # 0-1
+        "writing_quality": 0.7,               # 0-1
+    },
+    user_preferences={
+        "target_ccf_levels": ["CCF-A", "CCF-B"],
+        "target_caai_levels": [],
+        "max_review_weeks": 12,               # 审稿周期上限
+        "prefer_oa": True,                    # 开放获取偏好
+        "max_publication_fee": 0,             # 版面费上限(0=不限)
+        "excluded_venues": [],                # 排除的会议/期刊
+        "sprint_tier_count": 3,               # 冲刺档推荐数
+        "match_tier_count": 5,                # 匹配档推荐数
+        "safety_tier_count": 3,               # 保底档推荐数
+    },
+))
+
+# 查看结果
+print(result["final_report"])                # Markdown 完整报告
+for r in result["recommendations"]:          # 三级推荐
+    venue = r["venue"]["abbreviation"]
+    tier = r["tier"]                         # sprint/match/safety
+    score = r["match_score"]["overall"]
+    prob = r["estimated_acceptance_prob"]
+    print(f"[{tier}] {venue} — {score:.1%} — {prob}")
+
+print(result["submission_checklist"])        # 投稿准备清单
+print(result["submission_strategy"])         # 投稿时间线策略
+
+
+═══════════════════════════════════════════════════════════════
+四、API Server — 作为服务部署
+═══════════════════════════════════════════════════════════════
+
+1. 启动:
+   uvicorn server:app --host 0.0.0.0 --port 8000 --reload
+
+2. 打开文档: http://localhost:8000/docs
+   (Swagger 交互式 API 文档，可在线填写参数测试)
+
+3. 主要接口:
+
+   POST /api/v1/recommend             提交投稿推荐
+   GET  /api/v1/recommend/{task_id}   查询推荐结果
+   POST /api/v1/recommend/rerank      偏好调整重排
+
+   GET  /api/v1/venues                查询会议/期刊列表
+        ?ccf_level=CCF-A              (可选) 按级别过滤
+        &venue_type=conference         (可选) 按类型过滤
+        &research_area=机器学习        (可选) 按领域过滤
+   GET  /api/v1/venues/{id}           会议/期刊详情
+   GET  /api/v1/deadlines             即将截止的会议
+
+   GET  /api/v1/memory/long-term/user/{id}/preferences   用户偏好
+   PUT  /api/v1/memory/long-term/user/{id}/preferences   保存偏好
+   GET  /api/v1/memory/long-term/user/{id}/recommendations 推荐历史
+   GET  /api/v1/memory/long-term/user/{id}/insights        用户画像
+
+   POST /api/v1/feedback              提交推荐反馈
+   GET  /api/v1/feedback/{task_id}    查询反馈
+
+   GET  /api/v1/health                健康检查
+   GET  /api/v1/stats                 统计信息
+
+4. curl 示例:
+   curl -X POST http://localhost:8000/api/v1/recommend \
+     -H "Content-Type: application/json" \
+     -d '{"paper":{"title":"测试","abstract":"...","keywords":["ML"]},
+          "quality":{"experiment_completeness":0.8},
+          "preferences":{"target_ccf_levels":["CCF-A","CCF-B"]},
+          "user_id":"my_user_id"}'
+
+
+═══════════════════════════════════════════════════════════════
+五、数据库管理
+═══════════════════════════════════════════════════════════════
+
+初始化:
+  python setup_db.py             自动(先试PG再SQLite)
+  python setup_db.py --sqlite    强制本地 SQLite
+  python setup_db.py --pg-url postgresql://user:pass@host/db
+
+数据库表 (5张):
+  conversation_turns          对话历史
+  user_preferences            用户偏好(含版本管理)
+  recommendation_records      每次推荐完整记录
+  user_feedback               用户评分和录用结果
+  user_insights               自动分析的用户画像
+
+连接 PostgreSQL (可选, 生产环境):
+  1. 安装 PostgreSQL
+  2. 创建数据库:
+     createdb submission_agent_db
+  3. 设置环境变量:
+     set SUBMISSION_DB_URL=postgresql://user:pass@localhost:5432/submission_agent_db
+  4. 运行 python setup_db.py
+
+
+═══════════════════════════════════════════════════════════════
+六、知识库扩充
+═══════════════════════════════════════════════════════════════
+
+当前知识库: 624 条会议/期刊记录
+
+方式A: 自动抓取
+  python knowledge/fetch_venues.py              运行全部
+  python knowledge/fetch_venues.py --dry-run    仅预览变更
+  python knowledge/fetch_venues.py --force      强制覆盖已有
+
+方式B: 手动 JSON 导入
+  编辑 knowledge/custom_venues.json，按格式添加:
+  {
+    "abbreviation": "简称",
+    "full_name": "全称",
+    "ccf_level": "CCF-A",
+    "type": "conference 或 journal",
+    "research_areas": ["领域1", "领域2"],
+    "acceptance_rate": 0.25,
+    "avg_review_weeks": 8,
+    "review_model": "Double-blind",
+    "publication_fee": 0,
+    "is_oa": false,
+    "next_deadline": "2026-12-15",
+    "notification_date": "2027-03-15",
+    "aims_scope": "会议/期刊的征稿范围"
+  }
+  保存后重启即生效，无需运行脚本。
+
+
+═══════════════════════════════════════════════════════════════
+七、自定义会议/期刊
+═══════════════════════════════════════════════════════════════
+
+优先级: custom_venues.json > fetched_venues > BUILTIN
+
+同一 abbreviation 的自定义数据会覆盖内置数据。
+
+常见数据来源:
+  - CCF官网: https://www.ccf.org.cn (级别、分类)
+  - ccfddl.com: CCF会议deadline(国内可访问)
+  - 各会议官网: 征稿启事里的截稿日期
+  - Semantic Scholar: https://api.semanticscholar.org (论文数据)
+
+
+═══════════════════════════════════════════════════════════════
+八、配置说明
+═══════════════════════════════════════════════════════════════
+
+config.py 中可调整的参数:
+
+ModelConfig (模型配置):
+  primary_model: 主推理模型 (默认 deepseek-v4-pro)
+  embedding_model: 嵌入模型 (默认 BAAI/bge-m3)
+  reranker_model: 重排模型 (默认 BAAI/bge-reranker-v2-m3)
+
+RetrievalConfig (检索配置):
+  bm25_top_k: BM25 粗筛返回数 (默认 150)
+  semantic_top_k: 语义匹配返回数 (默认 30)
+  rerank_top_k: 精排保留数 (默认 10)
+
+MatchWeights (匹配权重):
+  topic_similarity: 0.30        (主题相似度)
+  methodology_alignment: 0.20   (方法对齐度)
+  novelty_level_fit: 0.15       (创新层次)
+  experiment_completeness_fit: 0.12 (实验完整度)
+  venue_prestige_match: 0.10    (级别匹配)
+  citation_coupling: 0.08       (引用耦合)
+  deadline_feasibility: 0.05    (截稿可行性)
+
+CheckConfig (检测配置):
+  plagiarism_threshold: 0.15    查重率告警阈值
+  aigc_confidence_threshold: 0.7 AIGC检测置信度
+
+
+═══════════════════════════════════════════════════════════════
+九、常见问题
+═══════════════════════════════════════════════════════════════
+
+Q: 运行报 401 错误?
+A: .env 文件中的 API Key 过期或无效，去 DeepSeek 平台重新生成。
+
+Q: 推荐结果太少?
+A: 调整 config.py 中的 similarity_threshold 降低阈值，
+   或在 user_preferences 中放宽 CCF 级别范围。
+
+Q: 运行太慢?
+A: Agent 已做并行优化，通常 2-3 分钟完成。
+   速度取决于网络和 API 响应时间。
+
+Q: 想用自己的 PostgreSQL?
+A: 在 setup_db.py 中指定 --pg-url 参数。
+
+Q: 知识库中的 deadline 过期了?
+A: 运行 python knowledge/fetch_venues.py 或手动更新
+   custom_venues.json 中的 next_deadline 字段。
+
+Q: 怎么换模型?
+A: 修改 .env 中的 ANTHROPIC_MODEL 或者 config.py。
+
+Q: VS Code 调试报 401?
+A: 确认 .env 文件在项目根目录下，启动时会自动加载。
+
+Q: 数据库在哪?
+A: SQLite 模式下，数据库文件在项目目录的 submission_agent.db。
+   PostgreSQL 模式下，在指定的 PG 数据库中。
+
+
+═══════════════════════════════════════════════════════════════
+  项目地址: C:\Users\srx\Desktop\桌面\垂域模型\投稿推荐agent\
+  生成时间: 2026-07-22
+═══════════════════════════════════════════════════════════════

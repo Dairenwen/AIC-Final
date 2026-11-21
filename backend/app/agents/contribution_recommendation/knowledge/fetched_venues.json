@@ -1,0 +1,453 @@
+[
+  {
+    "abbreviation": "AAAI",
+    "full_name": "AAAI Conference on Artificial Intelligence",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "人工智能",
+      "机器学习",
+      "知识图谱",
+      "NLP",
+      "计算机视觉"
+    ]
+  },
+  {
+    "abbreviation": "IJCAI",
+    "full_name": "International Joint Conference on Artificial Intelligence",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "人工智能",
+      "知识表示",
+      "规划",
+      "多智能体"
+    ]
+  },
+  {
+    "abbreviation": "NeurIPS",
+    "full_name": "Conference on Neural Information Processing Systems",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "机器学习",
+      "深度学习",
+      "神经网络",
+      "计算机视觉",
+      "NLP"
+    ]
+  },
+  {
+    "abbreviation": "ICML",
+    "full_name": "International Conference on Machine Learning",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "机器学习",
+      "深度学习",
+      "统计学习"
+    ]
+  },
+  {
+    "abbreviation": "ICLR",
+    "full_name": "International Conference on Learning Representations",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "深度学习",
+      "表示学习",
+      "生成模型"
+    ]
+  },
+  {
+    "abbreviation": "ICCV",
+    "full_name": "International Conference on Computer Vision",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "计算机视觉",
+      "图像理解",
+      "3D重建"
+    ]
+  },
+  {
+    "abbreviation": "CVPR",
+    "full_name": "IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "计算机视觉",
+      "图像识别",
+      "目标检测",
+      "3D视觉"
+    ]
+  },
+  {
+    "abbreviation": "ACL",
+    "full_name": "Annual Meeting of the Association for Computational Linguistics",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "自然语言处理",
+      "计算语言学",
+      "机器翻译"
+    ]
+  },
+  {
+    "abbreviation": "EMNLP",
+    "full_name": "Conference on Empirical Methods in Natural Language Processing",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "自然语言处理",
+      "文本挖掘",
+      "信息抽取"
+    ]
+  },
+  {
+    "abbreviation": "NAACL",
+    "full_name": "North American Chapter of the ACL",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "自然语言处理",
+      "计算语言学"
+    ]
+  },
+  {
+    "abbreviation": "COLING",
+    "full_name": "International Conference on Computational Linguistics",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "计算语言学",
+      "自然语言处理"
+    ]
+  },
+  {
+    "abbreviation": "ECCV",
+    "full_name": "European Conference on Computer Vision",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "计算机视觉",
+      "图像处理",
+      "模式识别"
+    ]
+  },
+  {
+    "abbreviation": "ICDM",
+    "full_name": "IEEE International Conference on Data Mining",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "数据挖掘",
+      "知识发现",
+      "大数据分析"
+    ]
+  },
+  {
+    "abbreviation": "CIKM",
+    "full_name": "ACM International Conference on Information and Knowledge Management",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "信息检索",
+      "知识管理",
+      "数据挖掘"
+    ]
+  },
+  {
+    "abbreviation": "AAMAS",
+    "full_name": "International Conference on Autonomous Agents and Multiagent Systems",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "多智能体",
+      "人工智能",
+      "博弈论"
+    ]
+  },
+  {
+    "abbreviation": "UAI",
+    "full_name": "Conference on Uncertainty in Artificial Intelligence",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "机器学习",
+      "概率方法",
+      "贝叶斯"
+    ]
+  },
+  {
+    "abbreviation": "ECAI",
+    "full_name": "European Conference on Artificial Intelligence",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "人工智能",
+      "知识表示",
+      "规划"
+    ]
+  },
+  {
+    "abbreviation": "ICRA",
+    "full_name": "IEEE International Conference on Robotics and Automation",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "机器人",
+      "自动控制",
+      "计算机视觉"
+    ]
+  },
+  {
+    "abbreviation": "CoNLL",
+    "full_name": "Conference on Computational Natural Language Learning",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "自然语言处理",
+      "机器学习"
+    ]
+  },
+  {
+    "abbreviation": "EACL",
+    "full_name": "European Chapter of the ACL",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "自然语言处理",
+      "计算语言学"
+    ]
+  },
+  {
+    "abbreviation": "BMVC",
+    "full_name": "British Machine Vision Conference",
+    "ccf_level": "CCF-C",
+    "type": "conference",
+    "research_areas": [
+      "计算机视觉",
+      "模式识别"
+    ]
+  },
+  {
+    "abbreviation": "ACCV",
+    "full_name": "Asian Conference on Computer Vision",
+    "ccf_level": "CCF-C",
+    "type": "conference",
+    "research_areas": [
+      "计算机视觉",
+      "图像识别"
+    ]
+  },
+  {
+    "abbreviation": "ICANN",
+    "full_name": "International Conference on Artificial Neural Networks",
+    "ccf_level": "CCF-C",
+    "type": "conference",
+    "research_areas": [
+      "神经网络",
+      "深度学习"
+    ]
+  },
+  {
+    "abbreviation": "ICPR",
+    "full_name": "International Conference on Pattern Recognition",
+    "ccf_level": "CCF-C",
+    "type": "conference",
+    "research_areas": [
+      "模式识别",
+      "计算机视觉",
+      "图像处理"
+    ]
+  },
+  {
+    "abbreviation": "WSDM",
+    "full_name": "ACM International Conference on Web Search and Data Mining",
+    "ccf_level": "CCF-B",
+    "type": "conference",
+    "research_areas": [
+      "信息检索",
+      "数据挖掘",
+      "推荐系统"
+    ]
+  },
+  {
+    "abbreviation": "SIGIR",
+    "full_name": "International ACM SIGIR Conference on Research and Development in Information Retrieval",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "信息检索",
+      "搜索",
+      "推荐系统"
+    ]
+  },
+  {
+    "abbreviation": "KDD",
+    "full_name": "ACM SIGKDD Conference on Knowledge Discovery and Data Mining",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "数据挖掘",
+      "知识发现",
+      "大数据"
+    ]
+  },
+  {
+    "abbreviation": "WWW",
+    "full_name": "The Web Conference",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "Web技术",
+      "信息检索",
+      "社会网络"
+    ]
+  },
+  {
+    "abbreviation": "MM",
+    "full_name": "ACM International Conference on Multimedia",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "多媒体",
+      "计算机视觉",
+      "音频处理"
+    ]
+  },
+  {
+    "abbreviation": "SIGMOD",
+    "full_name": "ACM SIGMOD International Conference on Management of Data",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "数据库",
+      "数据管理",
+      "大数据"
+    ]
+  },
+  {
+    "abbreviation": "VLDB",
+    "full_name": "International Conference on Very Large Data Bases",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "数据库",
+      "大数据"
+    ]
+  },
+  {
+    "abbreviation": "ICDE",
+    "full_name": "IEEE International Conference on Data Engineering",
+    "ccf_level": "CCF-A",
+    "type": "conference",
+    "research_areas": [
+      "数据工程",
+      "数据库"
+    ]
+  },
+  {
+    "abbreviation": "TPAMI",
+    "full_name": "IEEE Transactions on Pattern Analysis and Machine Intelligence",
+    "ccf_level": "CCF-A",
+    "type": "journal",
+    "research_areas": [
+      "计算机视觉",
+      "模式识别",
+      "机器学习"
+    ]
+  },
+  {
+    "abbreviation": "IJCV",
+    "full_name": "International Journal of Computer Vision",
+    "ccf_level": "CCF-A",
+    "type": "journal",
+    "research_areas": [
+      "计算机视觉",
+      "图像处理"
+    ]
+  },
+  {
+    "abbreviation": "JMLR",
+    "full_name": "Journal of Machine Learning Research",
+    "ccf_level": "CCF-A",
+    "type": "journal",
+    "research_areas": [
+      "机器学习",
+      "统计学习"
+    ]
+  },
+  {
+    "abbreviation": "AIJ",
+    "full_name": "Artificial Intelligence Journal",
+    "ccf_level": "CCF-A",
+    "type": "journal",
+    "research_areas": [
+      "人工智能",
+      "知识表示",
+      "规划"
+    ]
+  },
+  {
+    "abbreviation": "TNNLS",
+    "full_name": "IEEE Transactions on Neural Networks and Learning Systems",
+    "ccf_level": "CCF-B",
+    "type": "journal",
+    "research_areas": [
+      "神经网络",
+      "深度学习"
+    ]
+  },
+  {
+    "abbreviation": "PR",
+    "full_name": "Pattern Recognition",
+    "ccf_level": "CCF-B",
+    "type": "journal",
+    "research_areas": [
+      "模式识别",
+      "计算机视觉"
+    ]
+  },
+  {
+    "abbreviation": "TACL",
+    "full_name": "Transactions of the Association for Computational Linguistics",
+    "ccf_level": "CCF-B",
+    "type": "journal",
+    "research_areas": [
+      "自然语言处理",
+      "计算语言学"
+    ]
+  },
+  {
+    "abbreviation": "TKDE",
+    "full_name": "IEEE Transactions on Knowledge and Data Engineering",
+    "ccf_level": "CCF-A",
+    "type": "journal",
+    "research_areas": [
+      "数据挖掘",
+      "数据库",
+      "知识工程"
+    ]
+  },
+  {
+    "abbreviation": "TIFS",
+    "full_name": "IEEE Transactions on Information Forensics and Security",
+    "ccf_level": "CCF-B",
+    "type": "journal",
+    "research_areas": [
+      "信息安全",
+      "计算机视觉"
+    ]
+  },
+  {
+    "abbreviation": "CSUR",
+    "full_name": "ACM Computing Surveys",
+    "ccf_level": "CCF-A",
+    "type": "journal",
+    "research_areas": [
+      "计算机科学综述"
+    ]
+  }
+]

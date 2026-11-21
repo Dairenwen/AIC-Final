@@ -1,0 +1,14 @@
+[project]
+name = "arxiv-daily-agent-core"
+version = "0.1.0"
+description = "arXivDaily CS scraper and normalized paper schemas"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "beautifulsoup4>=4.13,<5",
+  "httpx>=0.28,<1",
+  "langchain>=1.0,<2",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

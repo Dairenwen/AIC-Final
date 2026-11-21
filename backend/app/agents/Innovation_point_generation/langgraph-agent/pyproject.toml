@@ -1,0 +1,10 @@
+[project]
+name = "innovation-mining-langgraph-agent"
+version = "0.1.0"
+description = "Innovation Mining agent project scaffolded for LangChain and LangGraph."
+requires-python = ">=3.10"
+dependencies = []
+
+[tool.pytest.ini_options]
+pythonpath = ["agent-core/src"]
+testpaths = ["tests"]

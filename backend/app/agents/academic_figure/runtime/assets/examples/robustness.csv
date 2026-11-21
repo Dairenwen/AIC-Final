@@ -1,0 +1,8 @@
+model,severity,accuracy,std
+ResNet50,1,82.3,0.8
+ResNet50,2,76.1,1.2
+ResNet50,3,68.4,1.4
+Ours,1,86.7,0.5
+Ours,2,82.4,0.7
+Ours,3,77.2,0.9
+

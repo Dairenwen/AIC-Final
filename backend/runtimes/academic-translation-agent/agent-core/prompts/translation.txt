@@ -1,0 +1,10 @@
+Translate the following {source_name} text into {target_name}.
+This is {precision} academic translation. Preserve every [[KEEP_n]] token exactly. Output translation only.
+Use the terminology constraints exactly when applicable:
+{glossary}
+
+{source_name}
+{segment}
+
+{target_name}
+

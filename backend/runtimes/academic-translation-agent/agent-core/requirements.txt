@@ -1,0 +1,13 @@
+# Runtime dependencies for the deployed translation Agent.
+# Keep this file independent of the caller's current working directory.
+fastapi>=0.115
+langchain-core>=0.3
+langchain-ollama>=0.2
+langgraph>=0.2
+pydantic>=2.9
+pydantic-settings>=2.6
+pymupdf>=1.24
+Pillow>=10.4
+python-docx>=1.1
+python-multipart>=0.0.12
+uvicorn>=0.32

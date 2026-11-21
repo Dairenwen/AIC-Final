@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Papers with Code 爬虫控制台</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar">
+        <div>
+          <h1>Papers with Code 爬虫控制台</h1>
+          <p id="rootPath"></p>
+        </div>
+        <button id="refreshBtn" class="icon-btn" title="刷新数据">↻</button>
+      </section>
+
+      <section class="stats-grid">
+        <article class="stat">
+          <span>原始论文</span>
+          <strong id="rawTotal">0</strong>
+        </article>
+        <article class="stat">
+          <span>会议/期刊分组</span>
+          <strong id="groupTotal">0</strong>
+        </article>
+        <article class="stat">
+          <span>知识库目录</span>
+          <strong id="kbTotal">0</strong>
+        </article>
+        <article class="stat">
+          <span>PDF 文件</span>
+          <strong id="pdfTotal">0</strong>
+        </article>
+      </section>
+
+      <section class="controls">
+        <button id="dailyTaskBtn">运行每日任务</button>
+        <button id="crawlBtn">爬取 Papers with Code</button>
+        <button id="splitBtn">按发布 venue/年份划分</button>
+        <button id="organizeBtn">生成 knowledge_base</button>
+        <button id="downloadBtn">下载 PDF</button>
+      </section>
+
+      <section class="controls db-controls">
+        <label>
+          Host
+          <input id="pgHost" value="localhost" autocomplete="off" />
+        </label>
+        <label>
+          Port
+          <input id="pgPort" value="5432" inputmode="numeric" autocomplete="off" />
+        </label>
+        <label>
+          Database
+          <input id="pgDatabase" value="postgres" autocomplete="off" />
+        </label>
+        <label>
+          User
+          <input id="pgUser" value="postgres" autocomplete="username" />
+        </label>
+        <label>
+          Password
+          <input id="pgPassword" type="password" autocomplete="current-password" />
+        </label>
+        <label>
+          ES URL
+          <input id="esUrl" value="https://localhost:9200" autocomplete="off" />
+        </label>
+        <label>
+          ES Index
+          <input id="esIndex" value="papers_idx" autocomplete="off" />
+        </label>
+        <label>
+          ES User
+          <input id="esUser" autocomplete="username" />
+        </label>
+        <label>
+          ES Password
+          <input id="esPassword" type="password" autocomplete="current-password" />
+        </label>
+        <button id="importPostgresBtn">入库并同步 ES</button>
+        <button id="refreshMetadataBtn">刷新元数据时间戳</button>
+      </section>
+
+      <section class="panel innovation-panel">
+        <header>
+          <div>
+            <h2>创新点生成 Agent</h2>
+            <p>chuangx 输出可直接作为 wengao 的 topic/contributions/additional_context 输入。</p>
+          </div>
+        </header>
+        <div class="innovation-form">
+          <label>
+            研究领域
+            <input id="innovationDomain" value="多模态大模型安全检测" autocomplete="off" />
+          </label>
+          <label>
+            关键词
+            <input id="innovationKeywords" value="multimodal, LLM, safety, robustness" autocomplete="off" />
+          </label>
+          <label>
+            模式
+            <select id="innovationMode">
+              <option value="full">full 全流程挖掘</option>
+              <option value="evaluate">evaluate 单点评估</option>
+              <option value="expand">expand 想法扩展</option>
+            </select>
+          </label>
+          <label>
+            Top-K
+            <input id="innovationTopK" type="number" value="5" min="1" max="12" inputmode="numeric" />
+          </label>
+          <label class="wide-field">
+            种子想法
+            <textarea id="innovationSeeds" rows="3">小样本场景下的鲁棒性评估</textarea>
+          </label>
+          <label class="wide-field">
+            约束 JSON
+            <textarea id="innovationConstraints" rows="3">{"min_score": 0.58}</textarea>
+          </label>
+          <label class="wide-field">
+            补充上下文
+            <textarea id="innovationContext" rows="3"></textarea>
+          </label>
+          <button id="innovationBtn">生成创新点</button>
+        </div>
+        <div id="innovationResult" class="innovation-result">
+          <div class="empty-result">尚未生成创新点。</div>
+        </div>
+      </section>
+
+      <section class="content-grid">
+        <article class="panel">
+          <header>
+            <h2>子领域 JSON</h2>
+          </header>
+          <div id="rawList" class="file-list"></div>
+        </article>
+
+        <article class="panel">
+          <header>
+            <h2>会议/期刊年份 JSON</h2>
+          </header>
+          <div id="groupedList" class="file-list"></div>
+        </article>
+      </section>
+
+      <section class="panel preview-panel">
+        <header>
+          <div>
+            <h2>Paper Table View</h2>
+            <p id="tableSummary">选择一个 JSON 文件查看表格。</p>
+          </div>
+        </header>
+        <div class="table-tools">
+          <input id="tableSearch" type="search" placeholder="输入标题、年份、研究领域、关键词进行搜索" />
+        </div>
+        <div class="table-wrap">
+          <table id="paperTable">
+            <thead>
+              <tr>
+                <th>No.</th>
+                <th>id</th>
+                <th>publish_venue</th>
+                <th>title</th>
+                <th>publish_year</th>
+                <th>research_area</th>
+                <th>key_words</th>
+                <th>Author</th>
+                <th>pdf_url</th>
+              </tr>
+            </thead>
+            <tbody id="paperTableBody">
+              <tr>
+                <td colspan="9" class="empty-cell">选择一个 JSON 文件查看论文表格。</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel log-panel">
+        <header>
+          <h2>运行日志</h2>
+        </header>
+        <pre id="log">服务已启动。</pre>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

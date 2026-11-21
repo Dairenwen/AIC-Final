@@ -1,0 +1,329 @@
+/*
+ * Design tokens.
+ *
+ * This file is the single source of truth for colour, type, spacing, radius,
+ * elevation, material and motion.  It replaces the previous arrangement where
+ * main.css carried 351 distinct hard-coded colours (270 of them used exactly
+ * once), 20 font sizes and 11 border radii, and editorial-theme.css then
+ * re-declared :root on top of it.
+ *
+ * Sizes are expressed in rem so a larger browser/OS text size scales the
+ * layout with the text instead of breaking it.
+ *
+ * The block at the end aliases the legacy variable names that the per-view
+ * rules in main.css still reference, so those views inherit this palette
+ * without being rewritten rule by rule.
+ */
+
+:root {
+  color-scheme: light;
+
+  /* ---- Neutral ramp -------------------------------------------------- */
+  /* Warm, paper-leaning neutrals: the product is a reading and writing
+   * desk, so the ground is paper rather than cool interface grey. */
+  --grey-0: #ffffff;
+  --grey-25: #fdfcfa;
+  --grey-50: #f8f7f4;
+  --grey-100: #f1f0ec;
+  --grey-150: #e9e7e2;
+  --grey-200: #dedcd6;
+  --grey-300: #c9c7c0;
+  --grey-400: #a5a39c;
+  --grey-500: #88867f;
+  --grey-600: #6b6a64;
+  --grey-700: #504f4a;
+  --grey-800: #33322f;
+  --grey-900: #1c1b19;
+  --grey-950: #121110;
+
+  /* ---- Surfaces ------------------------------------------------------ */
+  --bg-canvas: #f6f5f1;
+  --bg-surface: var(--grey-0);
+  --bg-sunken: var(--grey-50);
+  --bg-raised: var(--grey-0);
+  --bg-hover: rgb(0 0 0 / 3.5%);
+  --bg-pressed: rgb(0 0 0 / 7%);
+  --bg-selected: rgb(43 74 124 / 9%);
+
+  /* ---- Text ---------------------------------------------------------- */
+  --text-primary: var(--grey-900);
+  --text-secondary: var(--grey-700);
+  --text-tertiary: var(--grey-600);
+  --text-disabled: var(--grey-400);
+  --text-on-accent: #ffffff;
+
+  /* ---- Separators ---------------------------------------------------- */
+  --border-hairline: rgb(0 0 0 / 8%);
+  --border-default: rgb(0 0 0 / 12%);
+  --border-strong: rgb(0 0 0 / 20%);
+
+  /* ---- Accent and semantics ------------------------------------------
+   * -fill is for solid backgrounds, -text passes 4.5:1 on white for small
+   * text, -tint is a soft background that keeps -text legible on top.     */
+  /* Ink indigo.  One accent only; the vermilion seal below is reserved
+   * for the brand mark and is never used for state. */
+  --accent-fill: #2b4a7c;
+  --accent-fill-hover: #233f6b;
+  --accent-fill-active: #1b3359;
+  --accent-text: #27467a;
+  --accent-tint: #e8edf5;
+  --accent-border: rgb(43 74 124 / 38%);
+  --accent-ring: rgb(43 74 124 / 24%);
+  --seal: #c4472f;
+
+  --success-fill: #1d7a4c;
+  --success-text: #176340;
+  --success-tint: #e7f5ed;
+
+  --warning-fill: #a06a00;
+  --warning-text: #7f5400;
+  --warning-tint: #fdf3e0;
+
+  --danger-fill: #c0362c;
+  --danger-text: #a52b22;
+  --danger-tint: #fdecea;
+
+  --info-tint: var(--grey-100);
+
+  /* ---- Typography ----------------------------------------------------
+   * System font first: it already ships optical sizing, tracking tables and
+   * legibility tuning for both Latin and CJK.                             */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui,
+    "PingFang SC", "Hiragino Sans GB", "Source Han Sans SC",
+    "Noto Sans CJK SC", "Microsoft YaHei", sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+    "Liberation Mono", monospace;
+
+  /* Tracking is size-specific: large text tightens, small text opens up.
+   * Leading runs inversely to size, and stays generous for CJK body copy. */
+  --type-display-size: 2rem;
+  --type-display-line: 1.14;
+  --type-display-track: -0.021em;
+
+  --type-title1-size: 1.5rem;
+  --type-title1-line: 1.22;
+  --type-title1-track: -0.016em;
+
+  --type-title2-size: 1.25rem;
+  --type-title2-line: 1.3;
+  --type-title2-track: -0.011em;
+
+  --type-title3-size: 1.0625rem;
+  --type-title3-line: 1.4;
+  --type-title3-track: -0.006em;
+
+  --type-body-size: 0.9375rem;
+  --type-body-line: 1.62;
+  --type-body-track: 0em;
+
+  --type-callout-size: 0.875rem;
+  --type-callout-line: 1.55;
+  --type-callout-track: 0.002em;
+
+  --type-footnote-size: 0.8125rem;
+  --type-footnote-line: 1.5;
+  --type-footnote-track: 0.005em;
+
+  --type-caption-size: 0.75rem;
+  --type-caption-line: 1.45;
+  --type-caption-track: 0.01em;
+
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ---- Spacing: 4px base --------------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-7: 1.75rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  /* ---- Radius: four steps, nothing in between ------------------------ */
+  --radius-control: 8px;
+  --radius-card: 12px;
+  --radius-panel: 16px;
+  --radius-pill: 999px;
+
+  /* ---- Elevation: bigger surfaces read as thicker -------------------- */
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 5%);
+  --shadow-2: 0 4px 12px rgb(0 0 0 / 6%), 0 1px 3px rgb(0 0 0 / 4%);
+  --shadow-3: 0 16px 40px rgb(0 0 0 / 10%), 0 2px 8px rgb(0 0 0 / 5%);
+
+  /* ---- Materials: translucent chrome with content scrolling under ---- */
+  --material-chrome: rgb(252 251 248 / 74%);
+  --material-chrome-blur: blur(24px) saturate(180%);
+  --material-overlay: rgb(255 255 255 / 86%);
+  --material-overlay-blur: blur(32px) saturate(180%);
+  --material-edge: rgb(255 255 255 / 55%);
+  --scrim: rgb(0 0 0 / 28%);
+
+  /* ---- Motion --------------------------------------------------------
+   * No CSS spring primitive exists, so these curves stand in for a
+   * critically damped spring (no overshoot) at response 0.3-0.4s.
+   * --ease-momentum is the only curve that overshoots and is reserved for
+   * motion the user actually threw.                                      */
+  --ease-standard: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-exit: cubic-bezier(0.4, 0, 0.6, 1);
+  --ease-momentum: cubic-bezier(0.22, 1.4, 0.36, 1);
+  --duration-instant: 90ms;
+  --duration-fast: 140ms;
+  --duration-base: 260ms;
+  --duration-slow: 380ms;
+  /* Gap between siblings that enter one after another. */
+  --stagger-step: 36ms;
+
+  /* ---- Layout -------------------------------------------------------- */
+  --sidebar-width: 15.5rem;
+  --content-max: 76rem;
+  --viewport-height: 100vh;
+
+  /* ---- Z layers ------------------------------------------------------ */
+  --z-sticky: 10;
+  --z-sidebar: 30;
+  --z-scrim: 40;
+  --z-dialog: 50;
+  --z-toast: 60;
+}
+
+@supports (height: 100dvh) {
+  :root {
+    --viewport-height: 100dvh;
+  }
+}
+
+/* ---------------------------------------------------------------------- *
+ * Dark theme.  Opt-in via data-theme so the user's explicit choice wins
+ * over the OS setting (utils/theme.ts persists it).
+ * ---------------------------------------------------------------------- */
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --bg-canvas: #171614;
+  --bg-surface: #201f1c;
+  --bg-sunken: #1b1a18;
+  --bg-raised: #292825;
+  --bg-hover: rgb(255 255 255 / 6%);
+  --bg-pressed: rgb(255 255 255 / 10%);
+  --bg-selected: rgb(120 158 220 / 16%);
+
+  --text-primary: #f4f3ef;
+  --text-secondary: #bbb9b1;
+  --text-tertiary: #96948c;
+  --text-disabled: #67665f;
+  --text-on-accent: #ffffff;
+
+  --border-hairline: rgb(255 255 255 / 10%);
+  --border-default: rgb(255 255 255 / 15%);
+  --border-strong: rgb(255 255 255 / 26%);
+
+  --accent-fill: #4470b8;
+  --accent-fill-hover: #507cc4;
+  --accent-fill-active: #5d88cf;
+  --accent-text: #a3bff0;
+  --accent-tint: rgb(93 134 200 / 18%);
+  --accent-border: rgb(163 191 240 / 42%);
+  --accent-ring: rgb(163 191 240 / 32%);
+  --seal: #e0654c;
+
+  --success-fill: #2f9e68;
+  --success-text: #67d19b;
+  --success-tint: rgb(47 158 104 / 20%);
+
+  --warning-fill: #c08a2a;
+  --warning-text: #e8b65c;
+  --warning-tint: rgb(192 138 42 / 20%);
+
+  --danger-fill: #d4544a;
+  --danger-text: #ff8c82;
+  --danger-tint: rgb(212 84 74 / 20%);
+
+  --info-tint: rgb(255 255 255 / 8%);
+
+  --shadow-1: 0 1px 2px rgb(0 0 0 / 40%);
+  --shadow-2: 0 4px 12px rgb(0 0 0 / 45%), 0 1px 3px rgb(0 0 0 / 35%);
+  --shadow-3: 0 16px 40px rgb(0 0 0 / 55%), 0 2px 8px rgb(0 0 0 / 40%);
+
+  --material-chrome: rgb(32 31 28 / 72%);
+  --material-overlay: rgb(32 31 28 / 88%);
+  --material-edge: rgb(255 255 255 / 10%);
+  --scrim: rgb(0 0 0 / 50%);
+}
+
+/* ---------------------------------------------------------------------- *
+ * Accessibility preferences.  Reduced transparency makes chrome solid;
+ * increased contrast gives translucent surfaces a defined border.
+ * ---------------------------------------------------------------------- */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --material-chrome: var(--bg-surface);
+    --material-overlay: var(--bg-surface);
+    --material-chrome-blur: none;
+    --material-overlay-blur: none;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root {
+    --text-secondary: var(--grey-800);
+    --text-tertiary: var(--grey-700);
+    --border-hairline: rgb(0 0 0 / 22%);
+    --border-default: rgb(0 0 0 / 34%);
+    --material-chrome: var(--bg-surface);
+    --material-overlay: var(--bg-surface);
+    --material-chrome-blur: none;
+    --material-overlay-blur: none;
+  }
+
+  :root[data-theme='dark'] {
+    --text-secondary: #e4e4e9;
+    --text-tertiary: #c6c7cf;
+    --border-hairline: rgb(255 255 255 / 28%);
+    --border-default: rgb(255 255 255 / 40%);
+  }
+}
+
+/* ---------------------------------------------------------------------- *
+ * Legacy aliases.
+ *
+ * The per-view rules in main.css reference these 21 names in 453 places.
+ * Pointing them at the tokens above re-themes those views without editing
+ * each rule.  Do not add new names here: style new work with the tokens.
+ * ---------------------------------------------------------------------- */
+:root {
+  --page: var(--bg-canvas);
+  --surface: var(--bg-surface);
+  --surface-soft: var(--bg-sunken);
+  --ink: var(--text-primary);
+  --muted: var(--text-secondary);
+  --faint: var(--text-tertiary);
+  --line: var(--border-hairline);
+  --line-strong: var(--border-default);
+  --shadow: var(--shadow-2);
+
+  /* The old green ramp is retired; these map onto neutrals so any view
+   * still painting with them reads as part of this palette. */
+  --green-950: var(--grey-900);
+  --green-900: var(--grey-800);
+  --green-800: var(--grey-800);
+  --green-700: var(--grey-700);
+  --green-600: var(--grey-600);
+  --green-100: var(--grey-100);
+
+  /* The old acid-yellow highlight is retired in favour of the accent. */
+  --acid: var(--accent-fill);
+  --accent: var(--accent-fill);
+  --accent-strong: var(--accent-fill-hover);
+  --accent-soft: var(--accent-tint);
+
+  --success: var(--success-text);
+  --danger: var(--danger-text);
+  --warning: var(--warning-text);
+}

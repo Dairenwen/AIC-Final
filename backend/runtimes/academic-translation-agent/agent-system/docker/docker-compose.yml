@@ -1,0 +1,27 @@
+services:
+  backend:
+    build:
+      context: ../..
+      dockerfile: agent-system/docker/Dockerfile
+    environment:
+      ACADEMIC_TRANSLATION_ROOT: /app
+      TRANSLATION_LLM_BACKEND: ${TRANSLATION_LLM_BACKEND:-api}
+      TRANSLATION_API_BASE_URL: ${TRANSLATION_API_BASE_URL:-https://api.siliconflow.cn/v1}
+      TRANSLATION_API_MODEL: ${TRANSLATION_API_MODEL:-deepseek-ai/DeepSeek-V4-Flash}
+      TRANSLATION_API_KEY: ${TRANSLATION_API_KEY:-}
+      TRANSLATION_API_TIMEOUT_SECONDS: ${TRANSLATION_API_TIMEOUT_SECONDS:-240}
+      TRANSLATION_API_MAX_TOKENS: ${TRANSLATION_API_MAX_TOKENS:-2048}
+      TRANSLATION_API_RETRIES: ${TRANSLATION_API_RETRIES:-2}
+      TRANSLATION_API_RETRY_BACKOFF_SECONDS: ${TRANSLATION_API_RETRY_BACKOFF_SECONDS:-2}
+      TRANSLATION_API_DISABLE_THINKING: ${TRANSLATION_API_DISABLE_THINKING:-true}
+      TRANSLATION_API_MAX_PARALLEL: ${TRANSLATION_API_MAX_PARALLEL:-1}
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://host.docker.internal:11434}
+      # PDFMathTranslate reads OLLAMA_HOST directly.  Do not inherit the
+      # host-shell value (often 127.0.0.1), which would point back into this
+      # container rather than to the local Ollama service.
+      OLLAMA_HOST: http://host.docker.internal:11434
+      OLLAMA_TRANSLATION_MODEL: ${OLLAMA_TRANSLATION_MODEL:-translategemma:12b}
+      PDF2ZH_COMMAND: ${PDF2ZH_COMMAND:-pdf2zh}
+    ports: ["8000:8000"]
+    volumes:
+      - ../../agent-core/outputs:/app/agent-core/outputs

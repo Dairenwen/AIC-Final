@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://zhiyan.local/contracts/qa_response.schema.json",
+  "title": "QAResponse",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "qa_id", "request_id", "question", "answer", "paper_scope", "evidence_ids", "answer_status"],
+  "properties": {
+    "schema_version": {"const": "qa_response_v1"},
+    "qa_id": {"type": "string", "minLength": 3, "maxLength": 128},
+    "request_id": {"type": "string", "pattern": "^req_[a-z0-9_]+$"},
+    "question": {"type": "string", "minLength": 1, "maxLength": 4000},
+    "answer": {"type": "string", "maxLength": 8000},
+    "paper_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["paper_ids", "section_paths"],
+      "properties": {
+        "paper_ids": {"type": "array", "minItems": 1, "maxItems": 10, "uniqueItems": true, "items": {"type": "string", "minLength": 3}},
+        "section_paths": {"type": "array", "uniqueItems": true, "items": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}}}
+      }
+    },
+    "evidence_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 3}},
+    "answer_status": {"enum": ["ANSWERED", "INSUFFICIENT_EVIDENCE", "OUT_OF_SCOPE"]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"answer_status": {"const": "ANSWERED"}}},
+      "then": {"properties": {"answer": {"minLength": 1}, "evidence_ids": {"minItems": 1}}}
+    },
+    {
+      "if": {"properties": {"answer_status": {"enum": ["INSUFFICIENT_EVIDENCE", "OUT_OF_SCOPE"]}}},
+      "then": {"properties": {"evidence_ids": {"maxItems": 0}}}
+    }
+  ]
+}

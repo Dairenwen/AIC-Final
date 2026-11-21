@@ -1,0 +1,137 @@
+version: "2026-07-17-mvp"
+rules:
+  - rule_id: PAPER_NORM_001
+    module: paper_norm
+    name: 论文标题完整性检查
+    severity: 高
+    description: 论文应具有能够概括研究主题、对象或方法的明确标题。
+    suggestion: 请补充明确论文标题。
+  - rule_id: PAPER_NORM_002
+    module: paper_norm
+    name: 摘要完整性检查
+    severity: 高
+    description: 摘要应概括研究目的、方法、主要结果和结论。
+    suggestion: 请补充完整摘要。
+  - rule_id: PAPER_NORM_003
+    module: paper_norm
+    name: 关键词完整性检查
+    severity: 中
+    description: 学术论文通常应包含关键词。
+    suggestion: 请补充 3-5 个关键词。
+  - rule_id: PAPER_NORM_004
+    module: paper_norm
+    name: 论文章节结构检查
+    severity: 中
+    description: 论文应具备引言、方法、结果、结论等基本结构。
+    suggestion: 请补充或明确缺失章节。
+  - rule_id: PAPER_NORM_005
+    module: paper_norm
+    name: 学术表达审慎性检查
+    severity: 低
+    description: 学术论文应避免缺少证据支撑的绝对化表达。
+    suggestion: 请将强断言改为更审慎的学术表达。
+  - rule_id: PAPER_NORM_006
+    module: paper_norm
+    name: 学术诚信声明检查
+    severity: 低
+    description: 如提交场景要求，应包含学术诚信或原创性声明。
+    suggestion: 请按学校或投稿要求补充相关声明。
+
+  - rule_id: CITATION_001
+    module: citation
+    name: 参考文献列表缺失检查
+    severity: 高
+    description: 正文引用应与参考文献列表对应。
+    suggestion: 请补充参考文献列表。
+  - rule_id: CITATION_002
+    module: citation
+    name: 正文引用缺失检查
+    severity: 中
+    description: 参考文献列表中的文献应在正文中被引用。
+    suggestion: 请检查正文引用。
+  - rule_id: CITATION_003
+    module: citation
+    name: 正文引用无对应文献检查
+    severity: 高
+    description: 正文引用编号应存在于参考文献列表。
+    suggestion: 请补充或修正文献编号。
+  - rule_id: CITATION_004
+    module: citation
+    name: 参考文献未引用检查
+    severity: 中
+    description: 参考文献列表中的条目应在正文中出现引用。
+    suggestion: 请补充正文引用或删除无关文献。
+  - rule_id: CITATION_005
+    module: citation
+    name: 参考文献重复检查
+    severity: 中
+    description: 参考文献不应重复著录。
+    suggestion: 请删除重复条目。
+  - rule_id: CITATION_006
+    module: citation
+    name: 参考文献占位信息检查
+    severity: 极高
+    description: 参考文献不应包含 TODO、待补充、unknown 等占位内容。
+    suggestion: 请核验并补全参考文献信息。
+
+  - rule_id: FIG_TABLE_001
+    module: figure_table
+    name: 正文图表引用对应检查
+    severity: 中
+    description: 正文提到的图表应存在对应图题或表题。
+    suggestion: 请补充图表或修正编号。
+  - rule_id: FIG_TABLE_002
+    module: figure_table
+    name: 图表正文引用检查
+    severity: 中
+    description: 每个图表应在正文中被引用。
+    suggestion: 请在正文中引用对应图表。
+  - rule_id: FIG_TABLE_003
+    module: figure_table
+    name: 图表编号连续性检查
+    severity: 中
+    description: 图表编号应连续且与正文引用一致。
+    suggestion: 请检查图表编号。
+  - rule_id: FIG_TABLE_004
+    module: figure_table
+    name: 图表标题完整性检查
+    severity: 低
+    description: 图表标题应说明对象、指标、单位或实验条件。
+    suggestion: 请补充图表标题说明。
+
+  - rule_id: FORMAT_001
+    module: format_submission
+    name: 摘要长度检查
+    severity: 中
+    description: 摘要长度应符合目标学校或期刊要求。
+    suggestion: 请压缩或扩展摘要至规定范围。
+  - rule_id: FORMAT_002
+    module: format_submission
+    name: 关键词数量检查
+    severity: 低
+    description: 关键词数量通常应控制在 3-8 个。
+    suggestion: 请调整关键词数量。
+  - rule_id: FORMAT_003
+    module: format_submission
+    name: 参考文献章节格式检查
+    severity: 高
+    description: 论文应包含参考文献章节。
+    suggestion: 请补充参考文献章节。
+  - rule_id: FORMAT_004
+    module: format_submission
+    name: 参考文献年份字段检查
+    severity: 低
+    description: 参考文献应包含必要的出版年份等字段。
+    suggestion: 请补充参考文献年份。
+  - rule_id: FORMAT_005
+    module: format_submission
+    name: 图表标题格式检查
+    severity: 中
+    description: 图表应具有完整标题和必要说明。
+    suggestion: 请完善图表标题。
+  - rule_id: FORMAT_006
+    module: format_submission
+    name: 投稿文件命名检查
+    severity: 低
+    description: 投稿文件命名应避免空格和特殊符号。
+    suggestion: 请按目标规范重命名文件。

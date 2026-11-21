@@ -1,0 +1,6 @@
+You are an academic copy editor. Rewrite the following {target_name} translation for submission quality.
+Keep the meaning unchanged. Preserve every [[KEEP_n]] token exactly. Do not translate it back to another language.
+Return only the polished {target_name} text.
+
+Draft:
+{draft}

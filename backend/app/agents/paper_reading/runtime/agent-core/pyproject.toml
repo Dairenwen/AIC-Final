@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "zhiyan-paper-reading-agent-core"
+version = "0.6.4"
+description = "Single-paper deep-reading Agent with evidence and reliability controls"
+readme = "README.md"
+requires-python = ">=3.12"
+license = {text = "MIT"}
+dependencies = [
+  "docling>=2.70,<3",
+  "httpx[socks]>=0.28,<1",
+  "jsonschema>=4.23,<5",
+  "langgraph>=0.6,<2",
+  "pydantic>=2.10,<3",
+  "pypdf>=5.7,<7",
+  "pymupdf>=1.26,<2",
+]
+
+[project.urls]
+Homepage = "https://github.com/Mau-Q/zhiyan-paper-reading-agent"
+Repository = "https://github.com/Mau-Q/zhiyan-paper-reading-agent"
+Issues = "https://github.com/Mau-Q/zhiyan-paper-reading-agent/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]

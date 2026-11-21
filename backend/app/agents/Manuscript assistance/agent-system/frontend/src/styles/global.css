@@ -1,0 +1,129 @@
+/* ===== 全局重置与基础样式 ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* 基础色 */
+  --bg-body: #eef1ef;
+  --bg-main: #f5f7f6;
+  --bg-home: #f7f9f7;
+  --bg-panel: #fff;
+  --bg-panel-soft: #fbfcfb;
+  --bg-panel-muted: #fafbfa;
+
+  /* 文字色 */
+  --text-primary: #202522;
+  --text-secondary: #68726c;
+  --text-muted: #7d8781;
+
+  /* 边框 */
+  --border-default: #dce1de;
+  --border-soft: #d9dfdb;
+  --border-muted: #ccd3cf;
+
+  /* 品牌色 */
+  --color-dark-green: #17211c;
+  --color-mid-green: #214c3a;
+  --color-accent-green: #315f4b;
+  --color-light-green-bg: #edf3ef;
+  --color-hover-green: #f0f7f2;
+  --color-bubble-green: #eef5f0;
+  --color-brand-yellow: #e5f255;
+  --color-success: #55a06f;
+  --color-success-dark: #367252;
+  --color-error: #b34a42;
+  --color-error-bg: #fff0ee;
+
+  /* 圆角 */
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 10px;
+
+  /* 间距 */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+
+  /* 字体 */
+  --font-family: Inter, "Microsoft YaHei", "PingFang SC", system-ui, -apple-system, sans-serif;
+  --font-size-body: 15px;
+  --font-size-sm: 14px;
+  --font-size-xs: 12px;
+  --font-size-h1: clamp(30px, 4vw, 44px);
+  --font-size-h2: 18px;
+
+  /* 行高 */
+  --line-height-body: 1.6;
+  --line-height-compact: 1.4;
+
+  /* 侧边栏 */
+  --sidebar-width: 260px;
+}
+
+html,
+body {
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--text-primary);
+  background-color: var(--bg-body);
+  letter-spacing: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: var(--color-accent-green);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--color-dark-green);
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: inherit;
+}
+
+input,
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+  border: none;
+  outline: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+/* 滚动条美化 */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-soft);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--border-muted);
+}

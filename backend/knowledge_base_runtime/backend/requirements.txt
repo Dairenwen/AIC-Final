@@ -1,0 +1,17 @@
+# Runtime stack used by the local PostgreSQL + Elasticsearch + Milvus backend.
+fastapi>=0.111
+uvicorn[standard]>=0.30
+sqlalchemy>=2.0
+psycopg[binary]>=3.1
+elasticsearch>=9.4
+pymilvus>=3.0
+milvus-lite>=3.0
+minio>=7.2
+pymupdf>=1.24
+celery>=5.4
+redis>=5.0
+FlagEmbedding>=1.3.4,<1.4
+transformers>=4.44,<5
+sentencepiece>=0.2
+accelerate>=0.34
+# Install a torch build appropriate for your CPU/GPU before enabling BGE-M3.

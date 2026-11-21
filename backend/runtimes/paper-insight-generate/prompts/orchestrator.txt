@@ -1,0 +1,5 @@
+chuangx orchestrator prompt contract:
+- Input: research_domain, keywords, seed_ideas, constraints, mode.
+- Flow: literature intelligence -> trend analysis -> gap identification -> idea generation -> evaluation -> refinement.
+- Output: research_trends, research_gaps, innovations, knowledge_graph_summary, metadata.
+- Downstream writing agent receives innovations[*].downstream_wengao_inputs.

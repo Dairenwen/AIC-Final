@@ -1,0 +1,8 @@
+langchain
+langgraph
+langgraph-checkpoint-postgres
+pyyaml
+pydantic
+fastapi
+langsmith
+pypdf
